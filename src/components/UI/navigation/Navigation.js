@@ -17,20 +17,20 @@ const Navigation = (props) => {
 			<UlList className={showNav ? 'show' : ''}>
 				<ul>
 					<li>
-						<a className='home' href=''>
+						<a className='home' href='#'>
 							<i className='fa-solid fa-house'></i>
 							Home
 						</a>
 					</li>
 					<li>
-						<a className='products' href=''>
+						<a className='products' href='#'>
 							<i className='fa-solid fa-couch'></i>
 							Products
 						</a>
 					</li>
 					<li>
-						<a className='about' href=''>
-							<i class='fa-solid fa-couch'></i>
+						<a className='about' href='#'>
+							<i className='fa-solid fa-couch'></i>
 							About
 						</a>
 					</li>

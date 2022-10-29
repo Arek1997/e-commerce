@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+
 import Navigation from '../navigation/Navigation';
 import Container from '../container/Containter';
+
 import StyledHeader, {
 	StyledHeading,
 	CartMenu,
+	OverLay,
 } from '../../../style/header/header-style';
 
 const Header = () => {
@@ -22,6 +25,7 @@ const Header = () => {
 				</StyledHeading>
 			</Container>
 
+			<OverLay display={showCart ? 'block' : ''} />
 			<CartMenu className={showCart ? 'open' : ''}>
 				<i
 					className='fa-solid fa-xmark closeCart'

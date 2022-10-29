@@ -30,11 +30,20 @@ export const StyledHeading = styled.div`
 	h1 {
 		font-family: cursive;
 		font-size: 4.5rem;
+
+		@media (min-width: 768px) {
+			font-size: 6rem;
+		}
 	}
 
 	p {
 		font-size: 2.5rem;
 		margin: 1em 0;
+
+		@media (min-width: 768px) {
+			font-size: 4rem;
+			margin: 0.5em 0;
+		}
 	}
 
 	button {
@@ -47,6 +56,10 @@ export const StyledHeading = styled.div`
 		border-radius: 5px;
 		transition: color 0.3s linear, background-color 0.3s linear;
 
+		@media (min-width: 768px) {
+			font-size: 1.8rem;
+		}
+
 		&:hover {
 			background-color: #fff;
 			color: var(--orange);
@@ -54,8 +67,16 @@ export const StyledHeading = styled.div`
 	}
 `;
 
+export const OverLay = styled.div`
+	display: ${(props) => props.display || 'none'};
+	position: fixed;
+	inset: 0;
+	background-color: rgb(0 0 0 / 40%);
+	z-index: 20;
+`;
+
 export const CartMenu = styled.aside`
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	width: 100%;
@@ -69,7 +90,7 @@ export const CartMenu = styled.aside`
 	opacity: 0;
 	visibility: hidden;
 	transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
-	z-index: 10;
+	z-index: 30;
 
 	.closeCart {
 		position: absolute;
