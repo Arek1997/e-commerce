@@ -7,7 +7,10 @@
 }
 
 :root {
-	--orange: #ba5d2c;
+	--orange: hsl(21, 62%, 45%);
+	--orange-hover: hsl(21, 62%, 35%);
+	--light-gray: rgb(0 0 0 / 80%);
+	--dirty-white: hsl(210, 36%, 96%);
 }
 
 html,
@@ -27,6 +30,7 @@ body {
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
 
 ul {
@@ -56,4 +60,16 @@ table {
 
 .text-center {
 	text-align: center;
+}
+
+.show {
+	transform: translateY(0) !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.open {
+	transform: translateX(0) !important;
+	opacity: 1 !important;
+	visibility: visible !important;
 }
