@@ -7,6 +7,7 @@ export const Nav = styled.nav`
 	justify-content: space-between;
 	padding: 3em 1.5em;
 	color: #fff;
+	z-index: 1;
 `;
 
 export const UlList = styled.div`
