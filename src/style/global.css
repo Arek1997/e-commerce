@@ -85,3 +85,7 @@ table {
 	opacity: 1 !important;
 	visibility: visible !important;
 }
+
+.activeLink {
+	color: var(--orange) !important;
+}

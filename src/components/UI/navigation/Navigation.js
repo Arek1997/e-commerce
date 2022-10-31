@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import {
 	Nav,
@@ -21,22 +22,31 @@ const Navigation = (props) => {
 				<UlList className={showNav ? 'show' : ''}>
 					<ul>
 						<li>
-							<a className='home' href='#'>
+							<NavLink
+								className={({ isActive }) => (isActive ? 'activeLink' : '')}
+								to='home'
+							>
 								<i className='fa-solid fa-house'></i>
 								Home
-							</a>
+							</NavLink>
 						</li>
 						<li>
-							<a className='products' href='#'>
+							<NavLink
+								className={({ isActive }) => (isActive ? 'activeLink' : '')}
+								to='products'
+							>
 								<i className='fa-solid fa-couch'></i>
 								Products
-							</a>
+							</NavLink>
 						</li>
 						<li>
-							<a className='about' href='#'>
+							<NavLink
+								className={({ isActive }) => (isActive ? 'activeLink' : '')}
+								to='aboutus'
+							>
 								<i className='fa-solid fa-couch'></i>
 								About
-							</a>
+							</NavLink>
 						</li>
 						<i
 							className='fa-solid fa-xmark closeMobNav'

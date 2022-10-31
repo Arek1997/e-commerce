@@ -1,7 +1,15 @@
 import React from 'react';
 
-const home = () => {
-	return <div>home</div>;
+import Header from '../components/UI/header/Header';
+import Featured from '../components/UI/featured/Featured';
+
+const Home = () => {
+	return (
+		<>
+			<Header />
+			<Featured />
+		</>
+	);
 };
 
-export default home;
+export default Home;
