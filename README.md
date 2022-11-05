@@ -1,4 +1,4 @@
-Projekt w trakcie pisanie, nie jest skończony.
+Projekt w trakcie pisanie, nie jest skończony / Project in production, it is not finished yet
 
 
 
