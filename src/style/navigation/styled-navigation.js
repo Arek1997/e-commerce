@@ -58,7 +58,8 @@ export const UlList = styled.div`
 
 			@media (min-width: 768px) {
 				font-size: 2.2rem;
-				color: #fff;
+				${(props) =>
+					props.darkFont ? 'color:var(--dark-gray)' : 'color:#fff'};
 				transition: color 0.3s;
 
 				&:hover {
@@ -111,6 +112,7 @@ export const BurgerBtn = styled.button`
 export const Logo = styled.h1`
 	font-size: 3rem;
 	font-family: cursive;
+	${(props) => (props.darkFont ? 'color:var(--dark-gray)' : 'color:#fff')};
 
 	@media (min-width: 768px) {
 		font-size: 4rem;
@@ -131,7 +133,7 @@ export const Cart = styled.button`
 
 	i {
 		position: relative;
-		color: #fff;
+		${(props) => (props.darkFont ? 'color:var(--dark-gray)' : 'color:#fff')};
 		font-size: 3rem;
 
 		span {
@@ -141,6 +143,7 @@ export const Cart = styled.button`
 			left: 15px;
 			width: 3rem;
 			height: 3rem;
+			color: #fff;
 			background-color: var(--orange);
 			font-size: 1.2rem;
 			place-items: center;

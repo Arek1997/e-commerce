@@ -9,7 +9,8 @@
 :root {
 	--orange: hsl(21, 62%, 45%);
 	--orange-hover: hsl(21, 62%, 35%);
-	--light-gray: rgb(0 0 0 / 80%);
+	--light-gray: rgba(0, 0, 0, 0.8);
+	--dark-gray: hsl(209deg, 61%, 16%);
 	--dirty-white: hsl(210, 36%, 96%);
 }
 

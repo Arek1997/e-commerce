@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import {
 	Nav,
@@ -13,13 +13,18 @@ import Container from '../container/Containter';
 
 const Navigation = (props) => {
 	const [showNav, setShowNav] = useState(false);
+	const { pathname } = useLocation();
+
+	const notHomePage = pathname.slice(1) !== 'home';
+
+	console.log(notHomePage);
 
 	const toggleMobNavHandler = () => setShowNav(!showNav);
 
 	return (
 		<Container>
 			<Nav>
-				<UlList className={showNav ? 'show' : ''}>
+				<UlList className={showNav ? 'show' : ''} darkFont={notHomePage}>
 					<ul>
 						<li>
 							<NavLink
@@ -59,9 +64,9 @@ const Navigation = (props) => {
 					<i className='fa-solid fa-bars'></i>
 				</BurgerBtn>
 
-				<Logo>AlleDrogo</Logo>
+				<Logo darkFont={notHomePage}>AlleDrogo</Logo>
 
-				<Cart onClick={props.onCartShow}>
+				<Cart onClick={props.onCartShow} darkFont={notHomePage}>
 					<i className='fa-solid fa-cart-shopping'>
 						<span>+10</span>
 					</i>
