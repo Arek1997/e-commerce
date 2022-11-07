@@ -30,7 +30,7 @@ export const StyledHeading = styled.div`
 	transform: translate(0, -50%);
 	color: #fff;
 
-	h1 {
+	p:first-child {
 		font-family: cursive;
 		font-size: 4.5rem;
 

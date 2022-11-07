@@ -12,16 +12,16 @@
 	--light-gray: rgba(0, 0, 0, 0.8);
 	--dark-gray: hsl(209deg, 61%, 16%);
 	--dirty-white: hsl(210, 36%, 96%);
+	--light-blue: hsl(210, 22%, 49%);
+	--section: 3rem 1.5rem;
+
+	font-size: 62.5%;
+	scroll-behavior: smooth;
 }
 
 html,
 body {
 	height: 100%;
-}
-
-html {
-	font-size: 62.5%;
-	scroll-behavior: smooth;
 }
 
 body {
@@ -64,7 +64,7 @@ table {
 }
 
 .section {
-	padding: 0 2rem;
+	padding: 3rem 1.5rem;
 }
 
 .pt-5 {

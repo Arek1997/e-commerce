@@ -1,7 +1,18 @@
 import React from 'react';
 
+import Container from '../components/UI/container/Container';
+import { SectionHero } from '../style/products/styled-products';
+
 const Products = () => {
-	return <div>Products</div>;
+	return (
+		<>
+			<SectionHero>
+				<Container padding='section'>
+					<h2>Products</h2>
+				</Container>
+			</SectionHero>
+		</>
+	);
 };
 
 export default Products;

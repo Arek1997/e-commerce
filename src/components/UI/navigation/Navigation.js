@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import {
@@ -9,18 +9,26 @@ import {
 	UlList,
 } from '../../../style/navigation/styled-navigation';
 
-import Container from '../container/Containter';
+import Container from '../container/Container';
+
+const MOBILE_DEV_BORDER = 768;
+let smallerThenMobileDevBorder = window.innerWidth < MOBILE_DEV_BORDER;
+let initialLoad = true;
 
 const Navigation = (props) => {
 	const [showNav, setShowNav] = useState(false);
 	const { pathname } = useLocation();
-
 	const notHomePage = pathname.slice(1) !== 'home';
 
-	console.log(notHomePage);
+	const toggleMobNavHandler = () => {
+		// props.onOverlayShow();
+		setShowNav(!showNav);
+		initialLoad = false;
+	};
 
-	const toggleMobNavHandler = () => setShowNav(!showNav);
-
+	useEffect(() => {
+		!initialLoad && smallerThenMobileDevBorder && toggleMobNavHandler();
+	}, [pathname]);
 	return (
 		<Container>
 			<Nav>

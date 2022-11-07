@@ -1,19 +1,14 @@
 import styled from 'styled-components';
+import { Slash, Relative } from '../components';
 
 export const StyledFeatured = styled.div`
 	h2 {
-		display: inline-block;
-		position: relative;
+		${Relative}
 		margin-bottom: 2em;
 		font-size: 3rem;
 		color: var(--light-gray);
 
-		&::before {
-			content: '/';
-			position: absolute;
-			left: -25px;
-			color: var(--orange);
-		}
+		${Slash}
 	}
 
 	.featured-btn {

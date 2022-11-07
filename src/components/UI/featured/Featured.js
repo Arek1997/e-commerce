@@ -1,4 +1,6 @@
-import Container from '../container/Containter';
+import { NavLink } from 'react-router-dom';
+
+import Container from '../container/Container';
 import FeaturedList from './Featured-list';
 import { StyledFeatured } from '../../../style/featured/styled-featured';
 
@@ -9,9 +11,9 @@ const Featured = () => {
 				<StyledFeatured>
 					<h2>Featured</h2>
 					<FeaturedList />
-					<a href='' className='featured-btn'>
+					<NavLink to='../products' className='featured-btn'>
 						All products
-					</a>
+					</NavLink>
 				</StyledFeatured>
 			</Container>
 		</section>

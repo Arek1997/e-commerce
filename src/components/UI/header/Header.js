@@ -1,4 +1,4 @@
-import Container from '../container/Containter';
+import Container from '../container/Container';
 
 import StyledHeader, {
 	StyledHeading,
@@ -9,7 +9,7 @@ const Header = () => {
 		<StyledHeader>
 			<Container>
 				<StyledHeading>
-					<h1>Rest, Relax, Unwind</h1>
+					<p>Rest, Relax, Unwind</p>
 					<p>Embrace your choices - we do</p>
 					<button>Show now</button>
 				</StyledHeading>
