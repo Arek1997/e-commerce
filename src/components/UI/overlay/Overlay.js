@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 
-import StyledOverlay from '../../../style/overlay/styled-overlay';
+import StyledOverlay from '../../../assets/style/overlay/styled-overlay';
 
 const portalElement = document.getElementById('overlay');
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CartMenu from '../../../style/cart/styled-cart';
+import CartMenu from '../../../assets/style/cart/styled-cart';
 
 const Cart = (props) => {
 	return (

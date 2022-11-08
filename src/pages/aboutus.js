@@ -1,6 +1,9 @@
 import React from 'react';
 import Container from '../components/UI/container/Container';
-import { SectionHero, SectionCenter } from '../style/aboutus/styled-aboutus';
+import {
+	SectionHero,
+	SectionCenter,
+} from '../assets/style/aboutus/styled-aboutus';
 
 const Aboutus = () => {
 	return (

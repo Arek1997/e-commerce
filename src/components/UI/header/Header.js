@@ -2,7 +2,7 @@ import Container from '../container/Container';
 
 import StyledHeader, {
 	StyledHeading,
-} from '../../../style/header/header-style';
+} from '../../../assets/style/header/header-style';
 
 const Header = () => {
 	return (

@@ -12,11 +12,10 @@ export const StyledItem = styled.article`
 
 	.product-img {
 		width: 100%;
-		border-radius: 10px;
 
 		@media (min-width: 768px) {
 			height: 22rem;
-			object-fit: cover;
+			object-fit: contain;
 		}
 	}
 

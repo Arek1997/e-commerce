@@ -7,7 +7,7 @@ import {
 	Logo,
 	Cart,
 	UlList,
-} from '../../../style/navigation/styled-navigation';
+} from '../../../assets/style/navigation/styled-navigation';
 
 import Container from '../container/Container';
 

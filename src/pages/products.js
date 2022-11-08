@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Container from '../components/UI/container/Container';
-import { SectionHero } from '../style/products/styled-products';
+import { SectionHero } from '../assets/style/products/styled-products';
 
 const Products = () => {
 	return (

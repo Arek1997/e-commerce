@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { StyledItem } from '../../../style/featured/styled-item';
+import { StyledItem } from '../../../assets/style/featured/styled-item';
 
 const FeaturedItem = (props) => {
 	return (
@@ -17,7 +17,7 @@ const FeaturedItem = (props) => {
 			</div>
 			<div className='product-bottom'>
 				<h3 className='product-title'>{props.title}</h3>
-				<span className='product-price'>{props.price}</span>
+				<span className='product-price'>${props.price}</span>
 			</div>
 		</StyledItem>
 	);

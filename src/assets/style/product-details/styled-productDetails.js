@@ -17,14 +17,17 @@ export const StyledProductDetails = styled.section`
 		&__img {
 			margin-bottom: 3em;
 
+			@media (min-width: 992px) {
+				margin-bottom: 0;
+			}
+
 			img {
 				width: 100%;
-				height: 400px;
-				object-fit: cover;
+				max-height: 400px;
+				object-fit: contain;
 
 				@media (min-width: 576px) {
-					height: auto;
-					object-fit: none;
+					max-height: 500px;
 				}
 			}
 		}

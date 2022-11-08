@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Container from '../container/Container';
 import FeaturedList from './Featured-list';
-import { StyledFeatured } from '../../../style/featured/styled-featured';
+import { StyledFeatured } from '../../../assets/style/featured/styled-featured';
 
 const Featured = () => {
 	return (
