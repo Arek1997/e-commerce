@@ -15,16 +15,20 @@ export const Slash = `
 export const SectionHero = `
 
 background-color: var(--dirty-white);
-	padding: 2rem 0;
+	padding: 4rem 1.5rem;
 
 	@media (min-width: 768px) {
-		padding: 4rem 0;
+		padding: 6rem 1.5rem;
 	}
 
 	h2 {
 		font-size: 2.2rem;
 		font-family: cursive;
 		color: var(--light-blue);
+
+		@media (min-width: 576px) {
+			padding: 0 1.5rem;
+		}
 
 		@media (min-width: 768px) {
 			font-size: 3rem;

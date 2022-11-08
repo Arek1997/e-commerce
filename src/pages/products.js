@@ -7,7 +7,7 @@ const Products = () => {
 	return (
 		<>
 			<SectionHero>
-				<Container padding='section'>
+				<Container>
 					<h2>Products</h2>
 				</Container>
 			</SectionHero>

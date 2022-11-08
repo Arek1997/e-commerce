@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { StyledItem } from '../../../style/featured/styled-item';
 
 const FeaturedItem = (props) => {
@@ -6,9 +7,9 @@ const FeaturedItem = (props) => {
 			<div className='product-body'>
 				<img className='product-img' src={props.image} alt={props.title} />
 				<div className='product-icon-actions'>
-					<a href='' className='product-details'>
+					<Link to={`../products/${props.id}`} className='product-details'>
 						<i className='fa-solid fa-magnifying-glass'></i>
-					</a>
+					</Link>
 					<button className='add-product'>
 						<i className='fa-solid fa-cart-shopping'></i>
 					</button>

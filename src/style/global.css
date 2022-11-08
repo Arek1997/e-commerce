@@ -13,7 +13,9 @@
 	--dark-gray: hsl(209deg, 61%, 16%);
 	--dirty-white: hsl(210, 36%, 96%);
 	--light-blue: hsl(210, 22%, 49%);
+	--dark-blue: hsl(209, 61%, 16%);
 	--section: 3rem 1.5rem;
+	--small-opacity: 0.8;
 
 	font-size: 62.5%;
 	scroll-behavior: smooth;
@@ -89,4 +91,17 @@ table {
 
 .activeLink {
 	color: var(--orange) !important;
+}
+
+.button {
+	display: inline-block;
+	padding: 1em 2em;
+	color: #fff;
+	background-color: var(--orange);
+	text-transform: uppercase;
+	border-radius: 6px;
+	font-size: 1.4rem;
+	font-weight: bold;
+	-webkit-transition: background-color 0.3s;
+	transition: background-color 0.3s;
 }

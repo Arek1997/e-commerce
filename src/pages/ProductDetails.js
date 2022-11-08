@@ -1,6 +1,8 @@
-import FeaturedItem from './Featured-item';
+import { useParams } from 'react-router-dom';
 
-import { StyledList } from '../../../style/featured/styled-list';
+import Container from '../components/UI/container/Container';
+import { SectionHero } from '../style/products/styled-products';
+import { StyledProductDetails } from '../style/product-details/styled-productDetails';
 
 const PRODUCT_LIST = [
 	{
@@ -35,22 +37,37 @@ const PRODUCT_LIST = [
 	},
 ];
 
-const FeaturedList = () => {
+const ProductDetails = (props) => {
+	const { productId } = useParams();
+	const product = PRODUCT_LIST.find((item) => item.id === productId);
+	console.log(product);
+
 	return (
-		<StyledList className='product-list'>
-			{PRODUCT_LIST.map((item) => {
-				return (
-					<FeaturedItem
-						key={item.id}
-						id={item.id}
-						image={item.image}
-						title={item.title}
-						price={item.price}
-					/>
-				);
-			})}
-		</StyledList>
+		<>
+			<SectionHero>
+				<Container padding='section'>
+					<h2>Products / {product.title}</h2>
+				</Container>
+			</SectionHero>
+
+			<StyledProductDetails className='section'>
+				<Container padding='section'>
+					<article className='product'>
+						<div className='product__img'>
+							<img src={product.image} alt={product.title} />
+						</div>
+						<div className='product__details'>
+							<h3 className='product__name'>{product.title}</h3>
+							<span className='product__brand'>{product.brand}</span>
+							<span className='product__price'>{product.price}</span>
+							<p className='product__description'>{product.description}</p>
+							<button className='product__button button'>Add to cart</button>
+						</div>
+					</article>
+				</Container>
+			</StyledProductDetails>
+		</>
 	);
 };
 
-export default FeaturedList;
+export default ProductDetails;

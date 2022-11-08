@@ -5,7 +5,6 @@ export const Nav = styled.nav`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 3em 1.5em;
 	color: #fff;
 	z-index: 1;
 `;

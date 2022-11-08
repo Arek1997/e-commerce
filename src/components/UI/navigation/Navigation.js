@@ -31,7 +31,7 @@ const Navigation = (props) => {
 	}, [pathname]);
 	return (
 		<Container>
-			<Nav>
+			<Nav className='section'>
 				<UlList className={showNav ? 'show' : ''} darkFont={notHomePage}>
 					<ul>
 						<li>

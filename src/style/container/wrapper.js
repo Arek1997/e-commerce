@@ -5,7 +5,6 @@ const Wrapper = styled.div`
 	max-width: 100%;
 	height: 100%;
 	margin: 0 auto;
-	padding: ${(props) => (props.padding ? 'var(--section)' : '')};
 
 	@media (min-width: 576px) {
 		max-width: 540px;

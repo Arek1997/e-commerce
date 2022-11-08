@@ -6,13 +6,13 @@ const Aboutus = () => {
 	return (
 		<>
 			<SectionHero>
-				<Container padding='section'>
+				<Container>
 					<h2>Aboutus</h2>
 				</Container>
 			</SectionHero>
 			<SectionCenter>
-				<Container padding='section'>
-					<article>
+				<Container>
+					<article className='section'>
 						<h3>Our History</h3>
 						<p>
 							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
