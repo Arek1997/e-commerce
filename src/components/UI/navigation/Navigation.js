@@ -29,6 +29,7 @@ const Navigation = (props) => {
 	useEffect(() => {
 		!initialLoad && smallerThenMobileDevBorder && toggleMobNavHandler();
 	}, [pathname]);
+
 	return (
 		<Container>
 			<Nav className='section'>
@@ -76,7 +77,7 @@ const Navigation = (props) => {
 
 				<Cart onClick={props.onCartShow} darkFont={notHomePage}>
 					<i className='fa-solid fa-cart-shopping'>
-						<span>+10</span>
+						<span>+9</span>
 					</i>
 				</Cart>
 			</Nav>

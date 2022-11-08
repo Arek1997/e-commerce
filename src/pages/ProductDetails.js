@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import Container from '../components/UI/container/Container';
 import { SectionHero } from '../assets/style/products/styled-products';
 import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
+import loadingSpinner from '../assets/loadingspinner.gif';
 
-const ProductDetails = (props) => {
+const ProductDetails = () => {
 	const [product, setProduct] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -65,7 +66,13 @@ const ProductDetails = (props) => {
 	}
 
 	if (isLoading) {
-		content = <p>LOADING...</p>;
+		content = (
+			<img
+				style={{ display: 'block', margin: '0 auto' }}
+				src={loadingSpinner}
+				alt='Loadingspinner'
+			/>
+		);
 	}
 
 	return (

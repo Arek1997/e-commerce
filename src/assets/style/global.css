@@ -105,3 +105,11 @@ table {
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
 }
+
+.error-text {
+	padding-bottom: 2em;
+	font-size: 2rem;
+	font-weight: bold;
+	color: rgb(255 0 0 / 70%);
+	word-break: break-word;
+}
