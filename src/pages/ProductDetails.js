@@ -1,60 +1,50 @@
-import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import useFetch from 'react-fetch-hook';
 
 import Container from '../components/UI/container/Container';
 import { SectionHero } from '../assets/style/products/styled-products';
 import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
 import loadingSpinner from '../assets/loadingspinner.gif';
 
-const ProductDetails = () => {
-	const [product, setProduct] = useState({});
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
+import { API_URL } from '../components/API/API';
 
+const ProductDetails = () => {
 	const { productId } = useParams();
 
-	const findProduct = useCallback(async () => {
-		setIsLoading(true);
-		setError(null);
+	const { isLoading, error, data } = useFetch(`${API_URL}/${productId}`);
 
-		try {
-			const response = await fetch(
-				`https://fakestoreapi.com/products/${productId}`
-			);
+	let content = <p className='error-text'>Product not found</p>;
 
-			if (!response.ok) {
-				throw new Error(
-					`${response.status} error. Check if URL(${response.url}) is correct.`
-				);
-			}
+	if (isLoading) {
+		content = (
+			<img
+				style={{ display: 'block', margin: '0 auto' }}
+				src={loadingSpinner}
+				alt='Loadingspinner'
+			/>
+		);
+	}
 
-			const data = await response.json();
-			setProduct(data);
-		} catch (err) {
-			console.log(err);
-			setError(err.message);
-		}
+	if (error) {
+		content = (
+			<p className='error-text'>
+				{error.status} {error.message} Check if URL address "{API_URL}" is
+				correct.
+			</p>
+		);
+	}
 
-		setIsLoading(false);
-	}, [productId]);
-
-	useEffect(() => {
-		findProduct();
-	}, [findProduct]);
-
-	let content = <p>Product not found</p>;
-
-	if (Object.keys(product).length > 0) {
+	if (data) {
 		content = (
 			<article className='product'>
 				<div className='product__img'>
-					<img src={product.image} alt={product.title} />
+					<img src={data.image} alt={data.title} />
 				</div>
 				<div className='product__details'>
-					<h3 className='product__name'>{product.title}</h3>
-					<span className='product__brand'>{product.brand}</span>
-					<span className='product__price'>${product.price}</span>
-					<p className='product__description'>{product.description}</p>
+					<h3 className='product__name'>{data.title}</h3>
+					<span className='product__brand'>{data.brand}</span>
+					<span className='product__price'>${data.price}</span>
+					<p className='product__description'>{data.description}</p>
 					<button className='product__button button'>Add to cart</button>
 				</div>
 			</article>
@@ -79,7 +69,7 @@ const ProductDetails = () => {
 		<>
 			<SectionHero>
 				<Container padding='section'>
-					<h2>Products / {product.title || 'not found'}</h2>
+					<h2>Products / {data?.title || 'not found'}</h2>
 				</Container>
 			</SectionHero>
 
