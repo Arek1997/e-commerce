@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { StyledItem } from '../../../assets/style/featured/styled-item';
+import StyledProduct from '../../../assets/style/featured/styled-product';
 
 const FeaturedItem = (props) => {
 	return (
-		<StyledItem className='product-item'>
+		<StyledProduct className='product-item'>
 			<div className='product-body'>
 				<img className='product-img' src={props.image} alt={props.title} />
 				<div className='product-icon-actions'>
@@ -19,7 +19,7 @@ const FeaturedItem = (props) => {
 				<h3 className='product-title'>{props.title}</h3>
 				<span className='product-price'>${props.price}</span>
 			</div>
-		</StyledItem>
+		</StyledProduct>
 	);
 };
 

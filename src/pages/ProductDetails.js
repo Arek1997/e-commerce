@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import useFetch from 'react-fetch-hook';
 
 import Container from '../components/UI/container/Container';
-import { SectionHero } from '../assets/style/products/styled-products';
+import { SectionHero } from '../assets/style/hero-section/styled-hero';
 import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
 import loadingSpinner from '../assets/loadingspinner.gif';
 

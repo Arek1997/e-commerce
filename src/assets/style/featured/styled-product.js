@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledItem = styled.article`
+const StyledProduct = styled.article`
 	.product-body {
 		position: relative;
 
@@ -65,3 +65,5 @@ export const StyledItem = styled.article`
 		}
 	}
 `;
+
+export default StyledProduct;
