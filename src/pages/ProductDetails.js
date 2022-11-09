@@ -51,20 +51,6 @@ const ProductDetails = () => {
 		);
 	}
 
-	if (error) {
-		content = <p>{error}</p>;
-	}
-
-	if (isLoading) {
-		content = (
-			<img
-				style={{ display: 'block', margin: '0 auto' }}
-				src={loadingSpinner}
-				alt='Loadingspinner'
-			/>
-		);
-	}
-
 	return (
 		<>
 			<SectionHero>

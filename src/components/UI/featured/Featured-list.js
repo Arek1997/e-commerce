@@ -6,10 +6,10 @@ import loadingSpinner from '../../../assets/loadingspinner.gif';
 
 import { API_URL } from '../../API/API';
 
-const productsApi = `${API_URL}?limit=3`;
+const PRODUCTS_API = `${API_URL}?limit=3`;
 
 const FeaturedList = () => {
-	const { isLoading, error, data } = useFetch(productsApi);
+	const { isLoading, error, data } = useFetch(PRODUCTS_API);
 
 	let content = <p className='error-text'>Products not found</p>;
 
@@ -26,7 +26,7 @@ const FeaturedList = () => {
 	if (error) {
 		content = (
 			<p className='error-text'>
-				{error.status} {error.message} Check if URL address "{productsApi}" is
+				{error.status} {error.message} Check if URL address "{PRODUCTS_API}" is
 				correct.
 			</p>
 		);
