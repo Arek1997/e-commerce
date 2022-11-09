@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import {
@@ -11,29 +11,19 @@ import {
 
 import Container from '../container/Container';
 
-const MOBILE_DEV_BORDER = 768;
-let smallerThenMobileDevBorder = window.innerWidth < MOBILE_DEV_BORDER;
-let initialLoad = true;
-
 const Navigation = (props) => {
 	const [showNav, setShowNav] = useState(false);
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
 
 	const toggleMobNavHandler = () => {
-		// props.onOverlayShow();
 		setShowNav(!showNav);
-		initialLoad = false;
 	};
-
-	useEffect(() => {
-		!initialLoad && smallerThenMobileDevBorder && toggleMobNavHandler();
-	}, [pathname]);
 
 	return (
 		<Container>
 			<Nav className='section'>
-				<UlList className={showNav ? 'show' : ''} darkFont={notHomePage}>
+				<UlList className={showNav ? 'open' : ''} darkFont={notHomePage}>
 					<ul>
 						<li>
 							<NavLink

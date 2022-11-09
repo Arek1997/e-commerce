@@ -17,6 +17,12 @@ const CartMenu = styled.aside`
 	transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
 	z-index: 30;
 
+	&.open {
+		transform: translateX(0) !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+
 	.closeCart {
 		position: absolute;
 		top: 2rem;

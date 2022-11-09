@@ -6,27 +6,20 @@ import Overlay from '../overlay/Overlay';
 
 const Layout = (props) => {
 	const [showCart, setShowCart] = useState(false);
-	// const [showOverlay, setShowOverlay] = useState(false);
+	const [showOverlay, setShowOverlay] = useState(false);
 
 	const toggleCartHandler = () => {
 		setShowCart(!showCart);
-		// setShowOverlay(!showOverlay);
+		setShowOverlay(!showOverlay);
 	};
-
-	// const toggleOverlayHandler = () => {
-	// 	setShowOverlay(!showOverlay);
-	// };
 
 	return (
 		<>
-			<Navigation
-				onCartShow={toggleCartHandler}
-				// onOverlayShow={toggleOverlayHandler}
-			/>
+			<Navigation onCartShow={toggleCartHandler} />
 			<Cart showCart={showCart} onCartShow={toggleCartHandler} />
 			<main>{props.children}</main>
 
-			{showCart && <Overlay onClose={toggleCartHandler} />}
+			{showOverlay && <Overlay onClose={toggleCartHandler} />}
 		</>
 	);
 };

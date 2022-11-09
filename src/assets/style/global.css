@@ -77,18 +77,6 @@ table {
 	padding-bottom: 10rem;
 }
 
-.show {
-	transform: translateY(0) !important;
-	opacity: 1 !important;
-	visibility: visible !important;
-}
-
-.open {
-	transform: translateX(0) !important;
-	opacity: 1 !important;
-	visibility: visible !important;
-}
-
 .activeLink {
 	color: var(--orange) !important;
 }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import bgImage from '../../img/home/background.jpeg';
 
@@ -48,25 +50,26 @@ export const StyledHeading = styled.div`
 			margin: 0.5em 0;
 		}
 	}
+`;
 
-	button {
-		padding: 0.7em 1em;
-		font-size: 1.4rem;
-		text-transform: uppercase;
-		background-color: transparent;
-		color: #fff;
-		border: 1px solid #fff;
-		border-radius: 5px;
-		transition: color 0.3s linear, background-color 0.3s linear;
+export const StyledLink = styled(Link)`
+	display: inline-block;
+	padding: 0.7em 1em;
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	background-color: transparent;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	transition: color 0.3s linear, background-color 0.3s linear;
 
-		@media (min-width: 768px) {
-			font-size: 1.8rem;
-		}
+	@media (min-width: 768px) {
+		font-size: 1.8rem;
+	}
 
-		&:hover {
-			background-color: #fff;
-			color: var(--orange);
-		}
+	&:hover {
+		background-color: #fff;
+		color: var(--orange);
 	}
 `;
 

@@ -24,6 +24,12 @@ export const UlList = styled.div`
 	transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
 	z-index: 10;
 
+	&.open {
+		transform: translateY(0) !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+
 	@media (min-width: 768px) {
 		position: static;
 		width: auto;

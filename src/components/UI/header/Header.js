@@ -2,6 +2,7 @@ import Container from '../container/Container';
 
 import StyledHeader, {
 	StyledHeading,
+	StyledLink,
 } from '../../../assets/style/header/header-style';
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
 				<StyledHeading>
 					<p>Rest, Relax, Unwind</p>
 					<p>Embrace your choices - we do</p>
-					<button>Show now</button>
+					<StyledLink to='../products'>Show now</StyledLink>
 				</StyledHeading>
 			</Container>
 		</StyledHeader>
