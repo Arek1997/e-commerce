@@ -1,67 +1,72 @@
 import styled from 'styled-components';
 
 const StyledProduct = styled.article`
-	.product-body {
-		position: relative;
+	max-width: 350px;
+	justify-self: center;
 
-		&:hover .product-icon-actions {
-			opacity: 1;
-			visibility: visible;
+	.product {
+		&__body {
+			position: relative;
+
+			&:hover .product__icon-actions {
+				opacity: 1;
+				visibility: visible;
+			}
 		}
-	}
 
-	.product-img {
-		width: 100%;
-		max-width: 350px;
-
-		@media (min-width: 768px) {
+		&__img {
+			width: 100%;
 			height: 22rem;
 			object-fit: contain;
+
+			@media (min-width: 768px) {
+				height: 25rem;
+			}
 		}
-	}
 
-	.product-bottom {
-		padding-top: 2em;
-	}
+		&__bottom {
+			padding-top: 2em;
+		}
 
-	.product-title {
-		font-size: 1.6rem;
-		color: var(--light-gray);
-		margin-bottom: 0.5em;
-		color: hsl(210, 22%, 49%);
-	}
+		&__title {
+			font-size: 1.6rem;
+			color: var(--light-gray);
+			margin-bottom: 0.5em;
+			color: hsl(210, 22%, 49%);
+		}
 
-	.product-price {
-		font-size: 1.8rem;
-		font-weight: bold;
-		color: hsl(209, 34%, 30%);
-	}
-
-	.product-icon-actions {
-		position: absolute;
-		display: flex;
-		column-gap: 1rem;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity 0.3s linear, visibility 0.3s linear;
-
-		.product-details,
-		.add-product {
-			display: grid;
-			width: 40px;
-			height: 40px;
+		&__price {
 			font-size: 1.8rem;
-			color: #fff;
-			background-color: var(--orange);
-			place-items: center;
-			border-radius: 50%;
-			transition: background-color 0.3s;
+			font-weight: bold;
+			color: hsl(209, 34%, 30%);
+		}
 
-			&:hover {
-				background-color: var(--orange-hover);
+		&__icon-actions {
+			position: absolute;
+			display: flex;
+			column-gap: 1rem;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s linear, visibility 0.3s linear;
+
+			.product__details,
+			.product__add {
+				display: grid;
+				width: 40px;
+				height: 40px;
+				font-size: 1.8rem;
+				color: #fff;
+				background-color: var(--orange);
+				place-items: center;
+				border-radius: 50%;
+				transition: background-color 0.3s;
+
+				&:hover {
+					background-color: var(--orange-hover);
+				}
 			}
 		}
 	}

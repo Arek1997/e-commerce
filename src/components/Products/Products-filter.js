@@ -8,14 +8,14 @@ const ProductsFilter = () => {
 		setPrice(e.target.value);
 	};
 	return (
-		<ProductFilter className='products__filter'>
-			<form className='products__form--one'>
+		<ProductFilter className='filter'>
+			<form className='filter__form--one'>
 				<label htmlFor='search'></label>
 				<input name='search' type='text' placeholder='Search...' />
 			</form>
-			<h3 className='products__categories'>Categories</h3>
+			<h3 className='filter__categories'>Categories</h3>
 
-			<fieldset className='products__options'>
+			<fieldset className='filter__options'>
 				<ul>
 					<li>
 						<input
@@ -66,9 +66,9 @@ const ProductsFilter = () => {
 				</ul>
 			</fieldset>
 
-			<h3 className='products__categories'>Price</h3>
+			<h3 className='filter__categories'>Price</h3>
 
-			<form className='products__form--two'>
+			<form className='filter__form--two'>
 				<label htmlFor='input_price'></label>
 				<input
 					name='input_price'
@@ -78,7 +78,7 @@ const ProductsFilter = () => {
 					step={1}
 					onChange={changePriceHandler}
 				/>
-				<span className='filtered__price'>Value: ${price}</span>
+				<span className='filter__price'>Value: ${price}</span>
 			</form>
 		</ProductFilter>
 	);

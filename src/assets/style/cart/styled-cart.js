@@ -45,6 +45,16 @@ const CartMenu = styled.aside`
 		color: var(--light-gray);
 	}
 
+	@media (max-width: 768px) and (orientation: landscape) {
+		h3 {
+			padding-bottom: 0.5em;
+		}
+
+		p {
+			padding-top: 0.5em;
+		}
+	}
+
 	.checkout {
 		display: block;
 		width: 100%;

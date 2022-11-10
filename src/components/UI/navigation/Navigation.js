@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import {
@@ -15,6 +16,7 @@ const Navigation = (props) => {
 	const [showNav, setShowNav] = useState(false);
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
+	const { productsAmount } = useSelector((state) => state.cart);
 
 	const toggleMobNavHandler = () => {
 		setShowNav(!showNav);
@@ -67,7 +69,7 @@ const Navigation = (props) => {
 
 				<Cart onClick={props.onCartShow} darkFont={notHomePage}>
 					<i className='fa-solid fa-cart-shopping'>
-						<span>+9</span>
+						<span>{productsAmount}</span>
 					</i>
 				</Cart>
 			</Nav>

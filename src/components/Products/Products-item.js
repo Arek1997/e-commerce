@@ -1,23 +1,40 @@
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/cart-slice';
+
 import { Link } from 'react-router-dom';
 import StyledProduct from '../../assets/style/products/styled-products-item';
 
 const ProductsItem = (props) => {
+	const dispatch = useDispatch();
+
+	const addProductHandler = () => {
+		const product = {
+			id: props.id,
+			title: props.title,
+			price: props.price,
+			image: props.image,
+			amount: 1,
+		};
+
+		dispatch(cartActions.addProduct(product));
+	};
+
 	return (
-		<StyledProduct className='product-item '>
-			<div className='product-body'>
-				<img className='product-img' src={props.image} alt={props.title} />
-				<div className='product-icon-actions'>
-					<Link to={`../products/${props.id}`} className='product-details'>
+		<StyledProduct className='product'>
+			<div className='product__body'>
+				<img className='product__img' src={props.image} alt={props.title} />
+				<div className='product__icon-actions'>
+					<Link to={`../products/${props.id}`} className='product__details'>
 						<i className='fa-solid fa-magnifying-glass'></i>
 					</Link>
-					<button className='add-product'>
+					<button className='product__add' onClick={addProductHandler}>
 						<i className='fa-solid fa-cart-shopping'></i>
 					</button>
 				</div>
 			</div>
-			<div className='product-bottom'>
-				<h3 className='product-title'>{props.title}</h3>
-				<span className='product-price'>${props.price.toFixed(2)}</span>
+			<div className='product__bottom'>
+				<h3 className='product__title'>{props.title}</h3>
+				<span className='product__price'>${props.price.toFixed(2)}</span>
 			</div>
 		</StyledProduct>
 	);

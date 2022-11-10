@@ -10,6 +10,11 @@ const ProductContainer = styled.div`
 	@media (min-width: 768px) {
 		display: grid;
 		grid-template-columns: 1fr 4fr;
+		column-gap: 2rem;
+	}
+
+	@media (min-width: 992px) {
+		column-gap: 0;
 	}
 `;
 
