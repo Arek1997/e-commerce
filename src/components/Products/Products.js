@@ -2,14 +2,16 @@ import Container from '../UI/container/Container';
 import ProductList from './Products-list';
 import ProductsFilter from './Products-filter';
 
+import ProductContainer from '../../assets/style/products/styled-products';
+
 const Products = () => {
 	return (
-		<section className='products'>
+		<section className='products section'>
 			<Container>
-				<div className='products__container'>
+				<ProductContainer className='products__container'>
 					<ProductsFilter />
 					<ProductList />
-				</div>
+				</ProductContainer>
 			</Container>
 		</section>
 	);

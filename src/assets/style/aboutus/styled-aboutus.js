@@ -19,6 +19,7 @@ export const SectionCenter = styled.section`
 		font-size: 2.5rem;
 		opacity: 0.9;
 		margin-bottom: 1em;
+		color: var(--dark-blue);
 
 		${Slash}
 

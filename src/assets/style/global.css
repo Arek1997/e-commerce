@@ -77,6 +77,14 @@ table {
 	padding-bottom: 10rem;
 }
 
+.mt-5 {
+	margin-top: 10rem;
+}
+
+.mb-5 {
+	margin-bottom: 10rem;
+}
+
 .activeLink {
 	color: var(--orange) !important;
 }

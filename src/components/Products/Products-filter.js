@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProductFilter from '../../assets/style/products/styled-products-filter';
 
 const ProductsFilter = () => {
 	const [price, setPrice] = useState('50');
@@ -7,64 +8,66 @@ const ProductsFilter = () => {
 		setPrice(e.target.value);
 	};
 	return (
-		<div className='products__filter'>
+		<ProductFilter className='products__filter'>
 			<form className='products__form--one'>
 				<label htmlFor='search'></label>
 				<input name='search' type='text' placeholder='Search...' />
 			</form>
 			<h3 className='products__categories'>Categories</h3>
-			<ul className='products__options'>
-				<fieldset>
-					<ul>
-						<li>
-							<input
-								name='option'
-								value='options__all'
-								id='options__all'
-								type='radio'
-								defaultChecked
-							/>
-							<label htmlFor='options__all'>All</label>
-						</li>
-						<li>
-							<input
-								name='option'
-								value='options__mew'
-								id='options__mew'
-								type='radio'
-							/>
-							<label htmlFor='options__men'>Men's clothing</label>
-						</li>
-						<li>
-							<input
-								name='option'
-								value='options__woman'
-								id='options__woman'
-								type='radio'
-							/>
-							<label htmlFor='options__woman'>Women's clothing</label>
-						</li>
-						<li>
-							<input
-								name='option'
-								value='options__jewelery'
-								id='options__jewelery'
-								type='radio'
-							/>
-							<label htmlFor='options__jewelery'>Jewelery</label>
-						</li>
-						<li>
-							<input
-								name='option'
-								value='options__electronics'
-								id='options__electronics'
-								type='radio'
-							/>
-							<label htmlFor='options__electronics'>Electronics</label>
-						</li>
-					</ul>
-				</fieldset>
-			</ul>
+
+			<fieldset className='products__options'>
+				<ul>
+					<li>
+						<input
+							name='option'
+							value='options__all'
+							id='options__all'
+							type='radio'
+							defaultChecked
+						/>
+						<label htmlFor='options__all'>All</label>
+					</li>
+					<li>
+						<input
+							name='option'
+							value='options__men'
+							id='options__men'
+							type='radio'
+						/>
+						<label htmlFor='options__men'>Men's clothing</label>
+					</li>
+					<li>
+						<input
+							name='option'
+							value='options__woman'
+							id='options__woman'
+							type='radio'
+						/>
+						<label htmlFor='options__woman'>Women's clothing</label>
+					</li>
+					<li>
+						<input
+							name='option'
+							value='options__jewelery'
+							id='options__jewelery'
+							type='radio'
+						/>
+						<label htmlFor='options__jewelery'>Jewelery</label>
+					</li>
+					<li>
+						<input
+							name='option'
+							value='options__electronics'
+							id='options__electronics'
+							type='radio'
+						/>
+						<label htmlFor='options__electronics'>Electronics</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<h3 className='products__categories'>Price</h3>
+
 			<form className='products__form--two'>
 				<label htmlFor='input_price'></label>
 				<input
@@ -77,7 +80,7 @@ const ProductsFilter = () => {
 				/>
 				<span className='filtered__price'>Value: ${price}</span>
 			</form>
-		</div>
+		</ProductFilter>
 	);
 };
 

@@ -12,6 +12,7 @@ const StyledProduct = styled.article`
 
 	.product-img {
 		width: 100%;
+		max-width: 350px;
 
 		@media (min-width: 768px) {
 			height: 22rem;
