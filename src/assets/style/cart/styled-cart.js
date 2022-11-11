@@ -56,7 +56,6 @@ const CartMenu = styled.aside`
 	}
 
 	.checkout {
-		display: block;
 		width: 100%;
 		margin: 2em 0;
 		color: #fff;
@@ -65,6 +64,7 @@ const CartMenu = styled.aside`
 		background-color: var(--orange);
 		border-radius: 6px;
 		transition: background-color 0.3s;
+		text-transform: uppercase;
 
 		&:hover {
 			background-color: var(--orange-hover);

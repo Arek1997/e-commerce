@@ -4,21 +4,23 @@ import CartProduct from './Cart-product';
 
 const CartList = () => {
 	const { productsList } = useSelector((state) => state.cart);
-	console.log(productsList);
 
 	return (
 		<div className='cart-items'>
-			{productsList.length > 0
-				? productsList.map((product) => (
-						<CartProduct
-							key={product.id}
-							title={product.title}
-							image={product.image}
-							price={product.price}
-							amount={product.amount}
-						/>
-				  ))
-				: ''}
+			{productsList.length > 0 ? (
+				productsList.map((product) => (
+					<CartProduct
+						id={product.id}
+						key={product.id}
+						title={product.title}
+						image={product.image}
+						price={product.price}
+						amount={product.amount}
+					/>
+				))
+			) : (
+				<p className='mt-5'>Your cart is empty.</p>
+			)}
 		</div>
 	);
 };

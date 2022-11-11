@@ -7,17 +7,15 @@ import StyledProduct from '../../assets/style/products/styled-products-item';
 const ProductsItem = (props) => {
 	const dispatch = useDispatch();
 
-	const addProductHandler = () => {
-		const product = {
-			id: props.id,
-			title: props.title,
-			price: props.price,
-			image: props.image,
-			amount: 1,
-		};
-
-		dispatch(cartActions.addProduct(product));
+	const product = {
+		id: props.id,
+		title: props.title,
+		price: props.price,
+		image: props.image,
+		amount: 1,
 	};
+
+	const addProductHandler = () => dispatch(cartActions.addProduct(product));
 
 	return (
 		<StyledProduct className='product'>
@@ -33,7 +31,9 @@ const ProductsItem = (props) => {
 				</div>
 			</div>
 			<div className='product__bottom'>
-				<h3 className='product__title'>{props.title}</h3>
+				<Link to={`../products/${props.id}`}>
+					<h3 className='product__title'>{props.title}</h3>
+				</Link>
 				<span className='product__price'>${props.price.toFixed(2)}</span>
 			</div>
 		</StyledProduct>

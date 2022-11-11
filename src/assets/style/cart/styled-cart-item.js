@@ -6,6 +6,7 @@ const StyledCartProduct = styled.article`
 	gap: 1rem;
 	align-items: center;
 	margin: 4em 0;
+	padding-right: 1em;
 
 	@media (min-width: 320px) {
 		gap: 2rem;
@@ -15,12 +16,19 @@ const StyledCartProduct = styled.article`
 		gap: 3rem;
 	}
 
+	@media (min-width: 768px) {
+		padding-right: 2em;
+	}
+
 	.product {
 		&__img {
 			height: 80px;
+			width: 60px;
+			object-fit: contain;
 		}
 
 		&__center {
+			position: relative;
 			text-align: left;
 			color: var(--dark-blue);
 			opacity: 0.9;
@@ -48,32 +56,21 @@ const StyledCartProduct = styled.article`
 		}
 
 		&__remove {
-			letter-spacing: 0.5px;
+			position: absolute;
+			bottom: 0;
+			right: 0;
 			color: var(--light-blue);
-			opacity: 1;
+			font-size: 2rem;
 
 			&:hover {
 				color: var(--dark-blue);
 			}
-
-			@media (min-width: 1400px) {
-				font-size: 1.4rem;
-			}
 		}
 
 		&__total-price {
-			margin-left: 0.5em;
 			font-size: 1.3rem;
 			font-family: cursive;
 			font-weight: 600;
-
-			@media (min-width: 320px) {
-				margin-left: 1em;
-			}
-
-			@media (min-width: 360px) {
-				margin-left: 2em;
-			}
 
 			@media (min-width: 1400px) {
 				font-size: 1.6rem;

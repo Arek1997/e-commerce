@@ -16,7 +16,13 @@ const Navigation = (props) => {
 	const [showNav, setShowNav] = useState(false);
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
-	const { productsAmount } = useSelector((state) => state.cart);
+	const { productsList } = useSelector((state) => state.cart);
+
+	let productsAmount = productsList.reduce((prev, current) => {
+		return prev + current.amount;
+	}, 0);
+
+	if (productsAmount > 9) productsAmount = '+9';
 
 	const toggleMobNavHandler = () => {
 		setShowNav(!showNav);
