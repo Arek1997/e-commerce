@@ -22,7 +22,7 @@ const Navigation = (props) => {
 		return prev + current.amount;
 	}, 0);
 
-	if (productsAmount > 9) productsAmount = '+9';
+	productsAmount > 9 && (productsAmount = '+9');
 
 	const toggleMobNavHandler = () => {
 		setShowNav(!showNav);

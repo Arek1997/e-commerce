@@ -1,12 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import ProductFilter from '../../assets/style/products/styled-products-filter';
 
+import { productsActions } from '../../store/products-slice';
+
 const ProductsFilter = () => {
-	const [price, setPrice] = useState('50');
+	const dispatch = useDispatch();
+	const { productsArr } = useSelector((state) => state.products);
+
+	const pricesArr = productsArr.map((product) => product.price);
+	const maxPrice = Math.max(...pricesArr);
+
+	const [price, setPrice] = useState(maxPrice);
+
+	useEffect(() => {
+		setPrice(maxPrice);
+	}, [maxPrice]);
 
 	const changePriceHandler = (e) => {
 		setPrice(e.target.value);
 	};
+
+	const filterByCategory = (e) => {
+		let newFilteredArr = [];
+
+		if (e.target.value === 'all') {
+			newFilteredArr = productsArr;
+		} else {
+			newFilteredArr = productsArr.filter(
+				(product) => product.category === e.target.value
+			);
+		}
+		dispatch(productsActions.updateFilteredArr(newFilteredArr));
+	};
+
 	return (
 		<ProductFilter className='filter'>
 			<form className='filter__form--one'>
@@ -15,12 +43,12 @@ const ProductsFilter = () => {
 			</form>
 			<h3 className='filter__categories'>Categories</h3>
 
-			<fieldset className='filter__options'>
+			<fieldset className='filter__options' onChange={filterByCategory}>
 				<ul>
 					<li>
 						<input
 							name='option'
-							value='options__all'
+							value='all'
 							id='options__all'
 							type='radio'
 							defaultChecked
@@ -30,7 +58,7 @@ const ProductsFilter = () => {
 					<li>
 						<input
 							name='option'
-							value='options__men'
+							value="men's clothing"
 							id='options__men'
 							type='radio'
 						/>
@@ -39,7 +67,7 @@ const ProductsFilter = () => {
 					<li>
 						<input
 							name='option'
-							value='options__woman'
+							value="women's clothing"
 							id='options__woman'
 							type='radio'
 						/>
@@ -48,7 +76,7 @@ const ProductsFilter = () => {
 					<li>
 						<input
 							name='option'
-							value='options__jewelery'
+							value='jewelery'
 							id='options__jewelery'
 							type='radio'
 						/>
@@ -57,7 +85,7 @@ const ProductsFilter = () => {
 					<li>
 						<input
 							name='option'
-							value='options__electronics'
+							value='electronics'
 							id='options__electronics'
 							type='radio'
 						/>
@@ -74,7 +102,7 @@ const ProductsFilter = () => {
 					name='input_price'
 					type='range'
 					min={0}
-					max={100}
+					max={maxPrice}
 					step={1}
 					onChange={changePriceHandler}
 				/>
