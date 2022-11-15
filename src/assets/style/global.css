@@ -109,3 +109,7 @@ table {
 	color: rgb(255 0 0 / 70%);
 	word-break: break-word;
 }
+
+.scroll-disabled {
+	overflow-y: hidden;
+}
