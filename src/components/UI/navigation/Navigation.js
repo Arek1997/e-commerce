@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+
+import { navigationActions } from '../../../store/navigation-slice';
 
 import {
 	Nav,
@@ -13,9 +14,12 @@ import {
 import Container from '../container/Container';
 
 const Navigation = (props) => {
-	const [showNav, setShowNav] = useState(false);
+	const dispatch = useDispatch();
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
+
+	const { isNavShown } = useSelector((state) => state.navigation);
+
 	const { productsList } = useSelector((state) => state.cart);
 
 	let productsAmount = productsList.reduce((prev, current) => {
@@ -25,13 +29,21 @@ const Navigation = (props) => {
 	productsAmount > 9 && (productsAmount = '+9');
 
 	const toggleMobNavHandler = () => {
-		setShowNav(!showNav);
+		dispatch(navigationActions.toggleNav());
+		dispatch(navigationActions.toggleOverlay());
 	};
+
+	const toggleCartHandler = () => {
+		dispatch(navigationActions.toggleCart());
+		dispatch(navigationActions.toggleOverlay());
+	};
+
+	console.log('render navigation');
 
 	return (
 		<Container>
 			<Nav className='section'>
-				<UlList className={showNav ? 'open' : ''} darkFont={notHomePage}>
+				<UlList className={isNavShown ? 'open' : ''} darkFont={notHomePage}>
 					<ul>
 						<li>
 							<NavLink
@@ -73,7 +85,7 @@ const Navigation = (props) => {
 
 				<Logo darkFont={notHomePage}>AlleDrogo</Logo>
 
-				<Cart onClick={props.onCartShow} darkFont={notHomePage}>
+				<Cart onClick={toggleCartHandler} darkFont={notHomePage}>
 					<i className='fa-solid fa-cart-shopping'>
 						<span>{productsAmount}</span>
 					</i>

@@ -15,7 +15,7 @@ const CartMenu = styled.aside`
 	opacity: 0;
 	visibility: hidden;
 	transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
-	z-index: 30;
+	z-index: 3;
 
 	&.open {
 		transform: translateX(0) !important;

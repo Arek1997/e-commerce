@@ -1,18 +1,33 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { navigationActions } from '../../../store/navigation-slice';
 
 import CartMenu from '../../../assets/style/cart/styled-cart';
 import CartList from './Cart-list';
 
 const Cart = (props) => {
+	const dispatch = useDispatch();
 	const { productsList } = useSelector((state) => state.cart);
+
+	const { isCartShown } = useSelector((state) => state.navigation);
 
 	const totalPrice = productsList.reduce((prev, current) => {
 		return prev + current.price * current.amount;
 	}, 0);
 
+	const toggleCartHandler = () => {
+		dispatch(navigationActions.toggleCart());
+		dispatch(navigationActions.toggleOverlay());
+	};
+
+	console.log('render cart');
+
 	return (
-		<CartMenu className={props.showCart ? 'open' : ''}>
-			<i className='fa-solid fa-xmark closeCart' onClick={props.onCartShow}></i>
+		<CartMenu className={isCartShown ? 'open' : ''}>
+			<i
+				className='fa-solid fa-xmark closeCart'
+				onClick={toggleCartHandler}
+			></i>
 			<header>
 				<h3>Your Cart</h3>
 			</header>

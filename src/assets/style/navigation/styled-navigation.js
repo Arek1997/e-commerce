@@ -6,7 +6,6 @@ export const Nav = styled.nav`
 	align-items: center;
 	justify-content: space-between;
 	color: #fff;
-	z-index: 1;
 `;
 
 export const UlList = styled.div`
@@ -22,7 +21,7 @@ export const UlList = styled.div`
 	opacity: 0;
 	visibility: hidden;
 	transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
-	z-index: 10;
+	z-index: 2;
 
 	&.open {
 		transform: translateY(0) !important;
@@ -38,6 +37,7 @@ export const UlList = styled.div`
 		transform: translateY(0);
 		opacity: 1;
 		visibility: visible;
+		z-index: 1;
 	}
 
 	ul {
@@ -103,6 +103,7 @@ export const BurgerBtn = styled.button`
 	background-color: var(--orange);
 	cursor: pointer;
 	transition: background-color 0.3s;
+	z-index: 1;
 
 	&:hover {
 		background-color: var(--orange-hover);
@@ -117,6 +118,7 @@ export const Logo = styled.h1`
 	font-size: 3rem;
 	font-family: cursive;
 	color: ${(props) => (props.darkFont ? 'var(--dark-gray)' : '#fff')};
+	z-index: 1;
 
 	@media (min-width: 768px) {
 		font-size: 4rem;
@@ -134,6 +136,7 @@ export const Cart = styled.button`
 	position: relative;
 	background-color: transparent;
 	cursor: pointer;
+	z-index: 1;
 
 	i {
 		position: relative;

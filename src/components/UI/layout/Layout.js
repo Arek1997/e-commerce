@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { navigationActions } from '../../../store/navigation-slice';
 
 import Navigation from '../navigation/Navigation';
 import Cart from '../cart/Cart';
@@ -6,27 +9,32 @@ import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
 
 const Layout = (props) => {
-	const [showCart, setShowCart] = useState(false);
-	const [showOverlay, setShowOverlay] = useState(false);
+	const dispatch = useDispatch();
+	const { isNavShown, isCartShown, isOverlayShown } = useSelector(
+		(state) => state.navigation
+	);
 
 	useEffect(() => {
-		showCart
+		isCartShown || isNavShown
 			? (document.body.className = 'scroll-disabled')
 			: (document.body.className = '');
-	}, [showCart]);
+	}, [isCartShown, isNavShown]);
 
-	const toggleCartHandler = () => {
-		setShowCart(!showCart);
-		setShowOverlay(!showOverlay);
+	console.log('render layout');
+
+	const toggleOverlayHandler = () => {
+		dispatch(navigationActions.toggleOverlay());
+		isNavShown && dispatch(navigationActions.toggleNav());
+		isCartShown && dispatch(navigationActions.toggleCart());
 	};
 
 	return (
 		<>
-			<Navigation onCartShow={toggleCartHandler} />
-			<Cart showCart={showCart} onCartShow={toggleCartHandler} />
+			<Navigation />
+			<Cart />
 			<main>{props.children}</main>
 			<Footer />
-			{showOverlay && <Overlay onClose={toggleCartHandler} />}
+			{isOverlayShown && <Overlay onClose={toggleOverlayHandler} />}
 		</>
 	);
 };
