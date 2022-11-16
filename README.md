@@ -1,6 +1,11 @@
 Projekt w trakcie pisanie, nie jest skończony / Project in production, it is not finished yet
 
+Current Tech Stack:
 
+-React
+-Redux/toolkit
+-React Router v6
+-Styled Component
 
 # Getting Started with Create React App
 
