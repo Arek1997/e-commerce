@@ -2,10 +2,10 @@ Projekt w trakcie pisanie, nie jest skończony / Project in production, it is no
 
 Current Tech Stack:
 
--React
--Redux/toolkit
--React Router v6
--Styled Component
+-React \
+-Redux/toolkit \
+-React Router v6 \
+-Styled Component 
 
 # Getting Started with Create React App
 
