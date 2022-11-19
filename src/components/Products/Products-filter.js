@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import debounce from 'lodash.debounce';
-import { useSelector, useDispatch } from 'react-redux';
 
 import ProductFilter from '../../assets/style/products/styled-products-filter';
-
-import { productsActions } from '../../store/products-slice';
 
 let defaultPrice = 1000;
 let defaultCategory = 'all';
@@ -16,52 +13,22 @@ const ProductsFilter = () => {
 			window.localStorage.getItem('category') || defaultCategory;
 	});
 
-	const dispatch = useDispatch();
-	const { productsArr } = useSelector((state) => state.products);
-
 	const [price, setPrice] = useState(defaultPrice);
 	const [category, setCategory] = useState(defaultCategory);
 
-	const changePriceHandler = (e) => {
+	const filterByCategory = (e) => {
+		setCategory(e.target.value);
+		window.localStorage.setItem('category', e.target.value);
+	};
+
+	const filterbyPrice = (e) => {
 		const choosedPrice = e.target.value;
 		window.localStorage.setItem('price', choosedPrice);
 		setPrice(choosedPrice);
-		filterbyPrice(choosedPrice);
-	};
-
-	const filterByCategory = (e) => {
-		let newFilteredArr = [];
-		setCategory(e.target.value);
-		window.localStorage.setItem('category', e.target.value);
-
-		if (e.target.value === 'all') {
-			newFilteredArr = productsArr.filter((product) => product.price <= price);
-		} else {
-			newFilteredArr = productsArr.filter(
-				(product) =>
-					product.category === e.target.value && product.price <= price
-			);
-		}
-		dispatch(productsActions.updateFilteredArr(newFilteredArr));
-	};
-
-	const filterbyPrice = (currentPrice) => {
-		let newFilteredArr = [];
-		if (category !== 'all') {
-			newFilteredArr = productsArr.filter(
-				(product) =>
-					product.price <= currentPrice && product.category === category
-			);
-		} else {
-			newFilteredArr = productsArr.filter(
-				(product) => product.price <= currentPrice
-			);
-		}
-		dispatch(productsActions.updateFilteredArr(newFilteredArr));
 	};
 
 	// Debounce function to avoid rerenders for every value change, by onChange listener
-	const debounceChangePriceHandler = debounce(changePriceHandler, 100);
+	const debounceChangePriceHandler = debounce(filterbyPrice, 100);
 
 	return (
 		<ProductFilter className='filter'>
