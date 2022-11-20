@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const ProductFilter = styled.div`
 	margin-bottom: 10em;
+	accent-color: var(--orange);
 
 	@media (min-width: 768px) {
 		position: sticky;
@@ -10,10 +11,6 @@ const ProductFilter = styled.div`
 	}
 
 	.filter {
-		input {
-			accent-color: var(--orange);
-		}
-
 		&__form--one {
 			margin-bottom: 3em;
 

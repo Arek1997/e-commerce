@@ -32,12 +32,21 @@ export const StyledHeading = styled.div`
 	transform: translate(0, -50%);
 	color: #fff;
 
+	@media (min-width: 992px) {
+		top: 50%;
+		left: 6%;
+	}
+
 	p:first-child {
 		font-family: cursive;
 		font-size: 4.5rem;
 
 		@media (min-width: 768px) {
 			font-size: 6rem;
+		}
+
+		@media (min-width: 992px) {
+			font-size: 8rem;
 		}
 	}
 
@@ -48,6 +57,11 @@ export const StyledHeading = styled.div`
 		@media (min-width: 768px) {
 			font-size: 4rem;
 			margin: 0.5em 0;
+		}
+
+		@media (min-width: 992px) {
+			font-size: 4.5rem;
+			margin: 0.3em 0;
 		}
 	}
 `;

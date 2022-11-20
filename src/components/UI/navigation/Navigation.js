@@ -79,13 +79,17 @@ const Navigation = (props) => {
 					</ul>
 				</UlList>
 
-				<BurgerBtn onClick={toggleMobNavHandler}>
+				<BurgerBtn aria-label='Burger button' onClick={toggleMobNavHandler}>
 					<i className='fa-solid fa-bars'></i>
 				</BurgerBtn>
 
 				<Logo darkFont={notHomePage}>AlleDrogo</Logo>
 
-				<Cart onClick={toggleCartHandler} darkFont={notHomePage}>
+				<Cart
+					aria-label='Cart button'
+					onClick={toggleCartHandler}
+					darkFont={notHomePage}
+				>
 					<i className='fa-solid fa-cart-shopping'>
 						<span>{productsAmount}</span>
 					</i>

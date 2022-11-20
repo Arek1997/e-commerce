@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
 
 import ProductFilter from '../../assets/style/products/styled-products-filter';
-
-let defaultPrice = 1000;
-let defaultCategory = 'all';
+import { filterActions } from '../../store/filter-slice';
 
 const ProductsFilter = () => {
-	useEffect(() => {
-		defaultPrice = window.localStorage.getItem('price') || defaultPrice;
-		defaultCategory =
-			window.localStorage.getItem('category') || defaultCategory;
-	});
+	const dispatch = useDispatch();
+	const { filterName, filterCategory, filterPrice } = useSelector(
+		(state) => state.filter
+	);
 
-	const [price, setPrice] = useState(defaultPrice);
-	const [category, setCategory] = useState(defaultCategory);
+	const filterByName = (e) => {
+		dispatch(filterActions.setFilterName(e.target.value));
+	};
 
 	const filterByCategory = (e) => {
-		setCategory(e.target.value);
-		window.localStorage.setItem('category', e.target.value);
+		dispatch(filterActions.setFilterCategory(e.target.value));
 	};
 
 	const filterbyPrice = (e) => {
-		const choosedPrice = e.target.value;
-		window.localStorage.setItem('price', choosedPrice);
-		setPrice(choosedPrice);
+		dispatch(filterActions.setFilterPrice(e.target.valueAsNumber));
 	};
 
 	// Debounce function to avoid rerenders for every value change, by onChange listener
-	const debounceChangePriceHandler = debounce(filterbyPrice, 100);
+	const debounceFilterbyPrice = debounce(filterbyPrice, 50);
 
 	return (
 		<ProductFilter className='filter'>
 			<form className='filter__form--one'>
 				<label htmlFor='search'></label>
-				<input name='search' type='text' placeholder='Search...' />
+				<input
+					name='search'
+					id='search'
+					type='text'
+					value={filterName}
+					placeholder='Search...'
+					onChange={filterByName}
+				/>
 			</form>
 			<h3 className='filter__categories'>Categories</h3>
 
@@ -46,7 +48,7 @@ const ProductsFilter = () => {
 							value='all'
 							id='options__all'
 							type='radio'
-							defaultChecked={defaultCategory.includes(`all`)}
+							defaultChecked={filterCategory.includes(`all`)}
 						/>
 						<label htmlFor='options__all'>All</label>
 					</li>
@@ -56,7 +58,7 @@ const ProductsFilter = () => {
 							value="men's clothing"
 							id='options__men'
 							type='radio'
-							defaultChecked={defaultCategory.includes(`men's clothing`)}
+							defaultChecked={filterCategory.includes(`men's clothing`)}
 						/>
 						<label htmlFor='options__men'>Men's clothing</label>
 					</li>
@@ -66,7 +68,7 @@ const ProductsFilter = () => {
 							value="women's clothing"
 							id='options__woman'
 							type='radio'
-							defaultChecked={defaultCategory.includes(`women's clothing`)}
+							defaultChecked={filterCategory.includes(`women's clothing`)}
 						/>
 						<label htmlFor='options__woman'>Women's clothing</label>
 					</li>
@@ -76,7 +78,7 @@ const ProductsFilter = () => {
 							value='jewelery'
 							id='options__jewelery'
 							type='radio'
-							defaultChecked={defaultCategory.includes(`jewelery`)}
+							defaultChecked={filterCategory.includes(`jewelery`)}
 						/>
 						<label htmlFor='options__jewelery'>Jewelery</label>
 					</li>
@@ -86,7 +88,7 @@ const ProductsFilter = () => {
 							value='electronics'
 							id='options__electronics'
 							type='radio'
-							defaultChecked={defaultCategory.includes(`electronics`)}
+							defaultChecked={filterCategory.includes(`electronics`)}
 						/>
 						<label htmlFor='options__electronics'>Electronics</label>
 					</li>
@@ -99,13 +101,14 @@ const ProductsFilter = () => {
 				<label htmlFor='input_price'></label>
 				<input
 					name='input_price'
+					id='input_price'
 					type='range'
 					min={0}
 					max={1000}
 					step={1}
-					onChange={debounceChangePriceHandler}
+					onChange={debounceFilterbyPrice}
 				/>
-				<span className='filter__price'>Value: ${price}</span>
+				<span className='filter__price'>Value: ${filterPrice}</span>
 			</form>
 		</ProductFilter>
 	);

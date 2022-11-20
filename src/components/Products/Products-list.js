@@ -6,6 +6,7 @@ import StyledProductsList from '../../assets/style/products/styled-products-list
 
 import ProductItem from './Products-item';
 import { API_URL } from '../API/API';
+import useFilter from '../../hooks/useFilter';
 
 const itemsPerPage = 8;
 let pageCount = 0;
@@ -18,6 +19,10 @@ const ProductsList = () => {
 	const [error, setError] = useState(null);
 	const [selectedPage, setSelectedPage] = useState(0);
 
+	const arrtoRender = useFilter(products);
+
+	console.log('arr to render', arrtoRender);
+
 	const fetchData = async () => {
 		setIsloading(true);
 		setError(null);
@@ -27,12 +32,13 @@ const ProductsList = () => {
 
 			if (!response.ok) {
 				throw new Error('Something went wrong');
-			} else {
-				const data = await response.json();
-				const productSlice = data.slice(offset, offset + itemsPerPage);
-				setProducts(productSlice);
-				pageCount = Math.ceil(data.length / itemsPerPage);
 			}
+
+			const data = await response.json();
+
+			const productSlice = data.slice(offset, offset + itemsPerPage);
+			setProducts(productSlice);
+			pageCount = Math.ceil(data.length / itemsPerPage);
 		} catch (err) {
 			setError(err.message);
 		}
@@ -70,10 +76,10 @@ const ProductsList = () => {
 		));
 	}
 
-	if (products) {
+	if (arrtoRender.length > 0) {
 		content = (
 			<>
-				{products.map((item) => {
+				{arrtoRender.map((item) => {
 					return (
 						<ProductItem
 							key={item.id}
@@ -97,7 +103,6 @@ const ProductsList = () => {
 				pageCount={pageCount}
 				onPageChange={handlePageClick}
 				containerClassName={'pagination'}
-				subContainerClassName={'pages pagination'}
 				activeClassName={'active'}
 				forcePage={selectedPage}
 			/>

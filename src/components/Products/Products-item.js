@@ -22,10 +22,18 @@ const ProductsItem = (props) => {
 			<div className='product__body'>
 				<img className='product__img' src={props.image} alt={props.title} />
 				<div className='product__icon-actions'>
-					<Link to={`../products/${props.id}`} className='product__details'>
+					<Link
+						to={`../products/${props.id}`}
+						aria-label='Show product details'
+						className='product__details'
+					>
 						<i className='fa-solid fa-magnifying-glass'></i>
 					</Link>
-					<button className='product__add' onClick={addProductHandler}>
+					<button
+						aria-label='add product button'
+						className='product__add'
+						onClick={addProductHandler}
+					>
 						<i className='fa-solid fa-cart-shopping'></i>
 					</button>
 				</div>
