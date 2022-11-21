@@ -1,17 +1,29 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { useLocation } from 'react-router-dom';
+import { navigationActions } from '../../../store/navigation-slice';
 
 import { StyledProfileModal } from '../../../assets/style/profile/styled-profile-modal';
 
 const ProfileModal = () => {
+	const dispatch = useDispatch();
 	const [logIn, setLogIn] = useState(true);
 
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
 
+	const toggleProfileModalHandler = () => {
+		dispatch(navigationActions.toggleProfileModal());
+		dispatch(navigationActions.toggleOverlay());
+	};
+
 	return (
 		<StyledProfileModal notHomePage={notHomePage}>
+			<i
+				className='fa-solid fa-xmark closeModal'
+				onClick={toggleProfileModalHandler}
+			></i>
 			<h2 className='text-center'>Welcome in AlleDrogo!</h2>
 			<span className='response-message'></span>
 			<p className='text-center text-bold'>{logIn ? 'Log in' : 'Sign up'}</p>

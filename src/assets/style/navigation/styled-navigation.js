@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Close } from '../components';
 
 export const Nav = styled.nav`
 	position: relative;
@@ -6,6 +7,16 @@ export const Nav = styled.nav`
 	align-items: center;
 	justify-content: space-between;
 	color: #fff;
+
+	.closeNav {
+		${Close}
+		top: 2rem;
+		right: 2rem;
+
+		@media (min-width: 768px) {
+			display: none;
+		}
+	}
 
 	.icons {
 		position: relative;

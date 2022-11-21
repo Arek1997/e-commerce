@@ -40,10 +40,19 @@ const Navigation = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 	};
 
+	const toggleProfileModalHandler = () => {
+		dispatch(navigationActions.toggleProfileModal());
+		dispatch(navigationActions.toggleOverlay());
+	};
+
 	return (
 		<Container>
 			<Nav className='section'>
 				<UlList className={isNavShown ? 'open' : ''} notHomePage={notHomePage}>
+					<i
+						className='fa-solid fa-xmark closeNav'
+						onClick={toggleMobNavHandler}
+					></i>
 					<ul>
 						<li>
 							<NavLink
@@ -95,7 +104,11 @@ const Navigation = (props) => {
 						</i>
 					</Cart>
 
-					<Cart aria-label='Profile button' notHomePage={notHomePage}>
+					<Cart
+						aria-label='Profile button'
+						notHomePage={notHomePage}
+						onClick={toggleProfileModalHandler}
+					>
 						<i className='fa-solid fa-user'></i>
 					</Cart>
 				</div>

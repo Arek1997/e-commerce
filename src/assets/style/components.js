@@ -12,6 +12,14 @@ export const Slash = `
 }
 `;
 
+export const Close = `
+		position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--light-gray);
+    cursor: pointer;
+`;
+
 export const SectionHero = `
 
 background-color: var(--dirty-white);

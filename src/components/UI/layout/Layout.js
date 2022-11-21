@@ -11,9 +11,8 @@ import ProfileModal from '../profile/ProfileModal';
 
 const Layout = (props) => {
 	const dispatch = useDispatch();
-	const { isNavShown, isCartShown, isOverlayShown } = useSelector(
-		(state) => state.navigation
-	);
+	const { isNavShown, isCartShown, isOverlayShown, isProfileModalShown } =
+		useSelector((state) => state.navigation);
 
 	useEffect(() => {
 		isCartShown || isNavShown
@@ -25,6 +24,7 @@ const Layout = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 		isNavShown && dispatch(navigationActions.toggleNav());
 		isCartShown && dispatch(navigationActions.toggleCart());
+		isProfileModalShown && dispatch(navigationActions.toggleProfileModal());
 	};
 
 	return (
@@ -34,7 +34,7 @@ const Layout = (props) => {
 			<main>{props.children}</main>
 			<Footer />
 			{isOverlayShown && <Overlay onClose={toggleOverlayHandler} />}
-			<ProfileModal />
+			{isProfileModalShown && <ProfileModal />}
 		</>
 	);
 };

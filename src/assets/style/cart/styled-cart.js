@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Close } from '../components';
+
 const CartMenu = styled.aside`
 	position: fixed;
 	top: 0;
@@ -24,13 +26,9 @@ const CartMenu = styled.aside`
 	}
 
 	.closeCart {
-		position: absolute;
+		${Close}
 		top: 2rem;
 		left: 2rem;
-		font-size: 3rem;
-		font-weight: bold;
-		color: var(--light-gray);
-		cursor: pointer;
 	}
 
 	.cart-items {

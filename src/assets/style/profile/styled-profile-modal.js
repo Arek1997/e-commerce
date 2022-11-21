@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Close } from '../components';
 
 export const StyledProfileModal = styled.div`
 	position: fixed;
@@ -13,8 +14,22 @@ export const StyledProfileModal = styled.div`
 		props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
 	backdrop-filter: blur(5px);
 	border-radius: 8px;
+	z-index: 2;
 
-	z-index: 1;
+	.closeModal {
+		${Close}
+		font-size: 2rem;
+		top: 2rem;
+		right: 1rem;
+
+		@media (min-width: 300px) {
+			font-size: 3rem;
+		}
+
+		@media (min-width: 350px) {
+			right: 2rem;
+		}
+	}
 
 	h2 {
 		font-size: 2rem;
@@ -41,8 +56,12 @@ export const StyledProfileModal = styled.div`
 			margin-bottom: 1em;
 			padding: 0.7em;
 			font-size: 1.5rem;
-			border: none;
+			border: 2px solid transparent;
 			border-radius: 8px;
+			outline: none;
+			&:focus {
+				border: 2px solid var(--orange);
+			}
 		}
 
 		button {
