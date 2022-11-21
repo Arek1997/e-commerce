@@ -13,6 +13,8 @@ import {
 
 import Container from '../container/Container';
 
+let vieportWidth = window.innerWidth;
+
 const Navigation = (props) => {
 	const dispatch = useDispatch();
 	const { pathname } = useLocation();
@@ -38,8 +40,6 @@ const Navigation = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 	};
 
-	console.log('render navigation');
-
 	return (
 		<Container>
 			<Nav className='section'>
@@ -49,6 +49,7 @@ const Navigation = (props) => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='home'
+								onClick={vieportWidth <= 768 && toggleMobNavHandler}
 							>
 								<i className='fa-solid fa-house'></i>
 								Home
@@ -58,6 +59,7 @@ const Navigation = (props) => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='products'
+								onClick={vieportWidth <= 768 && toggleMobNavHandler}
 							>
 								<i className='fa-solid fa-couch'></i>
 								Products
@@ -67,8 +69,9 @@ const Navigation = (props) => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='aboutus'
+								onClick={vieportWidth <= 768 && toggleMobNavHandler}
 							>
-								<i className='fa-solid fa-couch'></i>
+								<i className='fa-solid fa-book-open'></i>
 								About
 							</NavLink>
 						</li>

@@ -20,8 +20,6 @@ const Layout = (props) => {
 			: (document.body.className = '');
 	}, [isCartShown, isNavShown]);
 
-	console.log('render layout');
-
 	const toggleOverlayHandler = () => {
 		dispatch(navigationActions.toggleOverlay());
 		isNavShown && dispatch(navigationActions.toggleNav());

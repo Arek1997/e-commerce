@@ -21,8 +21,6 @@ const ProductsList = () => {
 
 	const arrtoRender = useFilter(products);
 
-	console.log('arr to render', arrtoRender);
-
 	const fetchData = async () => {
 		setIsloading(true);
 		setError(null);

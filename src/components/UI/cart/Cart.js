@@ -20,8 +20,6 @@ const Cart = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 	};
 
-	console.log('render cart');
-
 	return (
 		<CartMenu className={isCartShown ? 'open' : ''}>
 			<i
