@@ -65,6 +65,10 @@ table {
 	text-align: center;
 }
 
+.text-bold {
+	font-weight: bold;
+}
+
 .section {
 	padding: 3rem 1.5rem;
 }

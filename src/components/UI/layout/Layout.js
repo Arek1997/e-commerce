@@ -7,6 +7,7 @@ import Navigation from '../navigation/Navigation';
 import Cart from '../cart/Cart';
 import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
+import ProfileModal from '../profile/ProfileModal';
 
 const Layout = (props) => {
 	const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Layout = (props) => {
 			<main>{props.children}</main>
 			<Footer />
 			{isOverlayShown && <Overlay onClose={toggleOverlayHandler} />}
+			<ProfileModal />
 		</>
 	);
 };

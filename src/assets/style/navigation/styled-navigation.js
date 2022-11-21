@@ -6,6 +6,20 @@ export const Nav = styled.nav`
 	align-items: center;
 	justify-content: space-between;
 	color: #fff;
+
+	.icons {
+		position: relative;
+		display: flex;
+		column-gap: 2rem;
+
+		button:last-child:hover i {
+			color: var(--orange);
+		}
+
+		@media (min-width: 400px) {
+			column-gap: 5rem;
+		}
+	}
 `;
 
 export const UlList = styled.div`
@@ -58,12 +72,14 @@ export const UlList = styled.div`
 		}
 
 		li a {
+			display: flex;
+			column-gap: 2rem;
 			font-size: 1.8rem;
 			color: var(--light-gray);
 
 			@media (min-width: 768px) {
 				font-size: 2.2rem;
-				color: ${(props) => (props.darkFont ? 'var(--dark-gray)' : '#fff')};
+				color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
 				transition: color 0.3s;
 
 				&:hover {
@@ -73,8 +89,7 @@ export const UlList = styled.div`
 		}
 
 		i {
-			margin-right: 0.7em;
-
+			width: 22px;
 			@media (min-width: 768px) {
 				display: none;
 			}
@@ -97,7 +112,7 @@ export const UlList = styled.div`
 
 export const BurgerBtn = styled.button`
 	padding: 0.2em 0.8em;
-	font-size: 2.2rem;
+	font-size: 2rem;
 	border-radius: 20px;
 	color: #fff;
 	background-color: var(--orange);
@@ -117,7 +132,7 @@ export const BurgerBtn = styled.button`
 export const Logo = styled.h1`
 	font-size: 3rem;
 	font-family: cursive;
-	color: ${(props) => (props.darkFont ? 'var(--dark-gray)' : '#fff')};
+	color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
 	z-index: 1;
 
 	@media (min-width: 768px) {
@@ -140,8 +155,9 @@ export const Cart = styled.button`
 
 	i {
 		position: relative;
-		color: ${(props) => (props.darkFont ? 'var(--dark-gray)' : '#fff')};
-		font-size: 3rem;
+		color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
+		font-size: 2.5rem;
+		transition: color 0.3s;
 
 		span {
 			position: absolute;

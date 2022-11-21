@@ -43,7 +43,7 @@ const Navigation = (props) => {
 	return (
 		<Container>
 			<Nav className='section'>
-				<UlList className={isNavShown ? 'open' : ''} darkFont={notHomePage}>
+				<UlList className={isNavShown ? 'open' : ''} notHomePage={notHomePage}>
 					<ul>
 						<li>
 							<NavLink
@@ -75,10 +75,6 @@ const Navigation = (props) => {
 								About
 							</NavLink>
 						</li>
-						<i
-							className='fa-solid fa-xmark closeMobNav'
-							onClick={toggleMobNavHandler}
-						></i>
 					</ul>
 				</UlList>
 
@@ -86,17 +82,23 @@ const Navigation = (props) => {
 					<i className='fa-solid fa-bars'></i>
 				</BurgerBtn>
 
-				<Logo darkFont={notHomePage}>AlleDrogo</Logo>
+				<Logo notHomePage={notHomePage}>AlleDrogo</Logo>
 
-				<Cart
-					aria-label='Cart button'
-					onClick={toggleCartHandler}
-					darkFont={notHomePage}
-				>
-					<i className='fa-solid fa-cart-shopping'>
-						<span>{productsAmount}</span>
-					</i>
-				</Cart>
+				<div className='icons'>
+					<Cart
+						aria-label='Cart button'
+						onClick={toggleCartHandler}
+						notHomePage={notHomePage}
+					>
+						<i className='fa-solid fa-cart-shopping'>
+							<span>{productsAmount}</span>
+						</i>
+					</Cart>
+
+					<Cart aria-label='Profile button' notHomePage={notHomePage}>
+						<i className='fa-solid fa-user'></i>
+					</Cart>
+				</div>
 			</Nav>
 		</Container>
 	);
