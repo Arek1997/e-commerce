@@ -27,6 +27,8 @@ const Navigation = (props) => {
 
 	const { productsList } = useSelector((state) => state.cart);
 
+	const { isLoggedIn } = useSelector((state) => state.authentication);
+
 	let productsAmount = productsList.reduce((prev, current) => {
 		return prev + current.amount;
 	}, 0);
@@ -122,10 +124,12 @@ const Navigation = (props) => {
 					{showProfileOptions && (
 						<nav>
 							<ul>
-								<li onClick={toggleProfileModalHandler}>Log in</li>
-								<li>Account</li>
-								<li>Favourite products</li>
-								<li>Log out</li>
+								{!isLoggedIn && (
+									<li onClick={toggleProfileModalHandler}>Log in</li>
+								)}
+								{isLoggedIn && <li>Account</li>}
+								{isLoggedIn && <li>Favourite products</li>}
+								{isLoggedIn && <li>Log out</li>}
 							</ul>
 						</nav>
 					)}

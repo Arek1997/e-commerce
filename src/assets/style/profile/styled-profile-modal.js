@@ -36,12 +36,6 @@ export const StyledProfileModal = styled.div`
 		margin-bottom: 0.5em;
 	}
 
-	.response-message {
-		display: inline-block;
-		font-size: 1.1rem;
-		margin-bottom: 1em;
-	}
-
 	p {
 		font-size: 1.6rem;
 		margin-bottom: 0.8em;
@@ -97,4 +91,10 @@ export const StyledProfileModal = styled.div`
 	}
 `;
 
-export const StyledForm = styled.form``;
+export const StyledResponseMessage = styled.span`
+	display: block;
+	margin: 1.5em auto;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: ${(props) => (props.status === 'fail' ? ' #af2525' : '#0f5e0f')};
+`;

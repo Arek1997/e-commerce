@@ -5,10 +5,17 @@ import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import { navigationActions } from '../../../store/navigation-slice';
 
-import { StyledProfileModal } from '../../../assets/style/profile/styled-profile-modal';
+import {
+	StyledProfileModal,
+	StyledResponseMessage,
+} from '../../../assets/style/profile/styled-profile-modal';
 
 const ProfileModal = () => {
 	const dispatch = useDispatch();
+	const [responseMessage, setResponseMessage] = useState({
+		status: null,
+		message: '',
+	});
 	const [logIn, setLogIn] = useState(true);
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
@@ -31,7 +38,63 @@ const ProfileModal = () => {
 		dispatch(navigationActions.toggleOverlay());
 	};
 
-	const onSubmitHandler = (data) => console.log(data);
+	const toggleIsLoginHandler = () => {
+		setLogIn(!logIn);
+		setResponseMessage((prevState) => {
+			return {
+				...prevState,
+				status: null,
+				message: '',
+			};
+		});
+	};
+
+	const onSubmitHandler = async (data) => {
+		const dataToSend = data;
+		let url;
+
+		if (logIn) {
+			url =
+				'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCtGvqymH11_3PzBQ1fJ9Ci5-F5w1HUSqA';
+		} else {
+			url =
+				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCtGvqymH11_3PzBQ1fJ9Ci5-F5w1HUSqA';
+		}
+
+		try {
+			const response = await fetch(url, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					email: dataToSend.email,
+					password: dataToSend.password,
+					returnSecureToken: true,
+				}),
+			});
+
+			if (!response.ok) {
+				const errorResponse = await response.json();
+				const errorMessage = errorResponse.error.message;
+				throw new Error(errorMessage);
+			}
+
+			const data = await response.json();
+
+			if (!logIn) {
+				setResponseMessage({
+					status: 'success',
+					message: 'Account successfully created!',
+				});
+			}
+
+			console.log(data);
+		} catch (err) {
+			setResponseMessage({
+				status: 'fail',
+				message: err.message,
+			});
+		}
+	};
 
 	useEffect(() => {
 		if (isSubmitSuccessful) {
@@ -46,7 +109,12 @@ const ProfileModal = () => {
 				onClick={toggleProfileModalHandler}
 			></i>
 			<h2 className='text-center'>Welcome in AlleDrogo!</h2>
-			<span className='response-message'></span>
+			<StyledResponseMessage
+				status={responseMessage.status}
+				className='response-message text-center'
+			>
+				{responseMessage.message}
+			</StyledResponseMessage>
 			<p className='text-center text-bold'>{logIn ? 'Log in' : 'Sign up'}</p>
 			<form onSubmit={handleSubmit(onSubmitHandler)}>
 				<label htmlFor='email'></label>
@@ -84,7 +152,7 @@ const ProfileModal = () => {
 			</form>
 			<p className='paragraph-bottom'>
 				{logIn ? "Haven't profile yet?" : 'Have a profile?'}
-				<button onClick={() => setLogIn(!logIn)}>
+				<button onClick={toggleIsLoginHandler}>
 					{!logIn ? 'Log in' : 'Sign up'}
 				</button>
 			</p>
