@@ -15,10 +15,10 @@ const Layout = (props) => {
 		useSelector((state) => state.navigation);
 
 	useEffect(() => {
-		isCartShown || isNavShown
+		isOverlayShown
 			? (document.body.className = 'scroll-disabled')
 			: (document.body.className = '');
-	}, [isCartShown, isNavShown]);
+	}, [isOverlayShown]);
 
 	const toggleOverlayHandler = () => {
 		dispatch(navigationActions.toggleOverlay());

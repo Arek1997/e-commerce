@@ -10,6 +10,9 @@ import { StyledProfileModal } from '../../../assets/style/profile/styled-profile
 const ProfileModal = () => {
 	const dispatch = useDispatch();
 	const [logIn, setLogIn] = useState(true);
+	const { pathname } = useLocation();
+	const notHomePage = pathname.slice(1) !== 'home';
+
 	const {
 		register,
 		reset,
@@ -22,9 +25,6 @@ const ProfileModal = () => {
 			password: '',
 		},
 	});
-
-	const { pathname } = useLocation();
-	const notHomePage = pathname.slice(1) !== 'home';
 
 	const toggleProfileModalHandler = () => {
 		dispatch(navigationActions.toggleProfileModal());

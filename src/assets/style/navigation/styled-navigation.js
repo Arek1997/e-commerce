@@ -185,3 +185,65 @@ export const Cart = styled.button`
 		}
 	}
 `;
+
+export const IconsDiv = styled.div`
+	.icons {
+		position: relative;
+		display: flex;
+		column-gap: 2rem;
+
+		@media (min-width: 400px) {
+			column-gap: 5rem;
+		}
+	}
+
+	.profile-icon:hover i {
+		color: var(--orange);
+	}
+
+	nav {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		min-width: 200px;
+		padding: 2em;
+		color: ${(props) => (props.notHomePage ? '#fff' : '#000')};
+		background-color: ${(props) =>
+			props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
+		backdrop-filter: blur(5px);
+		border-radius: 8px;
+		z-index: 1;
+		margin-top: 3em;
+
+		ul {
+			display: flex;
+			row-gap: 2rem;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+
+			li {
+				position: relative;
+				font-size: 1.6rem;
+				cursor: pointer;
+
+				&:hover::before {
+					transform: scaleX(100%);
+					transform-origin: left;
+				}
+
+				&::before {
+					content: '';
+					position: absolute;
+					bottom: -3px;
+					left: 0;
+					width: 100%;
+					border-bottom: 3px solid var(--orange);
+					transform: scaleX(0);
+					transform-origin: right;
+					transition: transform 0.3s;
+				}
+			}
+		}
+	}
+`;

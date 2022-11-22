@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ import {
 	Logo,
 	Cart,
 	UlList,
+	IconsDiv,
 } from '../../../assets/style/navigation/styled-navigation';
 
 import Container from '../container/Container';
@@ -16,6 +18,7 @@ import Container from '../container/Container';
 let vieportWidth = window.innerWidth;
 
 const Navigation = (props) => {
+	const [showProfileOptions, setShowProfileOptions] = useState(false);
 	const dispatch = useDispatch();
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
@@ -40,9 +43,12 @@ const Navigation = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 	};
 
+	const toggleProfileOptions = () => setShowProfileOptions(!showProfileOptions);
+
 	const toggleProfileModalHandler = () => {
 		dispatch(navigationActions.toggleProfileModal());
 		dispatch(navigationActions.toggleOverlay());
+		toggleProfileOptions();
 	};
 
 	return (
@@ -93,7 +99,7 @@ const Navigation = (props) => {
 
 				<Logo notHomePage={notHomePage}>AlleDrogo</Logo>
 
-				<div className='icons'>
+				<IconsDiv className='icons' notHomePage={notHomePage}>
 					<Cart
 						aria-label='Cart button'
 						onClick={toggleCartHandler}
@@ -105,13 +111,25 @@ const Navigation = (props) => {
 					</Cart>
 
 					<Cart
+						className='profile-icon'
 						aria-label='Profile button'
 						notHomePage={notHomePage}
-						onClick={toggleProfileModalHandler}
+						onClick={toggleProfileOptions}
 					>
 						<i className='fa-solid fa-user'></i>
 					</Cart>
-				</div>
+
+					{showProfileOptions && (
+						<nav>
+							<ul>
+								<li onClick={toggleProfileModalHandler}>Log in</li>
+								<li>Account</li>
+								<li>Favourite products</li>
+								<li>Log out</li>
+							</ul>
+						</nav>
+					)}
+				</IconsDiv>
 			</Nav>
 		</Container>
 	);
