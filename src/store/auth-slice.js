@@ -8,7 +8,17 @@ const initialState = {
 const authSlice = createSlice({
 	name: 'authentication',
 	initialState,
-	reducers: {},
+	reducers: {
+		logIn: (state, action) => {
+			state.token = action.payload;
+			state.isLoggedIn = true;
+		},
+
+		logOut: (state) => {
+			state.token = '';
+			state.isLoggedIn = false;
+		},
+	},
 });
 
 export const authenticationActions = authSlice.actions;

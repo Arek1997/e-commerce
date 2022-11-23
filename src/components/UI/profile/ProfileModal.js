@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-
 import { useLocation } from 'react-router-dom';
+
 import { navigationActions } from '../../../store/navigation-slice';
+import { authenticationActions } from '../../../store/auth-slice';
 
 import {
 	StyledProfileModal,
 	StyledResponseMessage,
 } from '../../../assets/style/profile/styled-profile-modal';
+import loadingSpinner from '../../../assets/loadingspinner.gif';
 
 const ProfileModal = () => {
 	const dispatch = useDispatch();
@@ -16,9 +18,13 @@ const ProfileModal = () => {
 		status: null,
 		message: '',
 	});
+	const [isLoading, setIsLoading] = useState(false);
 	const [logIn, setLogIn] = useState(true);
+
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
+
+	const { isLoggedIn } = useSelector((state) => state.authentication);
 
 	const {
 		register,
@@ -50,6 +56,7 @@ const ProfileModal = () => {
 	};
 
 	const onSubmitHandler = async (data) => {
+		setIsLoading(true);
 		const dataToSend = data;
 		let url;
 
@@ -85,6 +92,13 @@ const ProfileModal = () => {
 					status: 'success',
 					message: 'Account successfully created!',
 				});
+			} else {
+				setResponseMessage({
+					status: 'success',
+					message: 'Loged In successfully!',
+				});
+
+				dispatch(authenticationActions.logIn(data.idToken));
 			}
 
 			console.log(data);
@@ -94,6 +108,7 @@ const ProfileModal = () => {
 				message: err.message,
 			});
 		}
+		setIsLoading(false);
 	};
 
 	useEffect(() => {
@@ -101,6 +116,17 @@ const ProfileModal = () => {
 			reset({ email: '', password: '' });
 		}
 	}, [isSubmitSuccessful, reset]);
+
+	useEffect(() => {
+		if (logIn && isLoggedIn) {
+			const timeout = setTimeout(() => {
+				dispatch(navigationActions.toggleProfileModal());
+				dispatch(navigationActions.toggleOverlay());
+			}, 1500);
+
+			return () => clearTimeout(timeout);
+		}
+	}, [logIn, isLoggedIn]);
 
 	return (
 		<StyledProfileModal notHomePage={notHomePage}>
@@ -148,7 +174,15 @@ const ProfileModal = () => {
 					})}
 				/>
 				<span className='password-error'>{errors.password?.message}</span>
-				<button>{logIn ? 'Log in' : 'Register'}</button>
+				{isLoading ? (
+					<img
+						style={{ display: 'block', width: '100px', margin: '0 auto' }}
+						src={loadingSpinner}
+						alt='Loadingspinner'
+					/>
+				) : (
+					<button>{logIn ? 'Log in' : 'Register'}</button>
+				)}
 			</form>
 			<p className='paragraph-bottom'>
 				{logIn ? "Haven't profile yet?" : 'Have a profile?'}

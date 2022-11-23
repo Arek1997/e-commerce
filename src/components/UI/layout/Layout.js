@@ -33,7 +33,7 @@ const Layout = (props) => {
 			<Cart />
 			<main>{props.children}</main>
 			<Footer />
-			{isOverlayShown && <Overlay onClose={toggleOverlayHandler} />}
+			{isOverlayShown && <Overlay onClick={toggleOverlayHandler} />}
 			{isProfileModalShown && <ProfileModal />}
 		</>
 	);

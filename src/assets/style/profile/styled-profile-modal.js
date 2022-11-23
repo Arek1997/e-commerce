@@ -1,20 +1,14 @@
 import styled from 'styled-components';
-import { Close } from '../components';
+import { Close, ModalBase } from '../components';
 
 export const StyledProfileModal = styled.div`
-	position: fixed;
-	top: 30%;
-	left: 50%;
-	width: 100%;
+	${ModalBase}
+
 	max-width: 40rem;
-	transform: translateX(-50%);
 	padding: 2em;
 	color: ${(props) => (props.notHomePage ? '#fff' : '#000')};
 	background-color: ${(props) =>
 		props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
-	backdrop-filter: blur(5px);
-	border-radius: 8px;
-	z-index: 2;
 
 	.closeModal {
 		${Close}

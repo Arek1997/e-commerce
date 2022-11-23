@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { navigationActions } from '../../../store/navigation-slice';
+import { authenticationActions } from '../../../store/auth-slice';
 
 import {
 	Nav,
@@ -52,6 +53,8 @@ const Navigation = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 		toggleProfileOptions();
 	};
+
+	const logOutHandler = () => dispatch(authenticationActions.logOut());
 
 	return (
 		<Container>
@@ -129,7 +132,7 @@ const Navigation = (props) => {
 								)}
 								{isLoggedIn && <li>Account</li>}
 								{isLoggedIn && <li>Favourite products</li>}
-								{isLoggedIn && <li>Log out</li>}
+								{isLoggedIn && <li onClick={logOutHandler}>Log out</li>}
 							</ul>
 						</nav>
 					)}
