@@ -16,6 +16,8 @@
 	--dark-blue: hsl(209, 61%, 16%);
 	--section: 3rem 1.5rem;
 	--small-opacity: 0.8;
+	--fail-color: #af2525;
+	--success-color: #0f5e0f;
 
 	font-size: 62.5%;
 	scroll-behavior: smooth;

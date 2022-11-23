@@ -8,11 +8,17 @@ import Cart from '../cart/Cart';
 import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
 import ProfileModal from '../profile/ProfileModal';
+import ProfileDetails from '../profile/ProfileDetails';
 
 const Layout = (props) => {
 	const dispatch = useDispatch();
-	const { isNavShown, isCartShown, isOverlayShown, isProfileModalShown } =
-		useSelector((state) => state.navigation);
+	const {
+		isNavShown,
+		isCartShown,
+		isOverlayShown,
+		isProfileModalShown,
+		isProfileDetailsShown,
+	} = useSelector((state) => state.navigation);
 
 	useEffect(() => {
 		isOverlayShown
@@ -25,6 +31,7 @@ const Layout = (props) => {
 		isNavShown && dispatch(navigationActions.toggleNav());
 		isCartShown && dispatch(navigationActions.toggleCart());
 		isProfileModalShown && dispatch(navigationActions.toggleProfileModal());
+		isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
 	};
 
 	return (
@@ -35,6 +42,7 @@ const Layout = (props) => {
 			<Footer />
 			{isOverlayShown && <Overlay onClick={toggleOverlayHandler} />}
 			{isProfileModalShown && <ProfileModal />}
+			{isProfileDetailsShown && <ProfileDetails />}
 		</>
 	);
 };

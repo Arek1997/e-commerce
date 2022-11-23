@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Close, ModalBase } from '../components';
+import { Close, ModalBase, InputAndButton } from '../components';
 
 export const StyledProfileModal = styled.div`
 	${ModalBase}
@@ -39,34 +39,13 @@ export const StyledProfileModal = styled.div`
 		display: flex;
 		flex-direction: column;
 
-		input,
-		button {
-			margin-bottom: 1em;
-			padding: 0.7em;
-			font-size: 1.5rem;
-			border: 2px solid transparent;
-			border-radius: 8px;
-			outline: none;
-			&:focus {
-				border: 2px solid var(--orange);
-			}
-		}
-
-		button {
-			color: #fff;
-			background-color: var(--orange);
-			transition: background-color 0.3s;
-
-			&:hover {
-				background-color: var(--orange-hover);
-			}
-		}
+		${InputAndButton}
 
 		.login-error,
 		.password-error {
 			margin-bottom: 1em;
 			font-size: 1.4rem;
-			color: #af2525;
+			color: var(--fail-color);
 		}
 	}
 
@@ -90,5 +69,6 @@ export const StyledResponseMessage = styled.span`
 	margin: 1.5em auto;
 	font-size: 1.2rem;
 	font-weight: bold;
-	color: ${(props) => (props.status === 'fail' ? ' #af2525' : '#0f5e0f')};
+	color: ${(props) =>
+		props.status === 'fail' ? 'var(--fail-color)' : 'var(--success-color)'};
 `;

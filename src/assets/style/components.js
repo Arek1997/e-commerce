@@ -55,3 +55,30 @@ export const ModalBase = `
 	border-radius: 8px;
 	z-index: 2;
 `;
+
+export const InputAndButton = `
+
+		input,
+		button {
+			margin-bottom: 1em;
+			padding: 0.7em;
+			font-size: 1.5rem;
+			border: 2px solid transparent;
+			border-radius: 8px;
+			outline: none;
+			&:focus {
+				border: 2px solid var(--orange);
+			}
+		}
+
+		button {
+			color: #fff;
+			background-color: var(--orange);
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: var(--orange-hover);
+			}
+		}
+
+`;

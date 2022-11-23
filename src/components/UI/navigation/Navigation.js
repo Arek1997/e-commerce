@@ -56,6 +56,12 @@ const Navigation = (props) => {
 
 	const logOutHandler = () => dispatch(authenticationActions.logOut());
 
+	const showProfileDetailsHandler = () => {
+		dispatch(navigationActions.toggleProfileDetails());
+		dispatch(navigationActions.toggleOverlay());
+		toggleProfileOptions();
+	};
+
 	return (
 		<Container>
 			<Nav className='section'>
@@ -130,7 +136,9 @@ const Navigation = (props) => {
 								{!isLoggedIn && (
 									<li onClick={toggleProfileModalHandler}>Log in</li>
 								)}
-								{isLoggedIn && <li>Account</li>}
+								{isLoggedIn && (
+									<li onClick={showProfileDetailsHandler}>Account</li>
+								)}
 								{isLoggedIn && <li>Favourite products</li>}
 								{isLoggedIn && <li onClick={logOutHandler}>Log out</li>}
 							</ul>
