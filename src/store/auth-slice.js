@@ -18,6 +18,10 @@ const authSlice = createSlice({
 			state.token = '';
 			state.isLoggedIn = false;
 		},
+
+		changeToken: (state, action) => {
+			state.token = action.payload;
+		},
 	},
 });
 

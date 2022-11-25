@@ -1,11 +1,20 @@
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../store/cart-slice';
 
+import { navigationActions } from '../../store/navigation-slice';
+import { favProductsActions } from '../../store/favProducts-slice';
+import { alertActions } from '../../store/alert-slice';
+
 import { Link } from 'react-router-dom';
+
 import StyledProduct from '../../assets/style/products/styled-products-item';
 
 const ProductsItem = (props) => {
+	const [isFavourite, setIsFavourite] = useState(false);
 	const dispatch = useDispatch();
+	const { favProducts } = useSelector((state) => state.favProducts);
+	const { isLoggedIn } = useSelector((state) => state.authentication);
 
 	const product = {
 		id: props.id,
@@ -17,8 +26,32 @@ const ProductsItem = (props) => {
 
 	const addProductHandler = () => dispatch(cartActions.addProduct(product));
 
+	const selectAsFavourite = () => {
+		if (isLoggedIn) {
+			!isFavourite
+				? dispatch(favProductsActions.addProduct(product))
+				: dispatch(favProductsActions.removeProduct(product.id));
+
+			setIsFavourite(!isFavourite);
+		} else {
+			dispatch(navigationActions.toggleOverlay());
+			dispatch(
+				alertActions.showAlert({
+					status: 'warning',
+					title: 'Warning',
+					message: `If you wanna select product as favourite you have to be logged
+			firstfully`,
+				})
+			);
+		}
+	};
+
+	useEffect(() => {
+		window.localStorage.setItem('favProducts', JSON.stringify(favProducts));
+	}, [favProducts]);
+
 	return (
-		<StyledProduct className='product'>
+		<StyledProduct className='product' favourite={isFavourite}>
 			<div className='product__body'>
 				<img className='product__img' src={props.image} alt={props.title} />
 				<div className='product__icon-actions'>
@@ -35,6 +68,14 @@ const ProductsItem = (props) => {
 						onClick={addProductHandler}
 					>
 						<i className='fa-solid fa-cart-shopping'></i>
+					</button>
+
+					<button
+						aria-label='add to favourite button'
+						className='product__favourite'
+						onClick={selectAsFavourite}
+					>
+						<i className='fa-solid fa-heart'></i>
 					</button>
 				</div>
 			</div>

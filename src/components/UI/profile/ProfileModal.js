@@ -46,12 +46,9 @@ const ProfileModal = () => {
 
 	const toggleIsLoginHandler = () => {
 		setLogIn(!logIn);
-		setResponseMessage((prevState) => {
-			return {
-				...prevState,
-				status: null,
-				message: '',
-			};
+		setResponseMessage({
+			status: null,
+			message: '',
 		});
 	};
 

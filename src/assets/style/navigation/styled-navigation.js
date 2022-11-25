@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Close } from '../components';
+import { Close, HoverEffect } from '../components';
 
 export const Nav = styled.nav`
 	position: relative;
@@ -227,22 +227,7 @@ export const IconsDiv = styled.div`
 				font-size: 1.6rem;
 				cursor: pointer;
 
-				&:hover::before {
-					transform: scaleX(100%);
-					transform-origin: left;
-				}
-
-				&::before {
-					content: '';
-					position: absolute;
-					bottom: -3px;
-					left: 0;
-					width: 100%;
-					border-bottom: 3px solid var(--orange);
-					transform: scaleX(0);
-					transform-origin: right;
-					transition: transform 0.3s;
-				}
+				${HoverEffect}
 			}
 		}
 	}

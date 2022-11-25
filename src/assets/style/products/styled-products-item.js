@@ -42,9 +42,12 @@ const StyledProduct = styled.article`
 		}
 
 		&__icon-actions {
+			max-width: 10rem;
 			position: absolute;
 			display: flex;
-			column-gap: 1rem;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
@@ -53,7 +56,8 @@ const StyledProduct = styled.article`
 			transition: opacity 0.3s linear, visibility 0.3s linear;
 
 			.product__details,
-			.product__add {
+			.product__add,
+			.product__favourite {
 				display: grid;
 				width: 40px;
 				height: 40px;
@@ -67,6 +71,10 @@ const StyledProduct = styled.article`
 				&:hover {
 					background-color: var(--orange-hover);
 				}
+			}
+
+			.product__favourite {
+				color: ${(props) => (props.favourite ? 'var(--fail-color)' : '#fff')};
 			}
 		}
 	}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { navigationActions } from '../../../store/navigation-slice';
+import { alertActions } from '../../../store/alert-slice';
 
 import Navigation from '../navigation/Navigation';
 import Cart from '../cart/Cart';
@@ -9,6 +10,7 @@ import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
 import ProfileModal from '../profile/ProfileModal';
 import ProfileDetails from '../profile/ProfileDetails';
+import Alert from '../alert/Alert';
 
 const Layout = (props) => {
 	const dispatch = useDispatch();
@@ -19,6 +21,8 @@ const Layout = (props) => {
 		isProfileModalShown,
 		isProfileDetailsShown,
 	} = useSelector((state) => state.navigation);
+
+	const { showAlert } = useSelector((state) => state.alert);
 
 	useEffect(() => {
 		isOverlayShown
@@ -32,6 +36,7 @@ const Layout = (props) => {
 		isCartShown && dispatch(navigationActions.toggleCart());
 		isProfileModalShown && dispatch(navigationActions.toggleProfileModal());
 		isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
+		showAlert && dispatch(alertActions.showAlert());
 	};
 
 	return (
@@ -43,6 +48,7 @@ const Layout = (props) => {
 			{isOverlayShown && <Overlay onClick={toggleOverlayHandler} />}
 			{isProfileModalShown && <ProfileModal />}
 			{isProfileDetailsShown && <ProfileDetails />}
+			{showAlert && <Alert />}
 		</>
 	);
 };

@@ -82,3 +82,22 @@ export const InputAndButton = `
 		}
 
 `;
+
+export const HoverEffect = `
+&:hover::before {
+	transform: scaleX(100%);
+	transform-origin: left;
+}
+
+&::before {
+	content: '';
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 100%;
+	border-bottom: 3px solid var(--orange);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.3s;
+}
+`;
