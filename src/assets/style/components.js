@@ -101,3 +101,21 @@ export const HoverEffect = `
 	transition: transform 0.3s;
 }
 `;
+
+export const Heading = `
+	position: relative;
+	font-size: 2rem;
+	margin-bottom: 1em;
+
+	&::before {
+		content: '';
+		position: absolute;
+		bottom: -3px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 15ch;
+		height: 3px;
+		background-color: var(--orange);
+	}
+
+`;

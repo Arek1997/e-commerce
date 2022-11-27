@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	favProducts: JSON.parse(localStorage.getItem('favProducts')) || [],
+	favProductsArr: JSON.parse(localStorage.getItem('favProducts')) || [],
 };
 
 const favProductsSlice = createSlice({
@@ -9,11 +9,11 @@ const favProductsSlice = createSlice({
 	initialState,
 	reducers: {
 		addProduct: (state, action) => {
-			state.favProducts.push(action.payload);
+			state.favProductsArr.push(action.payload);
 		},
 
 		removeProduct: (state, action) => {
-			const allProducts = state.favProducts;
+			const allProducts = state.favProductsArr;
 			const productToRemove = allProducts.find(
 				(product) => product.id === action.payload
 			);
@@ -22,7 +22,7 @@ const favProductsSlice = createSlice({
 				(product) => product.id !== productToRemove.id
 			);
 
-			state.favProducts = updatedProducts;
+			state.favProductsArr = updatedProducts;
 		},
 	},
 });

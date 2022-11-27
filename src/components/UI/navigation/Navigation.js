@@ -56,8 +56,14 @@ const Navigation = (props) => {
 
 	const logOutHandler = () => dispatch(authenticationActions.logOut());
 
-	const showProfileDetailsHandler = () => {
+	const toggleProfileDetailsHandler = () => {
 		dispatch(navigationActions.toggleProfileDetails());
+		dispatch(navigationActions.toggleOverlay());
+		toggleProfileOptions();
+	};
+
+	const toggleProfileFavProductsHandler = () => {
+		dispatch(navigationActions.toggleProfileFavProducts());
 		dispatch(navigationActions.toggleOverlay());
 		toggleProfileOptions();
 	};
@@ -137,9 +143,13 @@ const Navigation = (props) => {
 									<li onClick={toggleProfileModalHandler}>Log in</li>
 								)}
 								{isLoggedIn && (
-									<li onClick={showProfileDetailsHandler}>Account</li>
+									<li onClick={toggleProfileDetailsHandler}>Account</li>
 								)}
-								{isLoggedIn && <li>Favourite products</li>}
+								{isLoggedIn && (
+									<li onClick={toggleProfileFavProductsHandler}>
+										Favourite products
+									</li>
+								)}
 								{isLoggedIn && <li onClick={logOutHandler}>Log out</li>}
 							</ul>
 						</nav>

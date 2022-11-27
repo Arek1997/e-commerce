@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ModalBase, InputAndButton, Close } from '../components';
+import { ModalBase, InputAndButton, Close, Heading } from '../components';
 
 export const StyledDetails = styled.article`
 	${ModalBase}
@@ -29,20 +29,7 @@ export const StyledDetails = styled.article`
 	}
 
 	h3 {
-		position: relative;
-		font-size: 1.8rem;
-		margin-bottom: 1em;
-
-		&::before {
-			content: '';
-			position: absolute;
-			bottom: -3px;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 15ch;
-			height: 3px;
-			background-color: var(--orange);
-		}
+		${Heading}
 	}
 
 	.particularInfo {

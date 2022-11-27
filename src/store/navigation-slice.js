@@ -6,6 +6,7 @@ const initialState = {
 	isOverlayShown: false,
 	isProfileModalShown: false,
 	isProfileDetailsShown: false,
+	ifProfileFavProductsShown: false,
 };
 
 const navigationSlice = createSlice({
@@ -30,6 +31,10 @@ const navigationSlice = createSlice({
 
 		toggleProfileDetails: (state) => {
 			state.isProfileDetailsShown = !state.isProfileDetailsShown;
+		},
+
+		toggleProfileFavProducts: (state) => {
+			state.ifProfileFavProductsShown = !state.ifProfileFavProductsShown;
 		},
 	},
 });

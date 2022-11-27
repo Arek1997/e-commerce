@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../store/cart-slice';
 
@@ -13,7 +13,7 @@ import StyledProduct from '../../assets/style/products/styled-products-item';
 const ProductsItem = (props) => {
 	const [isFavourite, setIsFavourite] = useState(false);
 	const dispatch = useDispatch();
-	const { favProducts } = useSelector((state) => state.favProducts);
+	const { favProductsArr } = useSelector((state) => state.favProducts);
 	const { isLoggedIn } = useSelector((state) => state.authentication);
 
 	const product = {
@@ -26,7 +26,8 @@ const ProductsItem = (props) => {
 
 	useEffect(() => {
 		if (isLoggedIn) {
-			favProducts.some((item) => item.id === props.id) && setIsFavourite(true);
+			favProductsArr.some((item) => item.id === props.id) &&
+				setIsFavourite(true);
 		}
 	}, [isLoggedIn]);
 
@@ -53,10 +54,8 @@ const ProductsItem = (props) => {
 	};
 
 	useEffect(() => {
-		localStorage.setItem('favProducts', JSON.stringify(favProducts));
-
-		console.log(localStorage.getItem('favProducts'));
-	}, [favProducts]);
+		localStorage.setItem('favProducts', JSON.stringify(favProductsArr));
+	}, [favProductsArr]);
 
 	return (
 		<StyledProduct className='product' favourite={isFavourite}>

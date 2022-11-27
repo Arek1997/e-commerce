@@ -21,9 +21,10 @@ const ProfileDetails = () => {
 		status: null,
 		message: '',
 	});
+
 	const { pathname } = useLocation();
-	const { token } = useSelector((state) => state.authentication);
 	const notHomePage = pathname.slice(1) !== 'home';
+	const { token } = useSelector((state) => state.authentication);
 
 	let content;
 

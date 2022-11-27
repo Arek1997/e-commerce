@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Close, ModalBase, InputAndButton } from '../components';
+import { Close, ModalBase, InputAndButton, Heading } from '../components';
 
 export const StyledProfileModal = styled.div`
 	${ModalBase}
@@ -29,8 +29,11 @@ export const StyledProfileModal = styled.div`
 	}
 
 	h2 {
-		font-size: 2rem;
-		margin-bottom: 0.5em;
+		${Heading}
+
+		&::before {
+			width: 22ch;
+		}
 	}
 
 	p {

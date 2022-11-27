@@ -10,6 +10,7 @@ import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
 import ProfileModal from '../profile/ProfileModal';
 import ProfileDetails from '../profile/ProfileDetails';
+import ProfileFavProducts from '../profile/ProfileFavProducts';
 import Alert from '../alert/Alert';
 
 const Layout = (props) => {
@@ -20,6 +21,7 @@ const Layout = (props) => {
 		isOverlayShown,
 		isProfileModalShown,
 		isProfileDetailsShown,
+		ifProfileFavProductsShown,
 	} = useSelector((state) => state.navigation);
 
 	const { showAlert } = useSelector((state) => state.alert);
@@ -36,6 +38,8 @@ const Layout = (props) => {
 		isCartShown && dispatch(navigationActions.toggleCart());
 		isProfileModalShown && dispatch(navigationActions.toggleProfileModal());
 		isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
+		ifProfileFavProductsShown &&
+			dispatch(navigationActions.toggleProfileFavProducts());
 		showAlert && dispatch(alertActions.showAlert());
 	};
 
@@ -48,6 +52,7 @@ const Layout = (props) => {
 			{isOverlayShown && <Overlay onClick={toggleOverlayHandler} />}
 			{isProfileModalShown && <ProfileModal />}
 			{isProfileDetailsShown && <ProfileDetails />}
+			{ifProfileFavProductsShown && <ProfileFavProducts />}
 			{showAlert && <Alert />}
 		</>
 	);
