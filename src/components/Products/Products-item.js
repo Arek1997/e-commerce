@@ -24,6 +24,12 @@ const ProductsItem = (props) => {
 		amount: 1,
 	};
 
+	useEffect(() => {
+		if (isLoggedIn) {
+			favProducts.some((item) => item.id === props.id) && setIsFavourite(true);
+		}
+	}, [isLoggedIn]);
+
 	const addProductHandler = () => dispatch(cartActions.addProduct(product));
 
 	const selectAsFavourite = () => {
@@ -47,7 +53,9 @@ const ProductsItem = (props) => {
 	};
 
 	useEffect(() => {
-		window.localStorage.setItem('favProducts', JSON.stringify(favProducts));
+		localStorage.setItem('favProducts', JSON.stringify(favProducts));
+
+		console.log(localStorage.getItem('favProducts'));
 	}, [favProducts]);
 
 	return (

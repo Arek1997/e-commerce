@@ -16,6 +16,9 @@ export const StyledDetails = styled.article`
 		top: 2rem;
 		right: 1rem;
 
+		color: ${(props) =>
+			props.notHomePage ? 'var(--dirty-white)' : 'var(--light-gray)'};
+
 		@media (min-width: 300px) {
 			font-size: 3rem;
 		}
