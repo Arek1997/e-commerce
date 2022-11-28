@@ -58,7 +58,8 @@ const StyledFavProduct = styled.section`
 
 	.fav-prod-item {
 		position: relative;
-		display: flex;
+		display: grid;
+		grid-template-columns: auto 1fr;
 		column-gap: 2rem;
 		align-items: center;
 	}

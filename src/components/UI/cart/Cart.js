@@ -30,10 +30,12 @@ const Cart = (props) => {
 				<h3>Your Cart</h3>
 			</header>
 			<CartList />
-			<footer>
-				<p className='total'>Total: ${totalPrice.toFixed(2)}</p>
-				<button className='checkout'>Checkout</button>
-			</footer>
+			{productsList.length > 0 && (
+				<footer>
+					<p className='total'>Total: ${totalPrice.toFixed(2)}</p>
+					<button className='checkout'>Order</button>
+				</footer>
+			)}
 		</CartMenu>
 	);
 };
