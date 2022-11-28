@@ -5,7 +5,9 @@ Current Tech Stack:
 -React \
 -Redux/toolkit \
 -React Router v6 \
--Styled Component 
+-React Hook Form \
+-React Paginate \
+-Styled Component
 
 # Getting Started with Create React App
 
