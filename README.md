@@ -21,19 +21,19 @@ This app is a project for e-commerce store. App includes:
 ## Screenshots 📺
 
 <p align="center">
-	<img src="https://ibb.co/58p4FXD" />
+	<img width="100%" src="https://i.ibb.co/d2CMgs9/home.png" alt="Screen shot of home page" />
 </p>
 
 <p aling="center">
-	<img width="100%" src="https://ibb.co/qFD4V9S" />
+	<img width="100%" src="https://i.ibb.co/Kz5QS7P/login.png" alt="Screen shot of login"/>
 </p>
 
 <p aling="center">
-	<img width="100%" src="https://ibb.co/4TgbzMS" />
+	<img width="100%" src="https://i.ibb.co/dfrTcmS/products.png" alt="Screen shot of products page"/>
 </p>
 
 <p aling="center">
-	<img width="100%" src="https://ibb.co/6ymMZX2" />
+	<img width="100%" src="https://i.ibb.co/Z81Q5Kg/product-details.png" alt="Screen shot of product details page"/>
 </p>
 
 ## Credentials 💳
