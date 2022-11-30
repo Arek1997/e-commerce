@@ -49,6 +49,6 @@ This app is a project for e-commerce store. App includes:
 - Do small refactor of dubled code
 - Add some subtle animations
 
-## Issues to fix
+## Issues to fix 🛑
 
 - X sign to close profile modals doesn't work correct
