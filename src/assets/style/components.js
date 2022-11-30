@@ -18,6 +18,7 @@ export const Close = `
     font-weight: bold;
     color: var(--light-gray);
     cursor: pointer;
+		z-index: 1;
 `;
 
 export const SectionHero = `

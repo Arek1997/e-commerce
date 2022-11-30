@@ -53,4 +53,4 @@ App includes:
 
 ## Issues to fix 🛑
 
-- X sign to close profile modals doesn't work correct
+- ~X sign to close profile modals doesn't work correct~
