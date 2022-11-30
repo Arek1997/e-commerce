@@ -30,12 +30,7 @@ This app is a project for e-commerce store. App includes:
 - Styled Component
 - Firebase authentication
 
-
-
-
-
 ## Screenshots 📺
-
 
 <p>
   <a href="https://ibb.co/qFD4V9S"><img src="https://i.ibb.co/Kz5QS7P/login.png" alt="login" border="0"></a>
@@ -49,7 +44,11 @@ This app is a project for e-commerce store. App includes:
   <a href="https://ibb.co/6ymMZX2"><img src="https://i.ibb.co/dfrTcmS/products.png" alt="products" border="0"></a>
 </p>
 
-
 ## Todo 📝
 
 - Do small refactor of dubled code
+- Add some subtle animations
+
+## Issues to fix
+
+- X sign to close profile modals doesn't work correct
