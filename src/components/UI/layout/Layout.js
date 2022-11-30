@@ -6,6 +6,7 @@ import { alertActions } from '../../../store/alert-slice';
 
 import Navigation from '../navigation/Navigation';
 import Cart from '../cart/Cart';
+import CartOrder from '../cart/Cart-order';
 import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
 import ProfileModal from '../profile/ProfileModal';
@@ -53,6 +54,7 @@ const Layout = (props) => {
 			{isProfileModalShown && <ProfileModal />}
 			{isProfileDetailsShown && <ProfileDetails />}
 			{ifProfileFavProductsShown && <ProfileFavProducts />}
+			<CartOrder />
 			{showAlert && <Alert />}
 		</>
 	);

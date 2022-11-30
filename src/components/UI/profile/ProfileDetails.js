@@ -67,8 +67,6 @@ const ProfileDetails = () => {
 				status: 'success',
 				message: 'User data loaded successfully!',
 			});
-
-			console.log(...data.users);
 		} catch (err) {
 			setResponseMessage({
 				status: 'fail',

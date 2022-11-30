@@ -7,7 +7,8 @@ Current Tech Stack:
 -React Router v6 \
 -React Hook Form \
 -React Paginate \
--Styled Component
+-Styled Component \
+-Firebase authentication
 
 # Getting Started with Create React App
 

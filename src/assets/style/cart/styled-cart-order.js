@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+
 import { ModalBase, InputAndButton, Close, Heading } from '../components';
 
-export const StyledDetails = styled.section`
+export const StyledOrder = styled.section`
 	${ModalBase}
 
 	max-width: 45rem;
@@ -10,7 +11,7 @@ export const StyledDetails = styled.section`
 	background-color: ${(props) =>
 		props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
 
-	.closeModal {
+	.close {
 		${Close}
 		font-size: 2rem;
 		top: 2rem;
@@ -30,57 +31,53 @@ export const StyledDetails = styled.section`
 
 	h3 {
 		${Heading}
-	}
+		margin-bottom:2em;
 
-	.particularInfo {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		column-gap: 1rem;
-		margin-bottom: 1em;
-
-		&--password {
-			margin-top: 3em;
-
-			h4 {
-				align-self: flex-start;
-			}
-		}
-
-		h4 {
-			font-size: 1.6rem;
-		}
-
-		span {
-			font-size: 1.4rem;
-		}
-
-		span.disabled {
-			font-weight: bold;
-
-			color: ${(props) =>
-				!props.disabled ? 'var(--success-color)' : 'var(--fail-color)'};
+		&::before {
+			width: 10ch;
 		}
 	}
 `;
 
 export const StyledForm = styled.form`
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
+	row-gap: 1rem;
 
 	${InputAndButton}
 
-	input,button {
+	input {
 		width: 100%;
 	}
 
-	input {
+	input,
+	.order-button {
 		margin-bottom: 0;
 	}
 
-	.password-error {
-		flex-grow: 1;
-		order: 1;
+	.error-message {
+		font-size: 1.4rem;
 		color: var(--fail-color);
+	}
+
+	.order-bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		column-gap: 2rem;
+	}
+
+	.order-button {
+		flex-grow: 1;
+	}
+
+	.order-price {
+		font-size: 1.4rem;
+		font-weight: bold;
+		font-family: cursive;
+
+		@media (min-width: 320px) {
+			font-size: 1.6rem;
+		}
 	}
 `;
