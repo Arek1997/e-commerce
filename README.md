@@ -1,4 +1,4 @@
-Projekt w trakcie pisanie, nie jest skończony / Project in production, it is not finished yet
+LIVE: https://arek1997.github.io/home
 
 Current Tech Stack:
 
