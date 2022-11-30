@@ -12,7 +12,9 @@ Password: Test!2345
 
 ## Project Overview 🎉
 
-This app is a project for e-commerce store. App includes:
+This app is a project for e-commerce store. Design is copied from this one: https://vanilla-js-store.netlify.app/
+
+App includes:
 
 - Authentication
 - Favourite products lists ( note! favourite products are stored in local storage so is you'll create new account you get the same favourite products )
