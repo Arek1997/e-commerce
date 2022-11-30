@@ -30,27 +30,17 @@ This app is a project for e-commerce store. App includes:
 - Styled Component
 - Firebase authentication
 
- <a href="https://ibb.co/6ymMZX2"><img  alt="products" border="0"></a>
+
 
 
 
 ## Screenshots 📺
 
-<p align="center">
-	<img width="100%" src="https://i.ibb.co/5cnn4gY/home.png" alt="Screen shot of home page" />
-</p>
 
-<p aling="center">
-	<img width="100%" src="https://i.ibb.co/qFD4V9S/login.png" alt="Screen shot of login"/>
-</p>
+<a href="https://ibb.co/qFD4V9S"><img src="https://i.ibb.co/Kz5QS7P/login.png" alt="login"></a>
+<a href="https://ibb.co/4TgbzMS"><img src="https://i.ibb.co/Z81Q5Kg/product-details.png" alt="product-details"></a>
+<a href="https://ibb.co/6ymMZX2"><img src="https://i.ibb.co/dfrTcmS/products.png" alt="products"></a>
 
-<p aling="center">
-	<img width="100%" src="https://i.ibb.co/6ymMZX2/products.png" alt="Screen shot of product page"/>
-</p>
-
-<p aling="center">
-	<img width="100%" src="https://i.ibb.co/4TgbzMS/product-details.png" alt="Screen shot of product details page"/>
-</p>
 
 ## Todo 📝
 
