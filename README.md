@@ -37,9 +37,17 @@ This app is a project for e-commerce store. App includes:
 ## Screenshots 📺
 
 
-<a href="https://ibb.co/qFD4V9S"><img src="https://i.ibb.co/Kz5QS7P/login.png" alt="login"></a>
-<a href="https://ibb.co/4TgbzMS"><img src="https://i.ibb.co/Z81Q5Kg/product-details.png" alt="product-details"></a>
-<a href="https://ibb.co/6ymMZX2"><img src="https://i.ibb.co/dfrTcmS/products.png" alt="products"></a>
+<p>
+  <a href="https://ibb.co/qFD4V9S"><img src="https://i.ibb.co/Kz5QS7P/login.png" alt="login" border="0"></a>
+</p>
+
+<p>
+  <a href="https://ibb.co/4TgbzMS"><img src="https://i.ibb.co/Z81Q5Kg/product-details.png" alt="product-details" border="0"></a>
+</p>
+
+<p>
+  <a href="https://ibb.co/6ymMZX2"><img src="https://i.ibb.co/dfrTcmS/products.png" alt="products" border="0"></a>
+</p>
 
 
 ## Todo 📝
