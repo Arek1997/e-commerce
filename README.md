@@ -33,7 +33,7 @@ This app is a project for e-commerce store. App includes:
 ## Screenshots 📺
 
 <p align="center">
-	<img src="https://i.ibb.co/F7003Ls/home.png" alt="Screen shot of home page" />
+	<img width="100%" src="https://i.ibb.co/F7003Ls/home.png" alt="Screen shot of home page" />
 </p>
 
 <p aling="center">
