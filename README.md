@@ -1,4 +1,4 @@
-LIVE: https://arek1997.github.io/home
+LIVE: https://arek1997.github.io/e-comerse/
 
 Current Tech Stack:
 
