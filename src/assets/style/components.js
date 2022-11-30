@@ -55,7 +55,7 @@ export const ModalBase = `
 	border-radius: 8px;
 	z-index: 2;
 
-	@media (min-width: 320px) and (orientation: landscape) {
+	@media (max-height: 530px) {
 		height: 100vh;
 		overflow-y: auto;
 	}

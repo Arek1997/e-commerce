@@ -31,7 +31,6 @@ export const StyledOrder = styled.section`
 
 	h3 {
 		${Heading}
-		margin-bottom: .5em;
 
 		&::before {
 			width: 13ch;
@@ -42,7 +41,7 @@ export const StyledOrder = styled.section`
 export const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
-	row-gap: 0.5rem;
+	row-gap: 1rem;
 
 	${InputAndButton}
 

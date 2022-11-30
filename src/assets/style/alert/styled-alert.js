@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Close, HoverEffect } from '../components';
 
 const StyledAlert = styled.div`
-	min-width: 22rem;
+	min-width: 25rem;
 	max-width: 35rem;
 	position: fixed;
 	top: 20%;
