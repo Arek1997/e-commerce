@@ -1,3 +1,15 @@
+## Live 📍
+
+https://arek1997.github.io/e-comerse/
+
+## Credentials 💳
+
+If you don't want to register use this data:
+
+Email: test@test.com
+
+Password: Test!2345
+
 ## Project Overview 🎉
 
 This app is a project for e-commerce store. App includes:
@@ -21,7 +33,7 @@ This app is a project for e-commerce store. App includes:
 ## Screenshots 📺
 
 <p align="center">
-	<img width="100%" src="https://i.ibb.co/d2CMgs9/home.png" alt="Screen shot of home page" />
+	<img src="https://i.ibb.co/F7003Ls/home.png" alt="Screen shot of home page" />
 </p>
 
 <p aling="center">
@@ -35,18 +47,6 @@ This app is a project for e-commerce store. App includes:
 <p aling="center">
 	<img width="100%" src="https://i.ibb.co/Z81Q5Kg/product-details.png" alt="Screen shot of product details page"/>
 </p>
-
-## Credentials 💳
-
-If you don't want to register use this data:
-
-Email: test@test.com
-
-Password: Test!2345
-
-## Live 📍
-
-https://arek1997.github.io/e-comerse/
 
 ## Todo 📝
 
