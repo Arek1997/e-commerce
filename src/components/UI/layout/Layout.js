@@ -19,6 +19,7 @@ const Layout = (props) => {
 	const {
 		isNavShown,
 		isCartShown,
+		isCartOrderShown,
 		isOverlayShown,
 		isProfileModalShown,
 		isProfileDetailsShown,
@@ -37,6 +38,7 @@ const Layout = (props) => {
 		dispatch(navigationActions.toggleOverlay());
 		isNavShown && dispatch(navigationActions.toggleNav());
 		isCartShown && dispatch(navigationActions.toggleCart());
+		isCartOrderShown && dispatch(navigationActions.toggleCartOrder());
 		isProfileModalShown && dispatch(navigationActions.toggleProfileModal());
 		isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
 		ifProfileFavProductsShown &&
@@ -54,7 +56,7 @@ const Layout = (props) => {
 			{isProfileModalShown && <ProfileModal />}
 			{isProfileDetailsShown && <ProfileDetails />}
 			{ifProfileFavProductsShown && <ProfileFavProducts />}
-			<CartOrder />
+			{isCartOrderShown && <CartOrder />}
 			{showAlert && <Alert />}
 		</>
 	);

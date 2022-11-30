@@ -54,6 +54,11 @@ export const ModalBase = `
 	backdrop-filter: blur(5px);
 	border-radius: 8px;
 	z-index: 2;
+
+	@media (min-width: 320px) and (orientation: landscape) {
+		height: 100vh;
+		overflow-y: auto;
+	}
 `;
 
 export const InputAndButton = `

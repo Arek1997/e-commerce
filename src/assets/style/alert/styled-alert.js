@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Close, HoverEffect } from '../components';
 
 const StyledAlert = styled.div`
+	min-width: 22rem;
 	max-width: 35rem;
 	position: fixed;
 	top: 20%;
@@ -26,7 +27,11 @@ const StyledAlert = styled.div`
 
 		&__head {
 			padding: 1em;
-			background-color: var(--warning);
+			background-color: ${(props) => {
+				if (props.alertStatus === 'success') return 'var(--success-color)';
+				if (props.alertStatus === 'warning') return 'var(--warning)';
+				if (props.alertStatus === 'fail') return 'var(--fail-color)';
+			}};
 			font-size: 1.6rem;
 
 			@media (min-width: 768px) {

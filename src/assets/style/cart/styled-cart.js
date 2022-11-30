@@ -11,7 +11,7 @@ const CartMenu = styled.aside`
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	text-align: center;
-	padding: 5em 2.5em 0;
+	padding: 4em 2.5em 0;
 	background-color: var(--dirty-white);
 	transform: translateX(100%);
 	opacity: 0;

@@ -31,10 +31,10 @@ export const StyledOrder = styled.section`
 
 	h3 {
 		${Heading}
-		margin-bottom:2em;
+		margin-bottom: .5em;
 
 		&::before {
-			width: 10ch;
+			width: 13ch;
 		}
 	}
 `;
@@ -42,7 +42,7 @@ export const StyledOrder = styled.section`
 export const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
-	row-gap: 1rem;
+	row-gap: 0.5rem;
 
 	${InputAndButton}
 

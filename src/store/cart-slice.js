@@ -48,6 +48,10 @@ const cartSlice = createSlice({
 
 			state.productsList = updatedProducts;
 		},
+
+		clearProductsList: (state) => {
+			state.productsList = initialState.productsList;
+		},
 	},
 });
 

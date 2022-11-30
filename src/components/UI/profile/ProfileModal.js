@@ -97,8 +97,6 @@ const ProfileModal = () => {
 
 				dispatch(authenticationActions.logIn(data.idToken));
 			}
-
-			console.log(data);
 		} catch (err) {
 			setResponseMessage({
 				status: 'fail',

@@ -7,7 +7,7 @@ import StyledAlert from '../../../assets/style/alert/styled-alert';
 
 const Alert = () => {
 	const dispatch = useDispatch();
-	const { title, message } = useSelector((state) => state.alert);
+	const { status, title, message } = useSelector((state) => state.alert);
 
 	const closeAlertHandler = () => {
 		dispatch(alertActions.showAlert());
@@ -15,7 +15,7 @@ const Alert = () => {
 	};
 
 	return (
-		<StyledAlert className='alert'>
+		<StyledAlert className='alert' alertStatus={status}>
 			<i
 				className='fa-solid fa-xmark alert__close'
 				onClick={closeAlertHandler}

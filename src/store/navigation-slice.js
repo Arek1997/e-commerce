@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	isNavShown: false,
 	isCartShown: false,
+	isCartOrderShown: false,
 	isOverlayShown: false,
 	isProfileModalShown: false,
 	isProfileDetailsShown: false,
@@ -19,6 +20,10 @@ const navigationSlice = createSlice({
 
 		toggleCart: (state) => {
 			state.isCartShown = !state.isCartShown;
+		},
+
+		toggleCartOrder: (state) => {
+			state.isCartOrderShown = !state.isCartOrderShown;
 		},
 
 		toggleOverlay: (state) => {
