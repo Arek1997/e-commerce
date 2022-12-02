@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { navigationActions } from '../../../store/navigation-slice';
 import { favProductsActions } from '../../../store/favProducts-slice';
@@ -11,9 +11,6 @@ const ProfileFavProducts = () => {
 	const dispatch = useDispatch();
 
 	const { favProductsArr } = useSelector((state) => state.favProducts);
-
-	const { pathname } = useLocation();
-	const notHomePage = pathname.slice(1) !== 'home';
 
 	const toggleProfileFavProductsHandler = () => {
 		dispatch(navigationActions.toggleProfileFavProducts());
@@ -53,7 +50,7 @@ const ProfileFavProducts = () => {
 	}
 
 	return (
-		<StyledFavProduct notHomePage={notHomePage}>
+		<StyledFavProduct>
 			<i
 				className='fa-solid fa-xmark close'
 				onClick={toggleProfileFavProductsHandler}

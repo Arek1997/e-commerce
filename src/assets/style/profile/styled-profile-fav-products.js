@@ -6,9 +6,9 @@ const StyledFavProduct = styled.section`
 
 	max-width: 50rem;
 	padding: 2em;
-	color: ${(props) => (props.notHomePage ? '#fff' : '#000')};
-	background-color: ${(props) =>
-		props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
+
+	color: #000;
+	background-color: #fff;
 
 	.close {
 		${Close}
@@ -16,8 +16,11 @@ const StyledFavProduct = styled.section`
 		top: 2rem;
 		right: 1rem;
 
-		color: ${(props) =>
-			props.notHomePage ? 'var(--dirty-white)' : 'var(--light-gray)'};
+		color: #000;
+
+		&:hover {
+			color: var(--light-gray);
+		}
 
 		@media (min-width: 300px) {
 			font-size: 3rem;
