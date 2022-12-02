@@ -6,7 +6,6 @@ const StyledFavProduct = styled.section`
 
 	max-width: 50rem;
 	padding: 2em;
-
 	color: #000;
 	background-color: #fff;
 
