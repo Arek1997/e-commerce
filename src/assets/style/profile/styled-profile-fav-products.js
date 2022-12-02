@@ -8,6 +8,7 @@ const StyledFavProduct = styled.section`
 	padding: 2em;
 	color: #000;
 	background-color: #fff;
+	box-shadow: 0px 0px 15px 2px rgb(0 0 0 / 50%);
 
 	.close {
 		${Close}
