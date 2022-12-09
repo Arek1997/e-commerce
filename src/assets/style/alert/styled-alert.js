@@ -14,6 +14,8 @@ const StyledAlert = styled.div`
 	overflow: hidden;
 	z-index: 2;
 
+	animation: fade-in-from-bottom 0.3s ease both;
+
 	.alert {
 		&__close {
 			${Close}

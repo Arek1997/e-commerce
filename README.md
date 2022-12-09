@@ -49,7 +49,7 @@ App includes:
 ## Todo 📝
 
 - Do small refactor of dubled code
-- Add some subtle animations
+- ~Add some subtle animations~
 
 ## Issues to fix 🛑
 
