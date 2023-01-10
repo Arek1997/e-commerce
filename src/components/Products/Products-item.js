@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 
 import StyledProduct from '../../assets/style/products/styled-products-item';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import ProductsPlaceholder from './Products-placeholder';
+
+import imagePlaceholder from '../../assets/img/product/product-placeholder.webp';
 
 const ProductsItem = (props) => {
 	const [isFavourite, setIsFavourite] = useState(false);
@@ -72,7 +73,7 @@ const ProductsItem = (props) => {
 					className='product__img'
 					alt={props.title}
 					src={props.image}
-					placeholder={<ProductsPlaceholder />}
+					placeholderSrc={imagePlaceholder}
 				/>
 
 				<div className='product__icon-actions'>
