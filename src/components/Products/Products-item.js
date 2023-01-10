@@ -9,6 +9,8 @@ import { alertActions } from '../../store/alert-slice';
 import { Link } from 'react-router-dom';
 
 import StyledProduct from '../../assets/style/products/styled-products-item';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import ProductsPlaceholder from './Products-placeholder';
 
 const ProductsItem = (props) => {
 	const [isFavourite, setIsFavourite] = useState(false);
@@ -66,12 +68,13 @@ const ProductsItem = (props) => {
 	return (
 		<StyledProduct className='product' favourite={isFavourite}>
 			<div className='product__body'>
-				<img
+				<LazyLoadImage
 					className='product__img'
-					src={props.image}
 					alt={props.title}
-					loading='lazy'
+					src={props.image}
+					placeholder={<ProductsPlaceholder />}
 				/>
+
 				<div className='product__icon-actions'>
 					<Link
 						to={`../products/${props.id}`}
