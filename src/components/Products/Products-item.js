@@ -66,7 +66,12 @@ const ProductsItem = (props) => {
 	return (
 		<StyledProduct className='product' favourite={isFavourite}>
 			<div className='product__body'>
-				<img className='product__img' src={props.image} alt={props.title} />
+				<img
+					className='product__img'
+					src={props.image}
+					alt={props.title}
+					loading='lazy'
+				/>
 				<div className='product__icon-actions'>
 					<Link
 						to={`../products/${props.id}`}
