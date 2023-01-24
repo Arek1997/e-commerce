@@ -34,6 +34,8 @@ const ProductsItem = (props) => {
 		if (isLoggedIn) {
 			productIsInFavProdArr() && setIsFavourite(true);
 		}
+
+		return () => setIsFavourite(false);
 	}, [isLoggedIn]);
 
 	const addProductHandler = () => dispatch(cartActions.addProduct(product));
