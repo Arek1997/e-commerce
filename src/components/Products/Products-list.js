@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
-
-import StyledProductsList from '../../assets/style/products/styled-products-list';
 
 import ProductItem from './Products-item';
 import { API_URL } from '../../helpers/values';
 import useFilter from '../../hooks/useFilter';
 import Loading from '../Loading/Loading';
+import Pagination from '../Pagination/Pagination';
+
+import StyledProductsList from '../../assets/style/products/styled-products-list';
 
 const itemsPerPage = 8;
 let pageCount = 0;
@@ -89,14 +89,11 @@ const ProductsList = () => {
 	return (
 		<StyledProductsList className='products__list text-center'>
 			{content}
-			<ReactPaginate
-				previousLabel={'prev'}
-				nextLabel={'next'}
+
+			<Pagination
 				pageCount={pageCount}
-				onPageChange={handlePageClick}
-				containerClassName={'pagination'}
-				activeClassName={'active'}
-				forcePage={selectedPage}
+				handlePageClick={handlePageClick}
+				selectedPage={selectedPage}
 			/>
 		</StyledProductsList>
 	);
