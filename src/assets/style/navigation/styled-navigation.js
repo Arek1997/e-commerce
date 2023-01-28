@@ -142,7 +142,7 @@ export const BurgerBtn = styled.button`
 
 export const Logo = styled.h1`
 	font-size: 3rem;
-	font-family: cursive;
+	font-family: var(--cursive);
 	color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
 	z-index: 1;
 

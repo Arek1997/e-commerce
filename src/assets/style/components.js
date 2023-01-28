@@ -32,7 +32,7 @@ background-color: var(--dirty-white);
 
 	h2 {
 		font-size: 2.2rem;
-		font-family: cursive;
+		font-family: var(--cursive);
 		color: var(--light-blue);
 
 		@media (min-width: 576px) {

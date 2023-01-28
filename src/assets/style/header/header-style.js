@@ -38,7 +38,7 @@ export const StyledHeading = styled.div`
 	}
 
 	p:first-child {
-		font-family: cursive;
+		font-family: var(--cursive);
 		font-size: 4.5rem;
 
 		@media (min-width: 768px) {
