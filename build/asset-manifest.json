@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/e-comerse/static/css/main.ffa90869.css",
-    "main.js": "/e-comerse/static/js/main.f02c137e.js",
-    "static/js/211.eea0dbe8.chunk.js": "/e-comerse/static/js/211.eea0dbe8.chunk.js",
+    "main.js": "/e-comerse/static/js/main.03c9423a.js",
+    "static/js/413.49443e6e.chunk.js": "/e-comerse/static/js/413.49443e6e.chunk.js",
     "static/js/223.add67cd0.chunk.js": "/e-comerse/static/js/223.add67cd0.chunk.js",
-    "static/js/674.f94306c6.chunk.js": "/e-comerse/static/js/674.f94306c6.chunk.js",
-    "static/js/603.911b9dc7.chunk.js": "/e-comerse/static/js/603.911b9dc7.chunk.js",
+    "static/js/120.c20a34d1.chunk.js": "/e-comerse/static/js/120.c20a34d1.chunk.js",
+    "static/js/603.e6d7b8e8.chunk.js": "/e-comerse/static/js/603.e6d7b8e8.chunk.js",
     "static/js/87.3e204a02.chunk.js": "/e-comerse/static/js/87.3e204a02.chunk.js",
     "static/js/790.a6d55182.chunk.js": "/e-comerse/static/js/790.a6d55182.chunk.js",
     "static/media/loadingspinner.gif": "/e-comerse/static/media/loadingspinner.b4cb55bc6e67fb0441d9.gif",
@@ -13,16 +13,16 @@
     "static/media/product-placeholder.webp": "/e-comerse/static/media/product-placeholder.013cd76f21371b0905a8.webp",
     "index.html": "/e-comerse/index.html",
     "main.ffa90869.css.map": "/e-comerse/static/css/main.ffa90869.css.map",
-    "main.f02c137e.js.map": "/e-comerse/static/js/main.f02c137e.js.map",
-    "211.eea0dbe8.chunk.js.map": "/e-comerse/static/js/211.eea0dbe8.chunk.js.map",
+    "main.03c9423a.js.map": "/e-comerse/static/js/main.03c9423a.js.map",
+    "413.49443e6e.chunk.js.map": "/e-comerse/static/js/413.49443e6e.chunk.js.map",
     "223.add67cd0.chunk.js.map": "/e-comerse/static/js/223.add67cd0.chunk.js.map",
-    "674.f94306c6.chunk.js.map": "/e-comerse/static/js/674.f94306c6.chunk.js.map",
-    "603.911b9dc7.chunk.js.map": "/e-comerse/static/js/603.911b9dc7.chunk.js.map",
+    "120.c20a34d1.chunk.js.map": "/e-comerse/static/js/120.c20a34d1.chunk.js.map",
+    "603.e6d7b8e8.chunk.js.map": "/e-comerse/static/js/603.e6d7b8e8.chunk.js.map",
     "87.3e204a02.chunk.js.map": "/e-comerse/static/js/87.3e204a02.chunk.js.map",
     "790.a6d55182.chunk.js.map": "/e-comerse/static/js/790.a6d55182.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ffa90869.css",
-    "static/js/main.f02c137e.js"
+    "static/js/main.03c9423a.js"
   ]
 }
