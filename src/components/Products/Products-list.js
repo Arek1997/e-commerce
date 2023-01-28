@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
-import loadingSpinner from '../../assets/loadingspinner.gif';
 import StyledProductsList from '../../assets/style/products/styled-products-list';
 
 import ProductItem from './Products-item';
-import { API_URL } from '../API/API';
+import { API_URL } from '../../helpers/values';
 import useFilter from '../../hooks/useFilter';
+import Loading from '../Loading/Loading';
 
 const itemsPerPage = 8;
 let pageCount = 0;
@@ -57,13 +57,7 @@ const ProductsList = () => {
 	let content = <p className='error-text'>Products not found</p>;
 
 	if (isloading) {
-		return (content = (
-			<img
-				style={{ display: 'block', margin: '0 auto' }}
-				src={loadingSpinner}
-				alt='Loadingspinner'
-			/>
-		));
+		return (content = <Loading />);
 	}
 
 	if (error) {

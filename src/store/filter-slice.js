@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { MAX_PRODUCT_PRICE } from '../helpers/values';
 
 const initialState = {
-	filterPrice: 1000,
+	filterPrice: MAX_PRODUCT_PRICE,
 	filterCategory: 'all',
 	filterName: '',
 };

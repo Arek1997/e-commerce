@@ -2,9 +2,9 @@ import useFetch from 'react-fetch-hook';
 
 import FeaturedItem from './Featured-item';
 import { StyledList } from '../../../assets/style/featured/styled-list';
-import loadingSpinner from '../../../assets/loadingspinner.gif';
 
-import { API_URL } from '../../API/API';
+import { API_URL } from '../../../helpers/values';
+import Loading from '../../Loading/Loading';
 
 const PRODUCTS_API = `${API_URL}?limit=3`;
 
@@ -14,13 +14,7 @@ const FeaturedList = () => {
 	let content = <p className='error-text'>Products not found</p>;
 
 	if (isLoading) {
-		content = (
-			<img
-				style={{ display: 'block', margin: '0 auto' }}
-				src={loadingSpinner}
-				alt='Loadingspinner'
-			/>
-		);
+		content = <Loading />;
 	}
 
 	if (error) {

@@ -3,6 +3,7 @@ import debounce from 'lodash.debounce';
 
 import ProductFilter from '../../assets/style/products/styled-products-filter';
 import { filterActions } from '../../store/filter-slice';
+import { MAX_PRODUCT_PRICE } from '../../helpers/values';
 
 const ProductsFilter = () => {
 	const dispatch = useDispatch();
@@ -104,8 +105,9 @@ const ProductsFilter = () => {
 					id='input_price'
 					type='range'
 					min={0}
-					max={1000}
-					step={1}
+					max={MAX_PRODUCT_PRICE}
+					step={10}
+					defaultValue={MAX_PRODUCT_PRICE}
 					onChange={debounceFilterbyPrice}
 				/>
 				<span className='filter__price'>Value: ${filterPrice}</span>

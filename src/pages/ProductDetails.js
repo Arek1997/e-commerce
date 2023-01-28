@@ -4,7 +4,7 @@ import useFetch from 'react-fetch-hook';
 import { cartActions } from '../store/cart-slice';
 
 import Container from '../components/UI/container/Container';
-import { API_URL } from '../components/API/API';
+import { API_URL } from '../helpers/values';
 
 import { SectionHero } from '../assets/style/hero-section/styled-hero';
 import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
