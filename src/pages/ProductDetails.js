@@ -8,26 +8,23 @@ import { API_URL } from '../components/API/API';
 
 import { SectionHero } from '../assets/style/hero-section/styled-hero';
 import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
-import loadingSpinner from '../assets/loadingspinner.gif';
+import Loading from '../components/Loading/Loading';
 
 const ProductDetails = () => {
 	const { productId } = useParams();
 	const { isLoading, error, data } = useFetch(`${API_URL}/${productId}`);
 	const dispatch = useDispatch();
 
+	let productTitle;
 	let content = <p className='error-text'>Product not found</p>;
 
 	if (isLoading) {
-		content = (
-			<img
-				style={{ display: 'block', margin: '0 auto' }}
-				src={loadingSpinner}
-				alt='Loadingspinner'
-			/>
-		);
+		productTitle = 'Loading...';
+		content = <Loading />;
 	}
 
 	if (error) {
+		productTitle = 'Product not found';
 		content = (
 			<p className='error-text'>
 				{error.status} {error.message} Check if URL address "{API_URL}" is
@@ -48,6 +45,7 @@ const ProductDetails = () => {
 
 		const addProductHandler = () => dispatch(cartActions.addProduct(product));
 
+		productTitle = `Products / ${data.title}`;
 		content = (
 			<article className='product'>
 				<div className='product__img'>
@@ -73,7 +71,7 @@ const ProductDetails = () => {
 		<>
 			<SectionHero>
 				<Container padding='section'>
-					<h2>Products / {data?.title || 'not found'}</h2>
+					<h2>{productTitle}</h2>
 				</Container>
 			</SectionHero>
 
