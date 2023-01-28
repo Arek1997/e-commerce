@@ -41,7 +41,7 @@ const StyledProduct = styled.article`
 			color: hsl(209, 34%, 30%);
 		}
 
-		&__icon-actions {
+		/* &__icon-actions {
 			max-width: 10rem;
 			position: absolute;
 			display: flex;
@@ -76,7 +76,7 @@ const StyledProduct = styled.article`
 			.product__favourite {
 				color: ${(props) => (props.favourite ? 'var(--fail-color)' : '#fff')};
 			}
-		}
+		} */
 	}
 `;
 
