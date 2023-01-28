@@ -10,7 +10,7 @@ import {
 	StyledProfileModal,
 	StyledResponseMessage,
 } from '../../../assets/style/profile/styled-profile-modal';
-import loadingSpinner from '../../../assets/loadingspinner.gif';
+import Loading from '../../Loading/Loading';
 
 const ProfileModal = () => {
 	const dispatch = useDispatch();
@@ -170,11 +170,7 @@ const ProfileModal = () => {
 				/>
 				<span className='password-error'>{errors.password?.message}</span>
 				{isLoading ? (
-					<img
-						style={{ display: 'block', width: '100px', margin: '0 auto' }}
-						src={loadingSpinner}
-						alt='Loadingspinner'
-					/>
+					<Loading styles={{ width: '100px' }} />
 				) : (
 					<button>{logIn ? 'Log in' : 'Register'}</button>
 				)}
