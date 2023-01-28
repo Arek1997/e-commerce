@@ -77,6 +77,7 @@ const ProductsItem = (props) => {
 					alt={props.title}
 					src={props.image}
 					placeholderSrc={imagePlaceholder}
+					width={'100%'}
 				/>
 
 				<ProductsActionIcons

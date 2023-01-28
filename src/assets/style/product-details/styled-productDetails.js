@@ -23,6 +23,7 @@ export const StyledProductDetails = styled.section`
 
 			img {
 				width: 100%;
+				min-height: 200px;
 				max-height: 400px;
 				object-fit: contain;
 

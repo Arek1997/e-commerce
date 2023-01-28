@@ -9,6 +9,8 @@ import { API_URL } from '../helpers/values';
 import { SectionHero } from '../assets/style/hero-section/styled-hero';
 import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
 import Loading from '../components/Loading/Loading';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import imagePlaceholder from '../assets/img/product/product-placeholder.webp';
 
 const ProductDetails = () => {
 	const { productId } = useParams();
@@ -49,7 +51,12 @@ const ProductDetails = () => {
 		content = (
 			<article className='product'>
 				<div className='product__img'>
-					<img src={data.image} alt={data.title} />
+					<LazyLoadImage
+						src={data.image}
+						alt={data.title}
+						width={'100%'}
+						placeholderSrc={imagePlaceholder}
+					/>
 				</div>
 				<div className='product__details'>
 					<h3 className='product__name'>{data.title}</h3>
