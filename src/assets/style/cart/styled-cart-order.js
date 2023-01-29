@@ -73,7 +73,8 @@ export const StyledForm = styled.form`
 	.order-price {
 		font-size: 1.4rem;
 		font-weight: bold;
-		font-family: cursive;
+		font-family: var(--cursive);
+		letter-spacing: 1px;
 
 		@media (min-width: 320px) {
 			font-size: 1.6rem;

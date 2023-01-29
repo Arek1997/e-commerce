@@ -69,8 +69,9 @@ const StyledCartProduct = styled.article`
 
 		&__total-price {
 			font-size: 1.3rem;
-			font-family: cursive;
+			font-family: var(--cursive);
 			font-weight: 600;
+			letter-spacing: 1px;
 
 			@media (min-width: 1400px) {
 				font-size: 1.6rem;

@@ -37,7 +37,8 @@ const CartMenu = styled.aside`
 
 	h3,
 	p {
-		font-family: cursive;
+		font-family: var(--cursive);
+		letter-spacing: 1px;
 		font-size: 2rem;
 		font-weight: 400;
 		color: var(--light-gray);

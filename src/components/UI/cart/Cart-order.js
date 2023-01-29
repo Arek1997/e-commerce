@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import loadingSpinner from '../../../assets/loadingspinner.gif';
-
 import { navigationActions } from '../../../store/navigation-slice';
 import { cartActions } from '../../../store/cart-slice';
 import { alertActions } from '../../../store/alert-slice';
@@ -13,6 +11,8 @@ import {
 	StyledOrder,
 	StyledForm,
 } from '../../../assets/style/cart/styled-cart-order';
+import Loading from '../../Loading/Loading';
+import { wait } from '../../../helpers/functions';
 
 let content;
 const CartOrder = () => {
@@ -67,17 +67,29 @@ const CartOrder = () => {
 					}),
 				}
 			);
-		} catch (err) {
-			console.log(err);
-		}
 
-		dispatch(
-			alertActions.showAlert({
-				status: 'success',
-				title: 'Order sent',
-				message: `Your order was successfully sent. Thank you for use our service.`,
-			})
-		);
+			if (!response.ok) {
+				throw new Error('Fail to send order.');
+			}
+
+			await wait(2);
+
+			dispatch(
+				alertActions.showAlert({
+					status: 'success',
+					title: 'Order sent',
+					message: `Your order was successfully sent. Thank you for use our service.`,
+				})
+			);
+		} catch (err) {
+			dispatch(
+				alertActions.showAlert({
+					status: 'fail',
+					title: 'Failed to fetch',
+					message: `Some issue occurred, please try later.`,
+				})
+			);
+		}
 
 		dispatch(cartActions.clearProductsList());
 		dispatch(navigationActions.toggleCartOrder());
@@ -98,13 +110,7 @@ const CartOrder = () => {
 	}, [isSubmitSuccessful, reset]);
 
 	if (isLoading) {
-		content = (
-			<img
-				src={loadingSpinner}
-				alt='Loading spinner'
-				style={{ display: 'block', width: '100px', margin: '0 auto' }}
-			/>
-		);
+		content = <Loading styles={{ width: '100px' }} />;
 	} else {
 		content = (
 			<>
@@ -208,7 +214,9 @@ const CartOrder = () => {
 				className='fa-solid fa-xmark close'
 				onClick={toggleCartOrderHandler}
 			></i>
-			<h3 className='text-center'>Data to order</h3>
+			<h3 className='text-center'>
+				{isLoading ? 'Processing...' : 'Data to order'}
+			</h3>
 
 			{content}
 		</StyledOrder>

@@ -11,7 +11,7 @@ import {
 	StyledForm,
 } from '../../../assets/style/profile/styled-profile-details';
 import { StyledResponseMessage } from '../../../assets/style/profile/styled-profile-modal';
-import loadingSpinner from '../../../assets/loadingspinner.gif';
+import Loading from '../../Loading/Loading';
 
 const ProfileDetails = () => {
 	const dispatch = useDispatch();
@@ -149,13 +149,7 @@ const ProfileDetails = () => {
 	}, [isSubmitSuccessful, reset]);
 
 	if (isLoading) {
-		content = (
-			<img
-				style={{ display: 'block', width: '100px', margin: '0 auto' }}
-				src={loadingSpinner}
-				alt='Loadingspinner'
-			/>
-		);
+		content = <Loading styles={{ width: '100px' }} />;
 	}
 
 	if (Object.keys(profileData).length > 0) {
