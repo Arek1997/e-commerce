@@ -28,6 +28,7 @@ App includes:
 - React Router v6
 - React Hook Form
 - React Paginate
+- React Lazy Load Image
 - SCSS
 - Styled Component
 - Firebase authentication
