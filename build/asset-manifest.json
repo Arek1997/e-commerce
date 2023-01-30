@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/e-comerse/static/css/main.ffa90869.css",
+    "main.css": "/e-comerse/static/css/main.c3c9f726.css",
     "main.js": "/e-comerse/static/js/main.db45af7f.js",
     "static/js/413.49443e6e.chunk.js": "/e-comerse/static/js/413.49443e6e.chunk.js",
     "static/js/223.add67cd0.chunk.js": "/e-comerse/static/js/223.add67cd0.chunk.js",
@@ -12,7 +12,7 @@
     "static/media/background.jpeg": "/e-comerse/static/media/background.7880c4eab3c7fb142ae4.jpeg",
     "static/media/product-placeholder.webp": "/e-comerse/static/media/product-placeholder.013cd76f21371b0905a8.webp",
     "index.html": "/e-comerse/index.html",
-    "main.ffa90869.css.map": "/e-comerse/static/css/main.ffa90869.css.map",
+    "main.c3c9f726.css.map": "/e-comerse/static/css/main.c3c9f726.css.map",
     "main.db45af7f.js.map": "/e-comerse/static/js/main.db45af7f.js.map",
     "413.49443e6e.chunk.js.map": "/e-comerse/static/js/413.49443e6e.chunk.js.map",
     "223.add67cd0.chunk.js.map": "/e-comerse/static/js/223.add67cd0.chunk.js.map",
@@ -22,7 +22,7 @@
     "790.a6d55182.chunk.js.map": "/e-comerse/static/js/790.a6d55182.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ffa90869.css",
+    "static/css/main.c3c9f726.css",
     "static/js/main.db45af7f.js"
   ]
 }
