@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Layout from './components/UI/layout/Layout';
-import Loadingspinner from './assets/loadingspinner.gif';
+import Loading from './components/Loading/Loading';
 
 const Home = lazy(() => import('./pages/Home'));
 const Aboutus = lazy(() => import('./pages/Aboutus'));
@@ -12,15 +12,7 @@ const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const App = () => {
 	return (
 		<Layout>
-			<Suspense
-				fallback={
-					<img
-						src={Loadingspinner}
-						alt='Loading spinner'
-						style={{ display: 'block', margin: '0 auto' }}
-					/>
-				}
-			>
+			<Suspense fallback={<Loading />}>
 				<Routes>
 					<Route path='home' element={<Home />} />
 					<Route path='products' element={<Products />} />
