@@ -1,6 +1,6 @@
 ## Live 📍
 
-https://arek1997.github.io/e-comerse/
+https://arek1997.github.io/e-commerce/
 
 ## Credentials 💳
 
