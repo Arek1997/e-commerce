@@ -18,7 +18,7 @@ import Container from '../container/Container';
 
 let vieportWidth = window.innerWidth;
 
-const Navigation = (props) => {
+const Navigation = () => {
 	const [showProfileOptions, setShowProfileOptions] = useState(false);
 	const dispatch = useDispatch();
 	const { pathname } = useLocation();
@@ -49,7 +49,7 @@ const Navigation = (props) => {
 	const toggleProfileOptions = () => setShowProfileOptions(!showProfileOptions);
 
 	const toggleProfileModalHandler = () => {
-		dispatch(navigationActions.toggleProfileModal());
+		dispatch(navigationActions.toggleProfileAuthModal());
 		dispatch(navigationActions.toggleOverlay());
 		toggleProfileOptions();
 	};

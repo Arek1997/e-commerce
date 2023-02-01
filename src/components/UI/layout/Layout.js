@@ -9,7 +9,7 @@ import Cart from '../cart/Cart';
 import CartOrder from '../cart/Cart-order';
 import Overlay from '../overlay/Overlay';
 import Footer from '../footer/Footer';
-import ProfileModal from '../profile/ProfileModal';
+import ProfileAuthModal from '../profile/ProfileAuthModal';
 import ProfileDetails from '../profile/ProfileDetails';
 import ProfileFavProducts from '../profile/ProfileFavProducts';
 import Alert from '../alert/Alert';
@@ -21,7 +21,7 @@ const Layout = (props) => {
 		isCartShown,
 		isCartOrderShown,
 		isOverlayShown,
-		isProfileModalShown,
+		isProfileAuthModalShown,
 		isProfileDetailsShown,
 		ifProfileFavProductsShown,
 	} = useSelector((state) => state.navigation);
@@ -39,7 +39,8 @@ const Layout = (props) => {
 		isNavShown && dispatch(navigationActions.toggleNav());
 		isCartShown && dispatch(navigationActions.toggleCart());
 		isCartOrderShown && dispatch(navigationActions.toggleCartOrder());
-		isProfileModalShown && dispatch(navigationActions.toggleProfileModal());
+		isProfileAuthModalShown &&
+			dispatch(navigationActions.toggleProfileAuthModal());
 		isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
 		ifProfileFavProductsShown &&
 			dispatch(navigationActions.toggleProfileFavProducts());
@@ -53,7 +54,7 @@ const Layout = (props) => {
 			<main>{props.children}</main>
 			<Footer />
 			{isOverlayShown && <Overlay onClick={toggleOverlayHandler} />}
-			{isProfileModalShown && <ProfileModal />}
+			{isProfileAuthModalShown && <ProfileAuthModal />}
 			{isProfileDetailsShown && <ProfileDetails />}
 			{ifProfileFavProductsShown && <ProfileFavProducts />}
 			{isCartOrderShown && <CartOrder />}

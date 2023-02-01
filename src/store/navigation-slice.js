@@ -5,7 +5,7 @@ const initialState = {
 	isCartShown: false,
 	isCartOrderShown: false,
 	isOverlayShown: false,
-	isProfileModalShown: false,
+	isProfileAuthModalShown: false,
 	isProfileDetailsShown: false,
 	ifProfileFavProductsShown: false,
 };
@@ -30,8 +30,8 @@ const navigationSlice = createSlice({
 			state.isOverlayShown = !state.isOverlayShown;
 		},
 
-		toggleProfileModal: (state) => {
-			state.isProfileModalShown = !state.isProfileModalShown;
+		toggleProfileAuthModal: (state) => {
+			state.isProfileAuthModalShown = !state.isProfileAuthModalShown;
 		},
 
 		toggleProfileDetails: (state) => {

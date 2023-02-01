@@ -6,12 +6,12 @@ import { useLocation } from 'react-router-dom';
 import { navigationActions } from '../../../store/navigation-slice';
 
 import {
-	StyledProfileModal,
+	StyledProfileAuthModal,
 	StyledResponseMessage,
-} from '../../../assets/style/profile/styled-profile-modal';
+} from '../../../assets/style/profile/styled-profile-auth-modal';
 import AuthForm from './authForm/AuthForm';
 
-const ProfileModal = () => {
+const ProfileAuthModal = () => {
 	const dispatch = useDispatch();
 	const [responseMessage, setResponseMessage] = useState({
 		status: null,
@@ -38,7 +38,7 @@ const ProfileModal = () => {
 	});
 
 	const toggleProfileModalHandler = () => {
-		dispatch(navigationActions.toggleProfileModal());
+		dispatch(navigationActions.toggleProfileAuthModal());
 		dispatch(navigationActions.toggleOverlay());
 	};
 
@@ -59,7 +59,7 @@ const ProfileModal = () => {
 	useEffect(() => {
 		if (logIn && isLoggedIn) {
 			const timeout = setTimeout(() => {
-				dispatch(navigationActions.toggleProfileModal());
+				dispatch(navigationActions.toggleProfileAuthModal());
 				dispatch(navigationActions.toggleOverlay());
 			}, 1500);
 
@@ -68,7 +68,7 @@ const ProfileModal = () => {
 	}, [logIn, isLoggedIn]);
 
 	return (
-		<StyledProfileModal notHomePage={notHomePage}>
+		<StyledProfileAuthModal notHomePage={notHomePage}>
 			<i
 				className='fa-solid fa-xmark closeModal'
 				onClick={toggleProfileModalHandler}
@@ -95,8 +95,8 @@ const ProfileModal = () => {
 					{!logIn ? 'Log in' : 'Sign up'}
 				</button>
 			</p>
-		</StyledProfileModal>
+		</StyledProfileAuthModal>
 	);
 };
 
-export default ProfileModal;
+export default ProfileAuthModal;

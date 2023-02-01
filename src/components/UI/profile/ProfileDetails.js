@@ -10,7 +10,7 @@ import {
 	StyledDetails,
 	StyledForm,
 } from '../../../assets/style/profile/styled-profile-details';
-import { StyledResponseMessage } from '../../../assets/style/profile/styled-profile-modal';
+import { StyledResponseMessage } from '../../../assets/style/profile/styled-profile-auth-modal';
 import Loading from '../../Loading/Loading';
 
 const ProfileDetails = () => {
