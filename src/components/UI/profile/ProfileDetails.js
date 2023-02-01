@@ -4,14 +4,12 @@ import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { navigationActions } from '../../../store/navigation-slice';
-import { authenticationActions } from '../../../store/auth-slice';
 
-import {
-	StyledDetails,
-	StyledForm,
-} from '../../../assets/style/profile/styled-profile-details';
-import { StyledResponseMessage } from '../../../assets/style/profile/styled-profile-auth-modal';
 import Loading from '../../Loading/Loading';
+import ChangePassword from './changePassword/ChangePassword';
+
+import { StyledDetails } from '../../../assets/style/profile/styled-profile-details';
+import { StyledResponseMessage } from '../../../assets/style/profile/styled-profile-auth-modal';
 
 const ProfileDetails = () => {
 	const dispatch = useDispatch();
@@ -94,49 +92,6 @@ const ProfileDetails = () => {
 		return () => clearTimeout(timeout);
 	}, [responseMessage]);
 
-	const changePasswordHandler = async (data) => {
-		setIsLoading(true);
-
-		const { password: newPassword } = data;
-
-		try {
-			const response = await fetch(
-				'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCtGvqymH11_3PzBQ1fJ9Ci5-F5w1HUSqA',
-				{
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						idToken: token,
-						password: newPassword,
-						returnSecureToken: true,
-					}),
-				}
-			);
-
-			if (!response.ok) {
-				const errorResponse = await response.json();
-				const errorMessage = errorResponse.error.message;
-				throw new Error(errorMessage);
-			}
-
-			const data = await response.json();
-
-			setResponseMessage({
-				status: 'success',
-				message: 'New password has been created!',
-			});
-
-			dispatch(authenticationActions.changeToken(data.idToken));
-		} catch (err) {
-			setResponseMessage({
-				status: 'fail',
-				message: err.message,
-			});
-		}
-
-		setIsLoading(false);
-	};
-
 	const toggleProfileDetailsHandler = () => {
 		dispatch(navigationActions.toggleProfileDetails());
 		dispatch(navigationActions.toggleOverlay());
@@ -199,31 +154,14 @@ const ProfileDetails = () => {
 			{content}
 
 			{Object.keys(profileData).length > 0 && (
-				<div className='particularInfo particularInfo--password'>
-					<h4>Change password:</h4>
-					<StyledForm
-						className='change__password'
-						onSubmit={handleSubmit(changePasswordHandler)}
-					>
-						<label htmlFor='password'></label>
-						<input
-							type='password'
-							id='password'
-							placeholder='Your new password'
-							{...register('password', {
-								required: 'Password is required',
-								pattern: {
-									message:
-										'Password have to contains at least 8 sign, at least one uppercase letter, at least one downcase letter, at least one number and at least one special sign.',
-									value:
-										/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/gm,
-								},
-							})}
-						/>
-						<span className='password-error'>{errors.password?.message}</span>
-						<button>Change</button>
-					</StyledForm>
-				</div>
+				<ChangePassword
+					token={token}
+					handleSubmit={handleSubmit}
+					register={register}
+					errors={errors}
+					setResponseMessage={setResponseMessage}
+					dispatch={dispatch}
+				/>
 			)}
 		</StyledDetails>
 	);
