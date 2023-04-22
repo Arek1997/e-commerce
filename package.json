@@ -24,7 +24,9 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"deploy": "gh-pages -d build"
+		"deploy": "gh-pages -d build",
+		"cypress": "cypress open",
+		"cypress:run": "cypress run"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -49,6 +51,7 @@
 		"@types/react-dom": "^18.0.11",
 		"@types/styled-components": "^5.1.26",
 		"@vitejs/plugin-react": "^4.0.0",
+		"cypress": "^12.10.0",
 		"gh-pages": "^4.0.0",
 		"typescript": "^5.0.4",
 		"vite": "^4.3.1"
