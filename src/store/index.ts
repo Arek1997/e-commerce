@@ -14,8 +14,11 @@ const store = configureStore({
 		filter: filterSlice.reducer,
 		authentication: authSlice.reducer,
 		favProducts: favProductsSlice.reducer,
-		alert: alertSlice.reducer,
+		alert: alertSlice,
 	},
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

@@ -4,7 +4,7 @@ import { cartActions } from '../../store/cart-slice';
 
 import { navigationActions } from '../../store/navigation-slice';
 import { favProductsActions } from '../../store/favProducts-slice';
-import { alertActions } from '../../store/alert-slice';
+import { showAlert } from '../../store/alert-slice';
 
 import { Link } from 'react-router-dom';
 
@@ -51,7 +51,7 @@ const ProductsItem = (props) => {
 		} else {
 			dispatch(navigationActions.toggleOverlay());
 			dispatch(
-				alertActions.showAlert({
+				showAlert({
 					status: 'warning',
 					title: 'Warning',
 					message: `If you wanna select product as favourite you have to be logged

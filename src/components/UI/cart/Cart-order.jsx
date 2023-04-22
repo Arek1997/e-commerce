@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { navigationActions } from '../../../store/navigation-slice';
 import { cartActions } from '../../../store/cart-slice';
-import { alertActions } from '../../../store/alert-slice';
+import { showAlert } from '../../../store/alert-slice';
 
 import {
 	StyledOrder,
@@ -75,7 +75,7 @@ const CartOrder = () => {
 			await wait(2);
 
 			dispatch(
-				alertActions.showAlert({
+				showAlert({
 					status: 'success',
 					title: 'Order sent',
 					message: `Your order was successfully sent. Thank you for use our service.`,
@@ -83,7 +83,7 @@ const CartOrder = () => {
 			);
 		} catch (err) {
 			dispatch(
-				alertActions.showAlert({
+				showAlert({
 					status: 'fail',
 					title: 'Failed to fetch',
 					message: `Some issue occurred, please try later.`,

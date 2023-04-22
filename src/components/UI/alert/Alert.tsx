@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 
-import { alertActions } from '../../../store/alert-slice';
+import { showAlert } from '../../../store/alert-slice';
 import { navigationActions } from '../../../store/navigation-slice';
 
-import StyledAlert from '../../../assets/style/alert/styled-alert';
+import StyledAlert from './style/styled-alert';
 
 const Alert = () => {
-	const dispatch = useDispatch();
-	const { status, title, message } = useSelector((state) => state.alert);
+	const dispatch = useAppDispatch();
+	const { status, title, message } = useAppSelector((state) => state.alert);
 
 	const closeAlertHandler = () => {
-		dispatch(alertActions.showAlert());
+		dispatch(showAlert());
 		dispatch(navigationActions.toggleOverlay());
 	};
 

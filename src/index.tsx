@@ -7,7 +7,9 @@ import { Provider } from 'react-redux';
 import './assets/style/global.css';
 import store from './store/index';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+	document.getElementById('root') as HTMLElement
+);
 root.render(
 	<HashRouter>
 		<React.StrictMode>

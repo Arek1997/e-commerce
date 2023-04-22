@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { navigationActions } from '../../../store/navigation-slice';
-import { alertActions } from '../../../store/alert-slice';
+import { showAlert } from '../../../store/alert-slice';
 
 import CartMenu from '../../../assets/style/cart/styled-cart';
 import CartList from './Cart-list';
@@ -30,7 +30,7 @@ const Cart = (props) => {
 		} else {
 			dispatch(navigationActions.toggleCart());
 			dispatch(
-				alertActions.showAlert({
+				showAlert({
 					status: 'warning',
 					title: 'Warning',
 					message: `If you wanna order products you have to be logged

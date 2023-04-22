@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 
 import { navigationActions } from '../../../store/navigation-slice';
-import { alertActions } from '../../../store/alert-slice';
+import { showAlert } from '../../../store/alert-slice';
 
 import Navigation from '../navigation/Navigation';
 import Cart from '../cart/Cart';
@@ -15,7 +15,7 @@ import ProfileFavProducts from '../profile/ProfileFavProducts';
 import Alert from '../alert/Alert';
 
 const Layout = (props) => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const {
 		isNavShown,
 		isCartShown,
@@ -24,9 +24,9 @@ const Layout = (props) => {
 		isProfileAuthModalShown,
 		isProfileDetailsShown,
 		ifProfileFavProductsShown,
-	} = useSelector((state) => state.navigation);
+	} = useAppSelector((state) => state.navigation);
 
-	const { showAlert } = useSelector((state) => state.alert);
+	const { isOpen } = useAppSelector((state) => state.alert);
 
 	useEffect(() => {
 		isOverlayShown
@@ -44,7 +44,7 @@ const Layout = (props) => {
 		isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
 		ifProfileFavProductsShown &&
 			dispatch(navigationActions.toggleProfileFavProducts());
-		showAlert && dispatch(alertActions.showAlert());
+		isOpen && dispatch(showAlert());
 	};
 
 	return (
@@ -58,7 +58,7 @@ const Layout = (props) => {
 			{isProfileDetailsShown && <ProfileDetails />}
 			{ifProfileFavProductsShown && <ProfileFavProducts />}
 			{isCartOrderShown && <CartOrder />}
-			{showAlert && <Alert />}
+			{isOpen && <Alert />}
 		</>
 	);
 };

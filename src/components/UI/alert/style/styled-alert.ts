@@ -1,8 +1,12 @@
 import styled from 'styled-components';
+import { AlertStatus } from '../../../../interface/index';
+import { Close, HoverEffect } from '../../../../assets/style/components';
 
-import { Close, HoverEffect } from '../components';
+interface Props {
+	alertStatus: AlertStatus;
+}
 
-const StyledAlert = styled.div`
+const StyledAlert = styled.div<Props>`
 	min-width: 25rem;
 	max-width: 35rem;
 	position: fixed;
@@ -29,10 +33,10 @@ const StyledAlert = styled.div`
 
 		&__head {
 			padding: 1em;
-			background-color: ${(props) => {
-				if (props.alertStatus === 'success') return 'var(--success-color)';
-				if (props.alertStatus === 'warning') return 'var(--warning)';
-				if (props.alertStatus === 'fail') return 'var(--fail-color)';
+			background-color: ${({ alertStatus }) => {
+				if (alertStatus === 'success') return 'var(--success-color)';
+				if (alertStatus === 'warning') return 'var(--warning)';
+				if (alertStatus === 'fail') return 'var(--fail-color)';
 			}};
 			font-size: 1.6rem;
 
