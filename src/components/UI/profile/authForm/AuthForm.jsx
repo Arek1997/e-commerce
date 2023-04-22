@@ -77,6 +77,7 @@ const AuthForm = (props) => {
 						value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
 					},
 				})}
+				data-testid='email-imput'
 			/>
 			<span className='login-error'>{props.errors.email?.message}</span>
 
@@ -94,12 +95,15 @@ const AuthForm = (props) => {
 							/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/gm,
 					},
 				})}
+				data-testid='password-input'
 			/>
 			<span className='password-error'>{props.errors.password?.message}</span>
 			{isLoading ? (
 				<Loading styles={{ width: '100px' }} />
 			) : (
-				<button>{props.logIn ? 'Log in' : 'Register'}</button>
+				<button data-testid='submit-button'>
+					{props.logIn ? 'Log in' : 'Register'}
+				</button>
 			)}
 		</StyledAuthForm>
 	);

@@ -71,10 +71,15 @@ const Navigation = () => {
 	return (
 		<Container>
 			<Nav className='section'>
-				<UlList className={isNavShown ? 'open' : ''} notHomePage={notHomePage}>
+				<UlList
+					className={isNavShown ? 'open' : ''}
+					notHomePage={notHomePage}
+					data-testid='navigation-wrapper'
+				>
 					<i
 						className='fa-solid fa-xmark closeNav'
 						onClick={toggleMobNavHandler}
+						data-testid='close-navigation'
 					></i>
 					<ul>
 						<li>
@@ -110,7 +115,11 @@ const Navigation = () => {
 					</ul>
 				</UlList>
 
-				<BurgerBtn aria-label='Burger button' onClick={toggleMobNavHandler}>
+				<BurgerBtn
+					aria-label='Burger button'
+					onClick={toggleMobNavHandler}
+					data-testid='burger-button'
+				>
 					<i className='fa-solid fa-bars'></i>
 				</BurgerBtn>
 
@@ -119,6 +128,7 @@ const Navigation = () => {
 				<IconsDiv className='icons' notHomePage={notHomePage}>
 					<Cart
 						aria-label='Cart button'
+						data-testid='shopping-cart'
 						onClick={toggleCartHandler}
 						notHomePage={notHomePage}
 					>
@@ -132,12 +142,13 @@ const Navigation = () => {
 						aria-label='Profile button'
 						notHomePage={notHomePage}
 						onClick={toggleProfileOptions}
+						data-testid='profile-icon'
 					>
 						<i className='fa-solid fa-user'></i>
 					</Cart>
 
 					{showProfileOptions && (
-						<nav>
+						<nav data-testid='profile-option'>
 							<ul>
 								{!isLoggedIn && (
 									<li onClick={toggleProfileModalHandler}>Log in</li>

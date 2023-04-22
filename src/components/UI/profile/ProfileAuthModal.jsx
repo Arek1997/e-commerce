@@ -68,15 +68,20 @@ const ProfileAuthModal = () => {
 	}, [logIn, isLoggedIn]);
 
 	return (
-		<StyledProfileAuthModal notHomePage={notHomePage}>
+		<StyledProfileAuthModal
+			notHomePage={notHomePage}
+			data-testid='profile-modal'
+		>
 			<i
 				className='fa-solid fa-xmark closeModal'
 				onClick={toggleProfileModalHandler}
+				data-testid='close-profile-modal'
 			></i>
 			<h2 className='text-center'>Welcome in AlleDrogo!</h2>
 			<StyledResponseMessage
 				status={responseMessage.status}
 				className='response-message text-center'
+				data-testid='profile-response-message'
 			>
 				{responseMessage.message}
 			</StyledResponseMessage>

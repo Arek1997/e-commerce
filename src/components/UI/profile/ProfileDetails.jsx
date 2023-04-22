@@ -138,10 +138,15 @@ const ProfileDetails = () => {
 	}
 
 	return (
-		<StyledDetails notHomePage={notHomePage} disabled={false}>
+		<StyledDetails
+			notHomePage={notHomePage}
+			disabled={false}
+			data-testid='profile-details-wrapper'
+		>
 			<i
 				className='fa-solid fa-xmark closeModal'
 				onClick={toggleProfileDetailsHandler}
+				data-testid='close-profile-details'
 			></i>
 			<h3 className='text-center'>Profile details</h3>
 			<StyledResponseMessage

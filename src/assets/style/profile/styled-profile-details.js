@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ModalBase, InputAndButton, Close, Heading } from '../components';
 
-export const StyledDetails = styled.section`
+export const StyledDetails = styled.div`
 	${ModalBase}
 
 	max-width: 45rem;

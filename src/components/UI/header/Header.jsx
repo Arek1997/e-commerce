@@ -12,7 +12,9 @@ const Header = () => {
 				<StyledHeading>
 					<p>Rest, Relax, Unwind</p>
 					<p>Embrace your choices - we do</p>
-					<StyledLink to='../products'>Show now</StyledLink>
+					<StyledLink to='../products' data-testid='header-button'>
+						Show now
+					</StyledLink>
 				</StyledHeading>
 			</Container>
 		</StyledHeader>

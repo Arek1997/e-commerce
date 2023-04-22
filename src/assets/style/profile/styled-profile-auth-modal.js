@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Close, ModalBase, InputAndButton, Heading } from '../components';
 
-export const StyledProfileAuthModal = styled.section`
+export const StyledProfileAuthModal = styled.div`
 	${ModalBase}
 
 	max-width: 40rem;

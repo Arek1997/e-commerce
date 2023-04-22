@@ -41,10 +41,11 @@ const Cart = (props) => {
 	};
 
 	return (
-		<CartMenu className={isCartShown ? 'open' : ''}>
+		<CartMenu className={isCartShown ? 'open' : ''} data-testid='cart-wrapper'>
 			<i
 				className='fa-solid fa-xmark closeCart'
 				onClick={toggleCartHandler}
+				data-testid='close-cart'
 			></i>
 			<header>
 				<h3>Your Cart</h3>
