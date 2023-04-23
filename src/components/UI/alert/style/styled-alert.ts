@@ -9,16 +9,10 @@ interface Props {
 const StyledAlert = styled.div<Props>`
 	min-width: 25rem;
 	max-width: 35rem;
-	position: fixed;
-	top: 20%;
-	left: 50%;
-	transform: translateX(-50%);
 	backdrop-filter: blur(5px);
 	border-radius: 8px;
 	overflow: hidden;
 	z-index: 2;
-
-	animation: fade-in-from-bottom 0.3s ease both;
 
 	.alert {
 		&__close {

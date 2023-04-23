@@ -56,8 +56,6 @@ export const ModalBase = `
 	border-radius: 8px;
 	z-index: 2;
 
-	animation: fade-in-from-bottom .3s ease both;
-
 	@media (max-height: 530px) {
 		height: 100vh;
 		overflow-y: auto;
