@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { navigationActions } from '../../../store/navigation-slice';
+import {
+	toggleCartOrder,
+	toggleOverlay,
+} from '../../../store/navigation-slice';
 import { cartActions } from '../../../store/cart-slice';
 import { showAlert } from '../../../store/alert-slice';
 
@@ -29,9 +32,9 @@ const CartOrder = () => {
 	}, 0);
 
 	const toggleCartOrderHandler = () => {
-		dispatch(navigationActions.toggleCartOrder());
+		dispatch(toggleCartOrder());
 
-		isCartOrderShown && dispatch(navigationActions.toggleOverlay());
+		isCartOrderShown && dispatch(toggleOverlay());
 	};
 
 	const {
@@ -92,7 +95,7 @@ const CartOrder = () => {
 		}
 
 		dispatch(cartActions.clearProductsList());
-		dispatch(navigationActions.toggleCartOrder());
+		dispatch(toggleCartOrder());
 		setIsLoading(false);
 	};
 

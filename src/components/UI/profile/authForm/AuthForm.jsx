@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Loading from '../../../Loading/Loading';
-import { authenticationActions } from '../../../../store/auth-slice';
+import { logIn } from '../../../../store/auth-slice';
 
 import { StyledAuthForm } from '../../../../assets/style/profile/authForm/styled-authForm';
 
@@ -52,7 +52,7 @@ const AuthForm = (props) => {
 					message: 'Loged In successfully!',
 				});
 
-				dispatch(authenticationActions.logIn(data.idToken));
+				dispatch(logIn(data.idToken));
 			}
 		} catch (err) {
 			props.setResponseMessage({

@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isNavShown: false,
 	isCartShown: false,
 	isCartOrderShown: false,
 	isOverlayShown: false,
@@ -14,10 +13,6 @@ const navigationSlice = createSlice({
 	name: 'navigation',
 	initialState,
 	reducers: {
-		toggleNav: (state) => {
-			state.isNavShown = !state.isNavShown;
-		},
-
 		toggleCart: (state) => {
 			state.isCartShown = !state.isCartShown;
 		},
@@ -44,5 +39,12 @@ const navigationSlice = createSlice({
 	},
 });
 
-export const navigationActions = navigationSlice.actions;
+export const {
+	toggleCart,
+	toggleCartOrder,
+	toggleOverlay,
+	toggleProfileAuthModal,
+	toggleProfileDetails,
+	toggleProfileFavProducts,
+} = navigationSlice.actions;
 export default navigationSlice.reducer;

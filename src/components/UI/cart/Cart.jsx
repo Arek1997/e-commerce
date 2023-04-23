@@ -1,6 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { navigationActions } from '../../../store/navigation-slice';
+import {
+	toggleCart,
+	toggleCartOrder,
+	toggleOverlay,
+} from '../../../store/navigation-slice';
 import { showAlert } from '../../../store/alert-slice';
 
 import CartMenu from '../../../assets/style/cart/styled-cart';
@@ -19,16 +23,16 @@ const Cart = (props) => {
 	}, 0);
 
 	const toggleCartHandler = () => {
-		dispatch(navigationActions.toggleCart());
-		dispatch(navigationActions.toggleOverlay());
+		dispatch(toggleCart());
+		dispatch(toggleOverlay());
 	};
 
 	const toggleCartOrderHandler = () => {
 		if (isLoggedIn) {
-			dispatch(navigationActions.toggleCartOrder());
-			isCartShown && dispatch(navigationActions.toggleCart());
+			dispatch(toggleCartOrder());
+			isCartShown && dispatch(toggleCart());
 		} else {
-			dispatch(navigationActions.toggleCart());
+			dispatch(toggleCart());
 			dispatch(
 				showAlert({
 					status: 'warning',

@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { navigationActions } from '../../../store/navigation-slice';
-import { authenticationActions } from '../../../store/auth-slice';
+import {
+	toggleCart,
+	toggleProfileAuthModal,
+	toggleProfileDetails,
+	toggleProfileFavProducts,
+} from '../../../store/navigation-slice';
+import { logOut } from '../../../store/auth-slice';
 
 import {
 	Nav,
@@ -15,64 +20,51 @@ import {
 } from '../../../assets/style/navigation/styled-navigation';
 
 import Container from '../container/Container';
-
-let vieportWidth = window.innerWidth;
+import Overlay from '../overlay/Overlay';
+import useMediaQueries from '../../../hooks/useMediaQueries';
 
 const Navigation = () => {
 	const [showProfileOptions, setShowProfileOptions] = useState(false);
-	const dispatch = useDispatch();
+	const [isNavOpen, setIsNavOpen] = useState(false);
+	const matches = useMediaQueries('max-width: 767px');
+
+	const dispatch = useAppDispatch();
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
 
-	const { isNavShown } = useSelector((state) => state.navigation);
+	const { productsList } = useAppSelector((state) => state.cart);
+	const { isLoggedIn } = useAppSelector((state) => state.authentication);
 
-	const { productsList } = useSelector((state) => state.cart);
-
-	const { isLoggedIn } = useSelector((state) => state.authentication);
-
-	let productsAmount = productsList.reduce((prev, current) => {
+	let productsAmount: string | number = productsList.reduce((prev, current) => {
 		return prev + current.amount;
 	}, 0);
 
 	productsAmount > 9 && (productsAmount = '+9');
 
-	const toggleMobNavHandler = () => {
-		dispatch(navigationActions.toggleNav());
-		dispatch(navigationActions.toggleOverlay());
-	};
-
-	const toggleCartHandler = () => {
-		dispatch(navigationActions.toggleCart());
-		dispatch(navigationActions.toggleOverlay());
-	};
-
+	const toggleMobNavHandler = () => setIsNavOpen((prevState) => !prevState);
+	const toggleCartHandler = () => dispatch(toggleCart());
 	const toggleProfileOptions = () => setShowProfileOptions(!showProfileOptions);
 
-	const toggleProfileModalHandler = () => {
-		dispatch(navigationActions.toggleProfileAuthModal());
-		dispatch(navigationActions.toggleOverlay());
+	const toggleProfileHandler = (
+		callback:
+			| typeof toggleProfileAuthModal
+			| typeof toggleProfileDetails
+			| typeof toggleProfileFavProducts
+	) => {
+		dispatch(callback());
 		toggleProfileOptions();
 	};
 
-	const logOutHandler = () => dispatch(authenticationActions.logOut());
-
-	const toggleProfileDetailsHandler = () => {
-		dispatch(navigationActions.toggleProfileDetails());
-		dispatch(navigationActions.toggleOverlay());
-		toggleProfileOptions();
-	};
-
-	const toggleProfileFavProductsHandler = () => {
-		dispatch(navigationActions.toggleProfileFavProducts());
-		dispatch(navigationActions.toggleOverlay());
-		toggleProfileOptions();
-	};
+	const logOutHandler = () => dispatch(logOut());
 
 	return (
 		<Container>
 			<Nav className='section'>
+				{isNavOpen && matches && (
+					<Overlay onClose={toggleMobNavHandler}>{}</Overlay>
+				)}
 				<UlList
-					className={isNavShown ? 'open' : ''}
+					className={isNavOpen ? 'open' : ''}
 					notHomePage={notHomePage}
 					data-testid='navigation-wrapper'
 				>
@@ -86,7 +78,7 @@ const Navigation = () => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='home'
-								onClick={vieportWidth <= 768 && toggleMobNavHandler}
+								onClick={matches ? toggleMobNavHandler : undefined}
 							>
 								<i className='fa-solid fa-house'></i>
 								Home
@@ -96,7 +88,7 @@ const Navigation = () => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='products'
-								onClick={vieportWidth <= 768 && toggleMobNavHandler}
+								onClick={matches ? toggleMobNavHandler : undefined}
 							>
 								<i className='fa-solid fa-couch'></i>
 								Products
@@ -106,7 +98,7 @@ const Navigation = () => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='aboutus'
-								onClick={vieportWidth <= 768 && toggleMobNavHandler}
+								onClick={matches ? toggleMobNavHandler : undefined}
 							>
 								<i className='fa-solid fa-book-open'></i>
 								About
@@ -151,13 +143,25 @@ const Navigation = () => {
 						<nav data-testid='profile-option'>
 							<ul>
 								{!isLoggedIn && (
-									<li onClick={toggleProfileModalHandler}>Log in</li>
+									<li
+										onClick={() => toggleProfileHandler(toggleProfileAuthModal)}
+									>
+										Log in
+									</li>
 								)}
 								{isLoggedIn && (
-									<li onClick={toggleProfileDetailsHandler}>Account</li>
+									<li
+										onClick={() => toggleProfileHandler(toggleProfileDetails)}
+									>
+										Account
+									</li>
 								)}
 								{isLoggedIn && (
-									<li onClick={toggleProfileFavProductsHandler}>
+									<li
+										onClick={() =>
+											toggleProfileHandler(toggleProfileFavProducts)
+										}
+									>
 										Favourite products
 									</li>
 								)}

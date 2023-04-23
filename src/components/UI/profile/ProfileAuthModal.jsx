@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 
-import { navigationActions } from '../../../store/navigation-slice';
+import {
+	toggleProfileAuthModal,
+	toggleOverlay,
+} from '../../../store/navigation-slice';
 
 import {
 	StyledProfileAuthModal,
@@ -38,8 +41,8 @@ const ProfileAuthModal = () => {
 	});
 
 	const toggleProfileModalHandler = () => {
-		dispatch(navigationActions.toggleProfileAuthModal());
-		dispatch(navigationActions.toggleOverlay());
+		dispatch(toggleProfileAuthModal());
+		dispatch(toggleOverlay());
 	};
 
 	const toggleIsLoginHandler = () => {
@@ -59,8 +62,8 @@ const ProfileAuthModal = () => {
 	useEffect(() => {
 		if (logIn && isLoggedIn) {
 			const timeout = setTimeout(() => {
-				dispatch(navigationActions.toggleProfileAuthModal());
-				dispatch(navigationActions.toggleOverlay());
+				dispatch(toggleProfileAuthModal());
+				dispatch(toggleOverlay());
 			}, 1500);
 
 			return () => clearTimeout(timeout);

@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { navigationActions } from '../../../store/navigation-slice';
+import {
+	toggleProfileDetails,
+	toggleOverlay,
+} from '../../../store/navigation-slice';
 
 import Loading from '../../Loading/Loading';
 import ChangePassword from './changePassword/ChangePassword';
@@ -93,8 +96,8 @@ const ProfileDetails = () => {
 	}, [responseMessage]);
 
 	const toggleProfileDetailsHandler = () => {
-		dispatch(navigationActions.toggleProfileDetails());
-		dispatch(navigationActions.toggleOverlay());
+		dispatch(toggleProfileDetails());
+		dispatch(toggleOverlay());
 	};
 
 	useEffect(() => {

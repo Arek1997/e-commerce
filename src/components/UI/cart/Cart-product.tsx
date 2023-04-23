@@ -3,17 +3,16 @@ import { cartActions } from '../../../store/cart-slice';
 import { Link } from 'react-router-dom';
 
 import StyledCartProduct from '../../../assets/style/cart/styled-cart-item';
+import { ProductAmountMode } from '../../../interface';
 
 const CartProduct = (props) => {
 	const total = props.price * props.amount;
 	const dispatch = useDispatch();
 
-	const changeProductAmoutnHandler = (increase) => {
-		dispatch(
-			cartActions.changeProductAmount({ id: props.id, increase: increase })
-		);
+	const changeProductAmountHandler = (mode: ProductAmountMode) => {
+		dispatch(cartActions.changeProductAmount({ id: props.id, mode }));
 
-		if (!increase && props.amount === 1) {
+		if (mode === 'decrease' && props.amount === 1) {
 			dispatch(cartActions.removeProduct({ id: props.id }));
 		}
 	};
@@ -40,14 +39,14 @@ const CartProduct = (props) => {
 			<div className='product__right'>
 				<button
 					className='product__increase'
-					onClick={() => changeProductAmoutnHandler(true)}
+					onClick={() => changeProductAmountHandler('increase')}
 				>
 					<i className='fa-solid fa-chevron-up'></i>
 				</button>
 				<span className='product__amount'>{props.amount}</span>
 				<button
 					className='product__decrease'
-					onClick={() => changeProductAmoutnHandler(false)}
+					onClick={() => changeProductAmountHandler('decrease')}
 				>
 					<i className='fa-solid fa-chevron-down'></i>
 				</button>

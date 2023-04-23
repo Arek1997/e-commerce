@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { authenticationActions } from '../../../../store/auth-slice';
+import { changeToken } from '../../../../store/auth-slice';
 
 import { StyledForm } from '../../../../assets/style/profile/styled-profile-details';
 
@@ -37,7 +37,7 @@ const ChangePassword = (props) => {
 				message: 'New password has been created!',
 			});
 
-			props.dispatch(authenticationActions.changeToken(data.idToken));
+			props.dispatch(changeToken(data.idToken));
 		} catch (err) {
 			props.setResponseMessage({
 				status: 'fail',

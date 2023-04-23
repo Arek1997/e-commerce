@@ -1,7 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { navigationActions } from '../../../store/navigation-slice';
+import {
+	toggleProfileFavProducts,
+	toggleOverlay,
+} from '../../../store/navigation-slice';
 import { favProductsActions } from '../../../store/favProducts-slice';
 
 import StyledFavProduct from '../../../assets/style/profile/styled-profile-fav-products';
@@ -13,8 +16,8 @@ const ProfileFavProducts = () => {
 	const { favProductsArr } = useSelector((state) => state.favProducts);
 
 	const toggleProfileFavProductsHandler = () => {
-		dispatch(navigationActions.toggleProfileFavProducts());
-		dispatch(navigationActions.toggleOverlay());
+		dispatch(toggleProfileFavProducts());
+		dispatch(toggleOverlay());
 	};
 
 	if (favProductsArr.length === 0) {

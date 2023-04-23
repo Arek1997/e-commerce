@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../store/cart-slice';
 
-import { navigationActions } from '../../store/navigation-slice';
+import { toggleOverlay } from '../../store/navigation-slice';
 import { favProductsActions } from '../../store/favProducts-slice';
 import { showAlert } from '../../store/alert-slice';
 
@@ -49,7 +49,7 @@ const ProductsItem = (props) => {
 
 			setIsFavourite(!isFavourite);
 		} else {
-			dispatch(navigationActions.toggleOverlay());
+			dispatch(toggleOverlay());
 			dispatch(
 				showAlert({
 					status: 'warning',
