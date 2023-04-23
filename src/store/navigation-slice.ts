@@ -45,4 +45,4 @@ const navigationSlice = createSlice({
 });
 
 export const navigationActions = navigationSlice.actions;
-export default navigationSlice;
+export default navigationSlice.reducer;

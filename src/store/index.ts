@@ -9,10 +9,10 @@ import alertSlice from './alert-slice';
 
 const store = configureStore({
 	reducer: {
-		cart: cartSlice.reducer,
-		navigation: navigationSlice.reducer,
+		cart: cartSlice,
+		navigation: navigationSlice,
 		filter: filterSlice.reducer,
-		authentication: authSlice.reducer,
+		authentication: authSlice,
 		favProducts: favProductsSlice.reducer,
 		alert: alertSlice,
 	},

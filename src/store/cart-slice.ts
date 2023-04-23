@@ -1,6 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Product, ProductAmountMode } from '../interface/index';
 
-const initialState = {
+interface CartState {
+	productsList: Product[];
+}
+
+const initialState: CartState = {
 	productsList: [],
 };
 
@@ -8,7 +13,7 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addProduct: (state, action) => {
+		addProduct: (state, action: PayloadAction<Product>) => {
 			const newProduct = action.payload;
 
 			const productExist = state.productsList.some(
@@ -18,7 +23,7 @@ const cartSlice = createSlice({
 			if (productExist) {
 				const existingProduct = state.productsList.find(
 					(product) => product.id === newProduct.id
-				);
+				)!;
 
 				existingProduct.amount += newProduct.amount;
 			} else {
@@ -26,21 +31,26 @@ const cartSlice = createSlice({
 			}
 		},
 
-		changeProductAmount: (state, action) => {
-			const currentProduct = state.productsList.find(
-				(product) => product.id === action.payload.id
-			);
+		changeProductAmount: (
+			state,
+			action: PayloadAction<{ id: string; mode: ProductAmountMode }>
+		) => {
+			const { id: payloadID, mode } = action.payload;
 
-			action.payload.increase
-				? currentProduct.amount++
-				: currentProduct.amount--;
+			const currentProduct = state.productsList.find(
+				(product) => product.id === payloadID
+			)!;
+
+			mode === 'increase' ? currentProduct.amount++ : currentProduct.amount--;
 		},
 
-		removeProduct: (state, action) => {
+		removeProduct: (state, action: PayloadAction<{ id: string }>) => {
+			const { id: payloadID } = action.payload;
+
 			const allProducts = state.productsList;
 			const productToRemove = allProducts.find(
-				(product) => product.id === action.payload.id
-			);
+				(product) => product.id === payloadID
+			)!;
 
 			const updatedProducts = allProducts.filter(
 				(product) => product.id !== productToRemove.id
@@ -56,4 +66,4 @@ const cartSlice = createSlice({
 });
 
 export const cartActions = cartSlice.actions;
-export default cartSlice;
+export default cartSlice.reducer;
