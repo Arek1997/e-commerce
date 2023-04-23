@@ -27,8 +27,15 @@ const alertSlice = createSlice({
 			state.title = title;
 			state.message = message;
 		},
+
+		closeAlert: (state) => {
+			state.isOpen = false;
+			state.status = '';
+			state.title = '';
+			state.message = '';
+		},
 	},
 });
 
-export const { showAlert } = alertSlice.actions;
+export const { showAlert, closeAlert } = alertSlice.actions;
 export default alertSlice.reducer;
