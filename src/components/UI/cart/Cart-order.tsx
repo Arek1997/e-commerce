@@ -8,7 +8,7 @@ import { cartActions } from '../../../store/cart-slice';
 import { showAlert } from '../../../store/alert-slice';
 
 import { StyledOrder, StyledForm } from './style/styled-cart-order';
-import Loading from '../../Loading/Loading';
+import Loading from '../../loading/Loading';
 import { wait } from '../../../helpers/functions';
 
 interface Inputs {

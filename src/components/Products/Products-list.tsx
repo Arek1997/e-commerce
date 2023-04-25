@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import ProductItem from './Products-item';
 import { API_URL, ITEMS_PER_PAGE } from '../../helpers/values';
 import useFilter from '../../hooks/useFilter';
-import Loading from '../Loading/Loading';
-import Pagination from '../Pagination/Pagination';
+import Loading from '../loading/Loading';
+import Pagination from '../pagination/Pagination';
 
 import StyledProductsList from './style/styled-products-list';
 import { FetchedProduct } from '../../interface';
