@@ -1,26 +1,32 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import debounce from 'lodash.debounce';
 
-import ProductFilter from '../../assets/style/products/styled-products-filter';
-import { filterActions } from '../../store/filter-slice';
+import ProductFilter from './style/styled-products-filter';
+import {
+	setFilterPrice,
+	setFilterCategory,
+	setFilterName,
+} from '../../store/filter-slice';
 import { MAX_PRODUCT_PRICE } from '../../helpers/values';
 
 const ProductsFilter = () => {
-	const dispatch = useDispatch();
-	const { filterName, filterCategory, filterPrice } = useSelector(
+	const dispatch = useAppDispatch();
+	const { filterName, filterCategory, filterPrice } = useAppSelector(
 		(state) => state.filter
 	);
 
-	const filterByName = (e) => {
-		dispatch(filterActions.setFilterName(e.target.value));
+	const filterByName = (e: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(setFilterName(e.target.value));
 	};
 
-	const filterByCategory = (e) => {
-		dispatch(filterActions.setFilterCategory(e.target.value));
+	const filterByCategory = (e: React.ChangeEvent<HTMLFieldSetElement>) => {
+		dispatch(
+			setFilterCategory((e.target as unknown as HTMLInputElement).value)
+		);
 	};
 
-	const filterbyPrice = (e) => {
-		dispatch(filterActions.setFilterPrice(e.target.valueAsNumber));
+	const filterbyPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(setFilterPrice(e.target.valueAsNumber));
 	};
 
 	// Debounce function to avoid rerenders for every value change, by onChange listener
