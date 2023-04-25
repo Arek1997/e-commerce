@@ -27,10 +27,6 @@ export const Nav = styled.nav`
 		display: flex;
 		column-gap: 2rem;
 
-		button:last-child:hover i {
-			color: var(--orange);
-		}
-
 		@media (min-width: 400px) {
 			column-gap: 5rem;
 		}
@@ -204,9 +200,9 @@ export const IconsDiv = styled.div<Props>`
 		}
 	}
 
-	/* .profile-btn:hover i {
+	.profile-btn:hover i {
 		color: var(--orange);
-	} */
+	}
 
 	nav {
 		position: absolute;
