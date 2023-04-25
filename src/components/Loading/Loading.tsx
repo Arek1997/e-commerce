@@ -1,6 +1,10 @@
 import loadingSpinner from '../../assets/loadingspinner.gif';
 
-const Loading = ({ styles }) => {
+interface Props {
+	styles?: Object;
+}
+
+const Loading = ({ styles }: Props) => {
 	const style = {
 		display: 'block',
 		margin: '0 auto',

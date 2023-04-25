@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { cartActions } from '../../store/cart-slice';
 
 import { toggleOverlay } from '../../store/navigation-slice';
@@ -8,28 +8,38 @@ import { showAlert } from '../../store/alert-slice';
 
 import { Link } from 'react-router-dom';
 
-import StyledProduct from '../../assets/style/products/styled-products-item';
+import StyledProduct from './style/styled-products-item';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import imagePlaceholder from '../../assets/img/product/product-placeholder.webp';
 import ProductsActionIcons from './Products-action-icons';
+import { SelectedProduct } from '../../interface';
 
-const ProductsItem = (props) => {
+interface Props {
+	id: string;
+	title: string;
+	price: number;
+	image: string;
+}
+
+const ProductsItem = ({ id, title, price, image }: Props) => {
 	const [isFavourite, setIsFavourite] = useState(false);
-	const dispatch = useDispatch();
-	const { favProductsArr } = useSelector((state) => state.favProducts);
-	const { isLoggedIn } = useSelector((state) => state.authentication);
+	const dispatch = useAppDispatch();
+	const { favProductsArr } = useAppSelector((state) => state.favProducts);
+	const { isLoggedIn } = useAppSelector((state) => state.authentication);
 
-	const product = {
-		id: props.id,
-		title: props.title,
-		price: props.price,
-		image: props.image,
-		amount: 1,
+	const createSingleProduct = (): SelectedProduct => {
+		return {
+			id,
+			title,
+			price,
+			image,
+			amount: 1,
+		};
 	};
 
 	const productIsInFavProdArr = () =>
-		favProductsArr.some((item) => item.id === props.id);
+		favProductsArr.some((item) => item.id === id);
 
 	useEffect(() => {
 		if (isLoggedIn) {
@@ -39,13 +49,15 @@ const ProductsItem = (props) => {
 		return () => setIsFavourite(false);
 	}, [isLoggedIn]);
 
-	const addProductHandler = () => dispatch(cartActions.addProduct(product));
+	const addProductHandler = () => {
+		dispatch(cartActions.addProduct(createSingleProduct()));
+	};
 
 	const selectAsFavourite = () => {
 		if (isLoggedIn) {
 			!isFavourite
-				? dispatch(favProductsActions.addProduct(product))
-				: dispatch(favProductsActions.removeProduct(product.id));
+				? dispatch(favProductsActions.addProduct(createSingleProduct()))
+				: dispatch(favProductsActions.removeProduct(id));
 
 			setIsFavourite(!isFavourite);
 		} else {
@@ -74,24 +86,24 @@ const ProductsItem = (props) => {
 			<div className='product__body'>
 				<LazyLoadImage
 					className='product__img'
-					alt={props.title}
-					src={props.image}
+					alt={title}
+					src={image}
 					placeholderSrc={imagePlaceholder}
 					width={'100%'}
 				/>
 
 				<ProductsActionIcons
-					id={props.id}
+					id={id}
 					favourite={isFavourite}
 					onAddProduct={addProductHandler}
 					onFavourite={selectAsFavourite}
 				/>
 			</div>
 			<div className='product__bottom'>
-				<Link to={`../products/${props.id}`}>
-					<h3 className='product__title'>{props.title}</h3>
+				<Link to={`../products/${id}`}>
+					<h3 className='product__title'>{title}</h3>
 				</Link>
-				<span className='product__price'>${props.price.toFixed(2)}</span>
+				<span className='product__price'>${price.toFixed(2)}</span>
 			</div>
 		</StyledProduct>
 	);

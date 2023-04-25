@@ -1,14 +1,23 @@
-import StyledActionIcons from '../../assets/style/products/styled-products-action-icons';
+import StyledActionIcons from './style/styled-products-action-icons';
 import { Link } from 'react-router-dom';
 
-const ProductsActionIcons = (props) => {
+interface Props {
+	favourite: boolean;
+	id: string;
+	onAddProduct: () => void;
+	onFavourite: () => void;
+}
+
+const ProductsActionIcons = ({
+	favourite,
+	id,
+	onAddProduct,
+	onFavourite,
+}: Props) => {
 	return (
-		<StyledActionIcons
-			className='product__icon-actions'
-			favourite={props.favourite}
-		>
+		<StyledActionIcons className='product__icon-actions' favourite={favourite}>
 			<Link
-				to={`../products/${props.id}`}
+				to={`../products/${id}`}
 				aria-label='Show product details'
 				className='product__details'
 			>
@@ -17,7 +26,7 @@ const ProductsActionIcons = (props) => {
 			<button
 				aria-label='add product button'
 				className='product__add'
-				onClick={props.onAddProduct}
+				onClick={onAddProduct}
 			>
 				<i className='fa-solid fa-cart-shopping'></i>
 			</button>
@@ -25,7 +34,7 @@ const ProductsActionIcons = (props) => {
 			<button
 				aria-label='add to favourite button'
 				className='product__favourite'
-				onClick={props.onFavourite}
+				onClick={onFavourite}
 			>
 				<i className='fa-solid fa-heart'></i>
 			</button>

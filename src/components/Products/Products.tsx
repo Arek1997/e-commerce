@@ -2,7 +2,7 @@ import Container from '../UI/container/Container';
 import ProductList from './Products-list';
 import ProductsFilter from './Products-filter';
 
-import ProductContainer from '../../assets/style/products/styled-products';
+import ProductContainer from './style/styled-products';
 
 const Products = () => {
 	return (
