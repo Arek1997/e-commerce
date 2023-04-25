@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { Close, HoverEffect } from '../components';
+import { Close, HoverEffect } from '../../../../assets/style/components';
+
+interface Props {
+	isHomePage: boolean;
+}
 
 export const Nav = styled.nav`
 	position: relative;
@@ -33,7 +37,7 @@ export const Nav = styled.nav`
 	}
 `;
 
-export const UlList = styled.div`
+export const UlList = styled.div<Props>`
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -90,7 +94,8 @@ export const UlList = styled.div`
 
 			@media (min-width: 768px) {
 				font-size: 2.2rem;
-				color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
+				color: ${({ isHomePage }) =>
+					isHomePage ? '#fff' : 'var(--dark-gray)'};
 				transition: color 0.3s;
 
 				&:hover {
@@ -140,10 +145,10 @@ export const BurgerBtn = styled.button`
 	}
 `;
 
-export const Logo = styled.h1`
+export const Logo = styled.h1<Props>`
 	font-size: 3rem;
 	font-family: var(--cursive);
-	color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
+	color: ${({ isHomePage }) => (isHomePage ? '#fff' : 'var(--dark-gray)')};
 	z-index: 1;
 
 	@media (min-width: 768px) {
@@ -158,7 +163,7 @@ export const Logo = styled.h1`
 	}
 `;
 
-export const Cart = styled.button`
+export const Cart = styled.button<Props>`
 	position: relative;
 	background-color: transparent;
 	cursor: pointer;
@@ -166,7 +171,7 @@ export const Cart = styled.button`
 
 	i {
 		position: relative;
-		color: ${(props) => (props.notHomePage ? 'var(--dark-gray)' : '#fff')};
+		color: ${({ isHomePage }) => (isHomePage ? '#fff' : 'var(--dark-gray)')};
 		font-size: 2.5rem;
 		transition: color 0.3s;
 
@@ -186,7 +191,9 @@ export const Cart = styled.button`
 	}
 `;
 
-export const IconsDiv = styled.div`
+export const ProfileBtn = Cart;
+
+export const IconsDiv = styled.div<Props>`
 	.icons {
 		position: relative;
 		display: flex;
@@ -197,9 +204,9 @@ export const IconsDiv = styled.div`
 		}
 	}
 
-	.profile-icon:hover i {
+	/* .profile-btn:hover i {
 		color: var(--orange);
-	}
+	} */
 
 	nav {
 		position: absolute;
@@ -207,9 +214,9 @@ export const IconsDiv = styled.div`
 		right: 0;
 		min-width: 200px;
 		padding: 2em;
-		color: ${(props) => (props.notHomePage ? '#fff' : '#000')};
-		background-color: ${(props) =>
-			props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
+		color: ${({ isHomePage }) => (isHomePage ? '#000' : '#fff')};
+		background-color: ${({ isHomePage }) =>
+			isHomePage ? 'rgb(255 255 255 / 70%) ' : 'rgb(0 0 0 / 70%)'};
 		backdrop-filter: blur(5px);
 		border-radius: 8px;
 		z-index: 1;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import {
 	toggleCart,
@@ -15,22 +15,22 @@ import {
 	BurgerBtn,
 	Logo,
 	Cart,
+	ProfileBtn,
 	UlList,
 	IconsDiv,
-} from '../../../assets/style/navigation/styled-navigation';
+} from './style/styled-navigation';
 
 import Container from '../container/Container';
 import Overlay from '../overlay/Overlay';
 import useMediaQueries from '../../../hooks/useMediaQueries';
+import usePathName from '../../../hooks/usePathName';
 
 const Navigation = () => {
 	const [showProfileOptions, setShowProfileOptions] = useState(false);
 	const [isNavOpen, setIsNavOpen] = useState(false);
 	const isMobile = useMediaQueries('max-width: 767px');
-
+	const homePage = usePathName('home');
 	const dispatch = useAppDispatch();
-	const { pathname } = useLocation();
-	const notHomePage = pathname.slice(1) !== 'home';
 
 	const { productsList } = useAppSelector((state) => state.cart);
 	const { isLoggedIn } = useAppSelector((state) => state.authentication);
@@ -65,7 +65,7 @@ const Navigation = () => {
 				)}
 				<UlList
 					className={isNavOpen ? 'open' : ''}
-					notHomePage={notHomePage}
+					isHomePage={homePage}
 					data-testid='navigation-wrapper'
 				>
 					<i
@@ -115,29 +115,29 @@ const Navigation = () => {
 					<i className='fa-solid fa-bars'></i>
 				</BurgerBtn>
 
-				<Logo notHomePage={notHomePage}>AlleDrogo</Logo>
+				<Logo isHomePage={homePage}>AlleDrogo</Logo>
 
-				<IconsDiv className='icons' notHomePage={notHomePage}>
+				<IconsDiv className='icons' isHomePage={homePage}>
 					<Cart
 						aria-label='Cart button'
 						data-testid='shopping-cart'
 						onClick={toggleCartHandler}
-						notHomePage={notHomePage}
+						isHomePage={homePage}
 					>
 						<i className='fa-solid fa-cart-shopping'>
 							<span>{productsAmount}</span>
 						</i>
 					</Cart>
 
-					<Cart
-						className='profile-icon'
+					<ProfileBtn
+						className='profile-btn'
 						aria-label='Profile button'
-						notHomePage={notHomePage}
+						isHomePage={homePage}
 						onClick={toggleProfileOptions}
 						data-testid='profile-icon'
 					>
 						<i className='fa-solid fa-user'></i>
-					</Cart>
+					</ProfileBtn>
 
 					{showProfileOptions && (
 						<nav data-testid='profile-option'>
