@@ -7,7 +7,7 @@ import Loading from '../Loading/Loading';
 import Pagination from '../Pagination/Pagination';
 
 import StyledProductsList from './style/styled-products-list';
-import { FetchedProduct, HandlePaginationClick } from '../../interface';
+import { FetchedProduct } from '../../interface';
 
 let pageCount = 0;
 
