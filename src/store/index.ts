@@ -11,9 +11,9 @@ const store = configureStore({
 	reducer: {
 		cart: cartSlice,
 		navigation: navigationSlice,
-		filter: filterSlice.reducer,
+		filter: filterSlice,
 		authentication: authSlice,
-		favProducts: favProductsSlice.reducer,
+		favProducts: favProductsSlice,
 		alert: alertSlice,
 	},
 });

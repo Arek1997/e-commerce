@@ -1,29 +1,31 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { useLocation } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-import {
-	toggleCartOrder,
-	toggleOverlay,
-} from '../../../store/navigation-slice';
+import { toggleCartOrder } from '../../../store/navigation-slice';
 import { cartActions } from '../../../store/cart-slice';
 import { showAlert } from '../../../store/alert-slice';
 
-import {
-	StyledOrder,
-	StyledForm,
-} from '../../../assets/style/cart/styled-cart-order';
+import { StyledOrder, StyledForm } from './style/styled-cart-order';
 import Loading from '../../Loading/Loading';
 import { wait } from '../../../helpers/functions';
 
+interface Inputs {
+	name: string;
+	surname: string;
+	city: string;
+	street: string;
+	flatNumber: string;
+	email: string;
+}
+
 let content;
 const CartOrder = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const { isCartOrderShown } = useSelector((state) => state.navigation);
-	const { productsList } = useSelector((state) => state.cart);
+	const { productsList } = useAppSelector((state) => state.cart);
 	const { pathname } = useLocation();
 	const notHomePage = pathname.slice(1) !== 'home';
 
@@ -31,18 +33,14 @@ const CartOrder = () => {
 		return prev + current.price * current.amount;
 	}, 0);
 
-	const toggleCartOrderHandler = () => {
-		dispatch(toggleCartOrder());
-
-		isCartOrderShown && dispatch(toggleOverlay());
-	};
+	const toggleCartOrderHandler = () => dispatch(toggleCartOrder());
 
 	const {
 		register,
 		reset,
 		handleSubmit,
 		formState: { errors, isSubmitSuccessful },
-	} = useForm({
+	} = useForm<Inputs>({
 		mode: 'onTouched',
 		defaultValues: {
 			name: '',
@@ -54,7 +52,7 @@ const CartOrder = () => {
 		},
 	});
 
-	const onSubmitHandler = async (data) => {
+	const onSubmitHandler: SubmitHandler<Inputs> = async (data) => {
 		setIsLoading(true);
 		const userData = data;
 

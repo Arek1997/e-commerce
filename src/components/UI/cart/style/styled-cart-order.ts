@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 
-import { ModalBase, InputAndButton, Close, Heading } from '../components';
+import {
+	ModalBase,
+	InputAndButton,
+	Close,
+	Heading,
+} from '../../../../assets/style/components';
 
-export const StyledOrder = styled.section`
+interface Props {
+	notHomePage: boolean;
+}
+
+export const StyledOrder = styled.section<Props>`
 	${ModalBase}
 
 	max-width: 45rem;

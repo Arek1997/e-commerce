@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { MAX_PRODUCT_PRICE } from '../helpers/values';
 
 const initialState = {
@@ -11,19 +11,20 @@ const filterSlice = createSlice({
 	name: 'filter',
 	initialState,
 	reducers: {
-		setFilterPrice: (state, action) => {
+		setFilterPrice: (state, action: PayloadAction<number>) => {
 			state.filterPrice = action.payload;
 		},
 
-		setFilterCategory: (state, action) => {
+		setFilterCategory: (state, action: PayloadAction<string>) => {
 			state.filterCategory = action.payload;
 		},
 
-		setFilterName: (state, action) => {
+		setFilterName: (state, action: PayloadAction<string>) => {
 			state.filterName = action.payload;
 		},
 	},
 });
 
-export const filterActions = filterSlice.actions;
-export default filterSlice;
+export const { setFilterPrice, setFilterCategory, setFilterName } =
+	filterSlice.actions;
+export default filterSlice.reducer;

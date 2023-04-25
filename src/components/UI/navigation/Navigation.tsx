@@ -26,7 +26,7 @@ import useMediaQueries from '../../../hooks/useMediaQueries';
 const Navigation = () => {
 	const [showProfileOptions, setShowProfileOptions] = useState(false);
 	const [isNavOpen, setIsNavOpen] = useState(false);
-	const matches = useMediaQueries('max-width: 767px');
+	const isMobile = useMediaQueries('max-width: 767px');
 
 	const dispatch = useAppDispatch();
 	const { pathname } = useLocation();
@@ -60,7 +60,7 @@ const Navigation = () => {
 	return (
 		<Container>
 			<Nav className='section'>
-				{isNavOpen && matches && (
+				{isNavOpen && isMobile && (
 					<Overlay onClose={toggleMobNavHandler}>{}</Overlay>
 				)}
 				<UlList
@@ -78,7 +78,7 @@ const Navigation = () => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='home'
-								onClick={matches ? toggleMobNavHandler : undefined}
+								onClick={isMobile ? toggleMobNavHandler : undefined}
 							>
 								<i className='fa-solid fa-house'></i>
 								Home
@@ -88,7 +88,7 @@ const Navigation = () => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='products'
-								onClick={matches ? toggleMobNavHandler : undefined}
+								onClick={isMobile ? toggleMobNavHandler : undefined}
 							>
 								<i className='fa-solid fa-couch'></i>
 								Products
@@ -98,7 +98,7 @@ const Navigation = () => {
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
 								to='aboutus'
-								onClick={matches ? toggleMobNavHandler : undefined}
+								onClick={isMobile ? toggleMobNavHandler : undefined}
 							>
 								<i className='fa-solid fa-book-open'></i>
 								About

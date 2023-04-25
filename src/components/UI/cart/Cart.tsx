@@ -1,31 +1,22 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 
-import {
-	toggleCart,
-	toggleCartOrder,
-	toggleOverlay,
-} from '../../../store/navigation-slice';
+import { toggleCart, toggleCartOrder } from '../../../store/navigation-slice';
 import { showAlert } from '../../../store/alert-slice';
 
-import CartMenu from '../../../assets/style/cart/styled-cart';
+import CartMenu from './style/styled-cart';
 import CartList from './Cart-list';
 
-const Cart = (props) => {
-	const dispatch = useDispatch();
-	const { productsList } = useSelector((state) => state.cart);
-
-	const { isCartShown } = useSelector((state) => state.navigation);
-
-	const { isLoggedIn } = useSelector((state) => state.authentication);
+const Cart = () => {
+	const dispatch = useAppDispatch();
+	const { productsList } = useAppSelector((state) => state.cart);
+	const { isCartShown } = useAppSelector((state) => state.navigation);
+	const { isLoggedIn } = useAppSelector((state) => state.authentication);
 
 	const totalPrice = productsList.reduce((prev, current) => {
 		return prev + current.price * current.amount;
 	}, 0);
 
-	const toggleCartHandler = () => {
-		dispatch(toggleCart());
-		dispatch(toggleOverlay());
-	};
+	const toggleCartHandler = () => dispatch(toggleCart());
 
 	const toggleCartOrderHandler = () => {
 		if (isLoggedIn) {

@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Product, ProductAmountMode } from '../interface/index';
+import { SelectedProduct, ProductAmountMode } from '../interface/index';
 
 interface CartState {
-	productsList: Product[];
+	productsList: SelectedProduct[];
 }
 
 const initialState: CartState = {
@@ -13,7 +13,7 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addProduct: (state, action: PayloadAction<Product>) => {
+		addProduct: (state, action: PayloadAction<SelectedProduct>) => {
 			const newProduct = action.payload;
 
 			const productExist = state.productsList.some(
@@ -44,8 +44,8 @@ const cartSlice = createSlice({
 			mode === 'increase' ? currentProduct.amount++ : currentProduct.amount--;
 		},
 
-		removeProduct: (state, action: PayloadAction<{ id: string }>) => {
-			const { id: payloadID } = action.payload;
+		removeProduct: (state, action: PayloadAction<string>) => {
+			const payloadID = action.payload;
 
 			const allProducts = state.productsList;
 			const productToRemove = allProducts.find(

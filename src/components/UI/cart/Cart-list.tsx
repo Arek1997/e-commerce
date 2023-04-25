@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 
 import CartProduct from './Cart-product';
 
 const CartList = () => {
-	const { productsList } = useSelector((state) => state.cart);
+	const { productsList } = useAppSelector((state) => state.cart);
 
 	return (
 		<div className='cart-items'>

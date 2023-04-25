@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Close } from '../components';
+import { Close } from '../../../../assets/style/components';
 
 const CartMenu = styled.aside`
 	position: fixed;

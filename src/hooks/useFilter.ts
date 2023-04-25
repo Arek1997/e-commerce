@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from './reduxHooks';
+import { FetchedProduct } from '../interface';
 
-const useFilter = (arrayToFilter) => {
-	const [filteredArr, setFilteredArr] = useState([]);
+const useFilter = (arrayToFilter: FetchedProduct[]) => {
+	const [filteredArr, setFilteredArr] = useState<FetchedProduct[]>([]);
 
-	const { filterName, filterCategory, filterPrice } = useSelector(
+	const { filterName, filterCategory, filterPrice } = useAppSelector(
 		(state) => state.filter
 	);
 
-	const checkFilterCategory = (item) => {
+	const checkFilterCategory = (item: FetchedProduct) => {
 		if (filterCategory === 'all') {
 			return item.category !== filterCategory;
 		} else {
@@ -17,7 +18,7 @@ const useFilter = (arrayToFilter) => {
 	};
 
 	useEffect(() => {
-		if (arrayToFilter.length === 0) return;
+		if (!arrayToFilter.length) return;
 
 		const newArr = arrayToFilter
 			.filter((item) => item.title.toLowerCase().includes(filterName))
