@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { Slash, Relative, SectionHero as Hero } from '../components';
+import {
+	Slash,
+	Relative,
+	SectionHero as Hero,
+} from '../../../assets/style/components';
 
 export const SectionHero = styled.section`
 	${Hero}

@@ -51,15 +51,6 @@ export const StyledProductDetails = styled.section`
 			color: var(--dark-blue);
 		}
 
-		&__brand {
-			font-size: 1.8rem;
-			font-family: cursive;
-			font-weight: 700;
-			color: var(--light-blue);
-			text-transform: uppercase;
-			opacity: var(--small-opacity);
-		}
-
 		&__price {
 			font-size: 2rem;
 			font-weight: 700;

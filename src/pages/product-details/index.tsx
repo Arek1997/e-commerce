@@ -1,21 +1,22 @@
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useParams } from 'react-router-dom';
 import useFetch from 'react-fetch-hook';
-import { cartActions } from '../store/cart-slice';
-
-import Container from '../components/UI/container/Container';
-import { API_URL } from '../helpers/values';
-
-import { SectionHero } from '../assets/style/hero-section/styled-hero';
-import { StyledProductDetails } from '../assets/style/product-details/styled-productDetails';
-import Loading from '../components/Loading/Loading';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import imagePlaceholder from '../assets/img/product/product-placeholder.webp';
+import { API_URL } from '../../helpers/values';
+import { FetchedProduct } from '../../interface';
+import { cartActions } from '../../store/cart-slice';
+import Container from '../../components/UI/container/Container';
+import Loading from '../../components/loading/Loading';
+import { SectionHero } from '../../assets/style/hero-section/styled-hero';
+import imagePlaceholder from '../../assets/img/product/product-placeholder.webp';
+import { StyledProductDetails } from './style/styled-productDetails';
 
 const ProductDetails = () => {
 	const { productId } = useParams();
-	const { isLoading, error, data } = useFetch(`${API_URL}/${productId}`);
-	const dispatch = useDispatch();
+	const { isLoading, error, data } = useFetch<FetchedProduct>(
+		`${API_URL}/${productId}`
+	);
+	const dispatch = useAppDispatch();
 
 	let productTitle;
 	let content = <p className='error-text'>Product not found</p>;
@@ -36,6 +37,8 @@ const ProductDetails = () => {
 	}
 
 	if (data) {
+		console.log(data);
+
 		const product = {
 			id: data.id,
 			title: data.title,
@@ -60,7 +63,6 @@ const ProductDetails = () => {
 				</div>
 				<div className='product__details'>
 					<h3 className='product__name'>{data.title}</h3>
-					<span className='product__brand'>{data.brand}</span>
 					<span className='product__price'>${data.price.toFixed(2)}</span>
 					<p className='product__description'>{data.description}</p>
 					<button
@@ -77,13 +79,13 @@ const ProductDetails = () => {
 	return (
 		<>
 			<SectionHero>
-				<Container padding='section'>
+				<Container>
 					<h2>{productTitle}</h2>
 				</Container>
 			</SectionHero>
 
 			<StyledProductDetails className='section'>
-				<Container padding='section'>{content}</Container>
+				<Container>{content}</Container>
 			</StyledProductDetails>
 		</>
 	);
