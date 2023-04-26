@@ -1,15 +1,15 @@
 import useFetch from 'react-fetch-hook';
 
 import FeaturedItem from './Featured-item';
-import { StyledList } from '../../../assets/style/featured/styled-list';
-
+import { StyledList } from './style/styled-list';
+import Loading from '../../loading/Loading';
 import { API_URL } from '../../../helpers/values';
-import Loading from '../../Loading/Loading';
+import { FetchedProduct } from '../../../interface';
 
 const PRODUCTS_API = `${API_URL}?limit=3`;
 
 const FeaturedList = () => {
-	const { isLoading, error, data } = useFetch(PRODUCTS_API);
+	const { isLoading, error, data } = useFetch<FetchedProduct[]>(PRODUCTS_API);
 
 	let content = <p className='error-text'>Products not found</p>;
 

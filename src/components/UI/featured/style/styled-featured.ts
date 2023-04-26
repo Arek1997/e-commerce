@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Slash, Relative } from '../components';
+import { Relative, Slash } from '../../../../assets/style/components';
 
 export const StyledFeatured = styled.div`
 	h2 {
