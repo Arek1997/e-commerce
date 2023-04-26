@@ -93,6 +93,11 @@ table {
 	margin-bottom: 10rem;
 }
 
+.mx-1 {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
 .activeLink {
 	color: var(--orange) !important;
 }
