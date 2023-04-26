@@ -1,9 +1,6 @@
 import Container from '../container/Container';
 
-import StyledHeader, {
-	StyledHeading,
-	StyledLink,
-} from '../../../assets/style/header/header-style';
+import StyledHeader, { StyledHeading, StyledLink } from './style/header-style';
 
 const Header = () => {
 	return (
