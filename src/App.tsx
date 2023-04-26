@@ -14,11 +14,11 @@ const App = () => {
 		<Layout>
 			<Suspense fallback={<Loading />}>
 				<Routes>
-					<Route path='home' element={<Home />} />
+					<Route path='/' element={<Home />} />
 					<Route path='products' element={<Products />} />
 					<Route path='products/:productId' element={<ProductDetails />} />
 					<Route path='aboutus' element={<Aboutus />} />
-					<Route path={'*' || '/'} element={<Navigate to={'home'} replace />} />
+					<Route path={'*' || '/'} element={<Navigate to={'/'} replace />} />
 				</Routes>
 			</Suspense>
 		</Layout>

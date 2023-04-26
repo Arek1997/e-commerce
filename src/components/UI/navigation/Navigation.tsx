@@ -29,7 +29,7 @@ const Navigation = () => {
 	const [showProfileOptions, setShowProfileOptions] = useState(false);
 	const [isNavOpen, setIsNavOpen] = useState(false);
 	const isMobile = useMediaQueries('max-width: 767px');
-	const homePage = usePathName('home');
+	const homePage = usePathName('/');
 	const dispatch = useAppDispatch();
 
 	const { productsList } = useAppSelector((state) => state.cart);
@@ -77,8 +77,9 @@ const Navigation = () => {
 						<li>
 							<NavLink
 								className={({ isActive }) => (isActive ? 'activeLink' : '')}
-								to='home'
+								to='/'
 								onClick={isMobile ? toggleMobNavHandler : undefined}
+								end
 							>
 								<i className='fa-solid fa-house'></i>
 								Home
