@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import bgImage from '../../img/home/background.jpeg';
+import bgImage from '../../../../assets/img/home/background.jpeg';
 
 const StyledHeader = styled.header`
 	position: relative;
