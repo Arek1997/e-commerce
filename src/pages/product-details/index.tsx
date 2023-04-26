@@ -37,8 +37,6 @@ const ProductDetails = () => {
 	}
 
 	if (data) {
-		console.log(data);
-
 		const product = {
 			id: data.id,
 			title: data.title,
