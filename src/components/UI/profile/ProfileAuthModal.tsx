@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
 
 import {
 	toggleProfileAuthModal,
@@ -11,28 +10,25 @@ import {
 import {
 	StyledProfileAuthModal,
 	StyledResponseMessage,
-} from '../../../assets/style/profile/styled-profile-auth-modal';
+} from './style/styled-profile-auth-modal';
 import AuthForm from './authForm/AuthForm';
+import { AuthInputs } from '../../../interface';
+import usePathName from '../../../hooks/usePathName';
+import useResponseMessage from '../../../hooks/useResponseMessage';
 
 const ProfileAuthModal = () => {
-	const dispatch = useDispatch();
-	const [responseMessage, setResponseMessage] = useState({
-		status: null,
-		message: '',
-	});
-	const [logIn, setLogIn] = useState(true);
-
-	const { pathname } = useLocation();
-	const notHomePage = pathname.slice(1) !== 'home';
-
-	const { isLoggedIn } = useSelector((state) => state.authentication);
+	const [isLogIn, setIsLogIn] = useState(true);
+	const dispatch = useAppDispatch();
+	const { isLoggedIn } = useAppSelector((state) => state.authentication);
+	const { responseMessage, setResponseMessage } = useResponseMessage();
+	const homePage = usePathName('/');
 
 	const {
 		register,
 		reset,
 		handleSubmit,
 		formState: { errors, isSubmitSuccessful },
-	} = useForm({
+	} = useForm<AuthInputs>({
 		mode: 'onTouched',
 		defaultValues: {
 			email: '',
@@ -40,13 +36,9 @@ const ProfileAuthModal = () => {
 		},
 	});
 
-	const toggleProfileModalHandler = () => {
-		dispatch(toggleProfileAuthModal());
-		dispatch(toggleOverlay());
-	};
-
+	const toggleProfileModalHandler = () => dispatch(toggleProfileAuthModal());
 	const toggleIsLoginHandler = () => {
-		setLogIn(!logIn);
+		setIsLogIn(!isLogIn);
 		setResponseMessage({
 			status: null,
 			message: '',
@@ -60,7 +52,7 @@ const ProfileAuthModal = () => {
 	}, [isSubmitSuccessful, reset]);
 
 	useEffect(() => {
-		if (logIn && isLoggedIn) {
+		if (isLogIn && isLoggedIn) {
 			const timeout = setTimeout(() => {
 				dispatch(toggleProfileAuthModal());
 				dispatch(toggleOverlay());
@@ -68,13 +60,10 @@ const ProfileAuthModal = () => {
 
 			return () => clearTimeout(timeout);
 		}
-	}, [logIn, isLoggedIn]);
+	}, [isLogIn, isLoggedIn]);
 
 	return (
-		<StyledProfileAuthModal
-			notHomePage={notHomePage}
-			data-testid='profile-modal'
-		>
+		<StyledProfileAuthModal isHomePage={homePage} data-testid='profile-modal'>
 			<i
 				className='fa-solid fa-xmark closeModal'
 				onClick={toggleProfileModalHandler}
@@ -88,19 +77,19 @@ const ProfileAuthModal = () => {
 			>
 				{responseMessage.message}
 			</StyledResponseMessage>
-			<p className='text-center text-bold'>{logIn ? 'Log in' : 'Sign up'}</p>
+			<p className='text-center text-bold'>{isLogIn ? 'Log in' : 'Sign up'}</p>
 
 			<AuthForm
-				handleSubmit={handleSubmit}
-				register={register}
-				errors={errors}
-				logIn={logIn}
+				authSubmitHandler={handleSubmit}
+				authRegister={register}
+				authErrors={errors}
+				isLogIn={isLogIn}
 				setResponseMessage={setResponseMessage}
 			/>
 			<p className='paragraph-bottom'>
-				{logIn ? "Haven't profile yet?" : 'Have a profile?'}
+				{isLogIn ? "Haven't profile yet?" : 'Have a profile?'}
 				<button onClick={toggleIsLoginHandler}>
-					{!logIn ? 'Log in' : 'Sign up'}
+					{!isLogIn ? 'Log in' : 'Sign up'}
 				</button>
 			</p>
 		</StyledProfileAuthModal>

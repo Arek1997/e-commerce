@@ -1,32 +1,32 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { useForm } from 'react-hook-form';
 
-import {
-	toggleProfileDetails,
-	toggleOverlay,
-} from '../../../store/navigation-slice';
+import { toggleProfileDetails } from '../../../store/navigation-slice';
 
-import Loading from '../../Loading/Loading';
 import ChangePassword from './changePassword/ChangePassword';
+import { StyledDetails } from './style/styled-profile-details';
+import { StyledResponseMessage } from './style/styled-profile-auth-modal';
+import usePathName from '../../../hooks/usePathName';
+import Loading from '../../loading/Loading';
+import useResponseMessage from '../../../hooks/useResponseMessage';
+import {
+	AuthPassword,
+	ProfileDetails as ProfileData,
+} from '../../../interface';
 
-import { StyledDetails } from '../../../assets/style/profile/styled-profile-details';
-import { StyledResponseMessage } from '../../../assets/style/profile/styled-profile-auth-modal';
+export interface PasswordInput {
+	password: AuthPassword;
+}
 
 const ProfileDetails = () => {
-	const dispatch = useDispatch();
-	const [profileData, setProfileData] = useState({});
+	const dispatch = useAppDispatch();
+	const { token } = useAppSelector((state) => state.authentication);
+	const [profileData, setProfileData] = useState<ProfileData | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const [responseMessage, setResponseMessage] = useState({
-		status: null,
-		message: '',
-	});
+	const { responseMessage, setResponseMessage } = useResponseMessage();
 
-	const { pathname } = useLocation();
-	const notHomePage = pathname.slice(1) !== 'home';
-	const { token } = useSelector((state) => state.authentication);
-
+	const homePage = usePathName('/');
 	let content;
 
 	const {
@@ -34,7 +34,7 @@ const ProfileDetails = () => {
 		reset,
 		handleSubmit,
 		formState: { errors, isSubmitSuccessful },
-	} = useForm({
+	} = useForm<PasswordInput>({
 		mode: 'onTouched',
 		defaultValues: {
 			password: '',
@@ -45,7 +45,9 @@ const ProfileDetails = () => {
 		setIsLoading(true);
 		try {
 			const response = await fetch(
-				'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCtGvqymH11_3PzBQ1fJ9Ci5-F5w1HUSqA',
+				`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${
+					import.meta.env.VITE_FIREBASE_KEY
+				}`,
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -61,14 +63,15 @@ const ProfileDetails = () => {
 				throw new Error(errorMessage);
 			}
 
-			const data = await response.json();
+			const data: { users: [ProfileData] } = await response.json();
+
 			setProfileData(...data.users);
 
 			setResponseMessage({
 				status: 'success',
 				message: 'User data loaded successfully!',
 			});
-		} catch (err) {
+		} catch (err: any) {
 			setResponseMessage({
 				status: 'fail',
 				message: err.message,
@@ -95,11 +98,7 @@ const ProfileDetails = () => {
 		return () => clearTimeout(timeout);
 	}, [responseMessage]);
 
-	const toggleProfileDetailsHandler = () => {
-		dispatch(toggleProfileDetails());
-		dispatch(toggleOverlay());
-	};
-
+	const toggleProfileDetailsHandler = () => dispatch(toggleProfileDetails());
 	useEffect(() => {
 		if (isSubmitSuccessful) {
 			reset({ password: '' });
@@ -110,7 +109,7 @@ const ProfileDetails = () => {
 		content = <Loading styles={{ width: '100px' }} />;
 	}
 
-	if (Object.keys(profileData).length > 0) {
+	if (profileData && Object.keys(profileData).length) {
 		content = (
 			<>
 				<div className='particularInfo'>
@@ -142,7 +141,7 @@ const ProfileDetails = () => {
 
 	return (
 		<StyledDetails
-			notHomePage={notHomePage}
+			isHomePage={homePage}
 			disabled={false}
 			data-testid='profile-details-wrapper'
 		>
@@ -161,14 +160,13 @@ const ProfileDetails = () => {
 
 			{content}
 
-			{Object.keys(profileData).length > 0 && (
+			{profileData && Object.keys(profileData).length && (
 				<ChangePassword
 					token={token}
-					handleSubmit={handleSubmit}
-					register={register}
-					errors={errors}
+					passwordSubmitHandler={handleSubmit}
+					passwordRegister={register}
+					passwordErrors={errors}
 					setResponseMessage={setResponseMessage}
-					dispatch={dispatch}
 				/>
 			)}
 		</StyledDetails>

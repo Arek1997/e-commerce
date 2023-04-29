@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { InputAndButton } from '../../components';
+import { InputAndButton } from '../../../../../assets/style/components';
 
 export const StyledAuthForm = styled.form`
 	display: flex;

@@ -1,14 +1,21 @@
 import styled from 'styled-components';
-import { Close, ModalBase, InputAndButton, Heading } from '../components';
+import {
+	Close,
+	ModalBase,
+	InputAndButton,
+	Heading,
+} from '../../../../assets/style/components';
 
-export const StyledProfileAuthModal = styled.div`
+import { isHomePageProp as Props, Status } from '../../../../interface';
+
+export const StyledProfileAuthModal = styled.div<Props>`
 	${ModalBase}
 
 	max-width: 40rem;
 	padding: 2em;
-	color: ${(props) => (props.notHomePage ? '#fff' : '#000')};
-	background-color: ${(props) =>
-		props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
+	color: ${({ isHomePage }) => (isHomePage ? '#000' : '#fff')};
+	background-color: ${({ isHomePage }) =>
+		isHomePage ? 'rgb(255 255 255 / 70%)' : 'rgb(0 0 0 / 70%)'};
 
 	.closeModal {
 		${Close}
@@ -16,8 +23,8 @@ export const StyledProfileAuthModal = styled.div`
 		top: 2rem;
 		right: 1rem;
 
-		color: ${(props) =>
-			props.notHomePage ? 'var(--dirty-white)' : 'var(--light-gray)'};
+		color: ${({ isHomePage }) =>
+			isHomePage ? 'var(--light-gray)' : 'var(--dirty-white)'};
 
 		@media (min-width: 300px) {
 			font-size: 3rem;
@@ -70,11 +77,11 @@ export const StyledProfileAuthModal = styled.div`
 	}
 `;
 
-export const StyledResponseMessage = styled.span`
+export const StyledResponseMessage = styled.span<{ status: Status | null }>`
 	display: block;
 	margin: 1.5em auto;
 	font-size: 1.2rem;
 	font-weight: bold;
-	color: ${(props) =>
-		props.status === 'fail' ? 'var(--fail-color)' : 'var(--success-color)'};
+	color: ${({ status }) =>
+		status === 'fail' ? 'var(--fail-color)' : 'var(--success-color)'};
 `;

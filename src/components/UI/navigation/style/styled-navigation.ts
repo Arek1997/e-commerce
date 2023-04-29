@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { Close, HoverEffect } from '../../../../assets/style/components';
 
-interface Props {
-	isHomePage: boolean;
-}
+import { isHomePageProp as Props } from '../../../../interface';
 
 export const Nav = styled.nav`
 	position: relative;

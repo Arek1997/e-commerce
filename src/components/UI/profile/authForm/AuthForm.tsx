@@ -1,26 +1,43 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Loading from '../../../Loading/Loading';
 import { logIn } from '../../../../store/auth-slice';
 
-import { StyledAuthForm } from '../../../../assets/style/profile/authForm/styled-authForm';
+import { StyledAuthForm } from '../style/authForm/styled-authForm';
+import { EMAIL_REGEXP, PASSWORD_REGEXP } from '../../../../helpers/values';
+import Loading from '../../../loading/Loading';
+import { getAuthUrl } from '../../../../helpers/functions';
+import {
+	FieldErrorsImpl,
+	SubmitHandler,
+	UseFormHandleSubmit,
+	UseFormRegister,
+} from 'react-hook-form';
+import { AuthInputs, ResponseMessageProps } from '../../../../interface';
 
-const AuthForm = (props) => {
+interface Props {
+	authSubmitHandler: UseFormHandleSubmit<AuthInputs>;
+	authRegister: UseFormRegister<AuthInputs>;
+	authErrors: Partial<FieldErrorsImpl<AuthInputs>>;
+	isLogIn: boolean;
+	setResponseMessage: React.Dispatch<
+		React.SetStateAction<ResponseMessageProps>
+	>;
+}
+
+const AuthForm = ({
+	authSubmitHandler,
+	authRegister,
+	authErrors,
+	isLogIn,
+	setResponseMessage,
+}: Props) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const dispatch = useDispatch();
 
-	const onSubmitHandler = async (data) => {
+	const onSubmitHandler: SubmitHandler<AuthInputs> = async (data) => {
 		setIsLoading(true);
 		const dataToSend = data;
-		let url;
-
-		if (props.logIn) {
-			url =
-				'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCtGvqymH11_3PzBQ1fJ9Ci5-F5w1HUSqA';
-		} else {
-			url =
-				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCtGvqymH11_3PzBQ1fJ9Ci5-F5w1HUSqA';
-		}
+		const url = getAuthUrl(isLogIn);
 
 		try {
 			const response = await fetch(url, {
@@ -41,21 +58,21 @@ const AuthForm = (props) => {
 
 			const data = await response.json();
 
-			if (!props.logIn) {
-				props.setResponseMessage({
+			if (!isLogIn) {
+				setResponseMessage({
 					status: 'success',
 					message: 'Account successfully created!',
 				});
 			} else {
-				props.setResponseMessage({
+				setResponseMessage({
 					status: 'success',
 					message: 'Loged In successfully!',
 				});
 
 				dispatch(logIn(data.idToken));
 			}
-		} catch (err) {
-			props.setResponseMessage({
+		} catch (err: any) {
+			setResponseMessage({
 				status: 'fail',
 				message: err.message,
 			});
@@ -64,45 +81,44 @@ const AuthForm = (props) => {
 	};
 
 	return (
-		<StyledAuthForm onSubmit={props.handleSubmit(onSubmitHandler)}>
+		<StyledAuthForm onSubmit={authSubmitHandler(onSubmitHandler)}>
 			<label htmlFor='email'></label>
 			<input
 				type='email'
 				id='email'
 				placeholder='E-mail'
-				{...props.register('email', {
+				{...authRegister('email', {
 					required: 'Email is required',
 					pattern: {
 						message: 'Email is not correct',
-						value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+						value: EMAIL_REGEXP,
 					},
 				})}
 				data-testid='email-imput'
 			/>
-			<span className='login-error'>{props.errors.email?.message}</span>
+			<span className='login-error'>{authErrors.email?.message}</span>
 
 			<label htmlFor='password'></label>
 			<input
 				type='password'
 				id='password'
 				placeholder='Password'
-				{...props.register('password', {
+				{...authRegister('password', {
 					required: 'Password is required',
 					pattern: {
 						message:
 							'Password have to contains at least 8 sign, at least one uppercase letter, at least one downcase letter, at least one number and at least one special sign.',
-						value:
-							/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/gm,
+						value: PASSWORD_REGEXP,
 					},
 				})}
 				data-testid='password-input'
 			/>
-			<span className='password-error'>{props.errors.password?.message}</span>
+			<span className='password-error'>{authErrors.password?.message}</span>
 			{isLoading ? (
 				<Loading styles={{ width: '100px' }} />
 			) : (
 				<button data-testid='submit-button'>
-					{props.logIn ? 'Log in' : 'Register'}
+					{isLogIn ? 'Log in' : 'Register'}
 				</button>
 			)}
 		</StyledAuthForm>

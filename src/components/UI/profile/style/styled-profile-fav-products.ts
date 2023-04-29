@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Close, ModalBase, Heading } from '../components';
+import { Close, ModalBase, Heading } from '../../../../assets/style/components';
 
 const StyledFavProduct = styled.section`
 	${ModalBase}
