@@ -5,6 +5,7 @@ import { closeAlert } from '../../../store/alert-slice';
 
 import StyledAlert from './style/styled-alert';
 import Overlay from '../overlay/Overlay';
+import Animate from '../../animate/Animate';
 
 const Alert = () => {
 	const dispatch = useAppDispatch();
@@ -18,11 +19,7 @@ const Alert = () => {
 		<AnimatePresence>
 			{isOpen && (
 				<Overlay onClose={closeAlertHandler}>
-					<motion.div
-						initial={{ opacity: 0, y: 30, scale: 0.9 }}
-						animate={{ opacity: 1, y: 0, scale: 1 }}
-						exit={{ opacity: 0, y: 30, scale: 0.9 }}
-					>
+					<Animate animateVariants='fade_in_from_bottom'>
 						<StyledAlert className='alert' alertStatus={status}>
 							<i
 								className='fa-solid fa-xmark alert__close'
@@ -38,7 +35,7 @@ const Alert = () => {
 								</button>
 							</div>
 						</StyledAlert>
-					</motion.div>
+					</Animate>
 				</Overlay>
 			)}
 		</AnimatePresence>
