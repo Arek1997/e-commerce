@@ -47,11 +47,6 @@ background-color: var(--dirty-white);
 `;
 
 export const ModalBase = `
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 100%;
-	transform: translate(-50%, -50%);
 	backdrop-filter: blur(5px);
 	border-radius: 8px;
 	z-index: 2;
