@@ -47,6 +47,8 @@ background-color: var(--dirty-white);
 `;
 
 export const ModalBase = `
+	margin: auto;
+	padding: 2em;
 	backdrop-filter: blur(5px);
 	border-radius: 8px;
 	z-index: 2;
