@@ -2,7 +2,6 @@
 	"name": "e-commerce",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://Arek1997.github.io/e-comerse",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.0",
 		"@testing-library/jest-dom": "^5.16.5",
@@ -25,7 +24,6 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"deploy": "gh-pages -d build",
 		"cypress": "cypress open",
 		"cypress:run": "cypress run"
 	},
