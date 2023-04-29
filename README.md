@@ -1,6 +1,6 @@
 ## Live 📍
 
-https://arek1997.github.io/e-comerse/
+https://alledrogo-ecommerce.netlify.app/
 
 ## Credentials 💳
 
@@ -12,7 +12,10 @@ Password: Test!2345
 
 ## Project Overview 🎉
 
-This app is a project for e-commerce store. Design is copied from this one: https://vanilla-js-store.netlify.app/
+This app is a project for e-commerce store. Design is copied from:
+
+- https://vanilla-js-store.netlify.app/
+- https://react-course-comfy-sloth-store.netlify.app/
 
 App includes:
 
@@ -29,28 +32,26 @@ App includes:
 - React Hook Form
 - React Paginate
 - React Lazy Load Image
+- Typescript
 - SCSS
 - Styled Component
-- Firebase authentication
+- Framer Motion
+- Firebase
+- Cypress / Vitest / Vite
 
 ## Screenshots 📺
 
-<p>
-  <a href="https://ibb.co/qFD4V9S"><img src="https://i.ibb.co/Kz5QS7P/login.png" alt="login" border="0"></a>
-</p>
+[![Photo shows login](https://i.ibb.co/Kz5QS7P/login.png)](https://ibb.co/qFD4V9S)
 
-<p>
-  <a href="https://ibb.co/4TgbzMS"><img src="https://i.ibb.co/Z81Q5Kg/product-details.png" alt="product-details" border="0"></a>
-</p>
+[![Photo shows product details](https://i.ibb.co/Z81Q5Kg/product-details.png)](https://ibb.co/4TgbzMS)
 
-<p>
-  <a href="https://ibb.co/6ymMZX2"><img src="https://i.ibb.co/dfrTcmS/products.png" alt="products" border="0"></a>
-</p>
+[![Photo shows products](https://i.ibb.co/dfrTcmS/products.png)](https://ibb.co/6ymMZX2)
 
 ## Todo 📝
 
 - Do small refactor of dubled code
 - ~Add some subtle animations~
+- ~Add Typescript~
 
 ## Issues to fix 🛑
 
