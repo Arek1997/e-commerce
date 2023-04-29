@@ -91,7 +91,7 @@ const CartOrder = () => {
 			dispatch(
 				showAlert({
 					status: 'fail',
-					title: 'Failed to sent order',
+					title: 'Failed to send order',
 					message: `Some issue occurred, please try later.`,
 				})
 			);

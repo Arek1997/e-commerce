@@ -29,7 +29,7 @@ const Cart = () => {
 				showAlert({
 					status: 'warning',
 					title: 'Warning',
-					message: `If you wanna order products you have to be logged	firstfully`,
+					message: `If you wanna order products you have to be logged	firstfully.`,
 				})
 			);
 		}

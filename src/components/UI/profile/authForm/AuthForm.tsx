@@ -37,10 +37,9 @@ const AuthForm = ({
 	const onSubmitHandler: SubmitHandler<AuthInputs> = async (data) => {
 		setIsLoading(true);
 		const dataToSend = data;
-		const url = getAuthUrl(isLogIn);
 
 		try {
-			const response = await fetch(url, {
+			const response = await fetch(getAuthUrl(isLogIn), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
