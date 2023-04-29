@@ -9,6 +9,7 @@ interface Props {
 const StyledAlert = styled.div<Props>`
 	min-width: 25rem;
 	max-width: 35rem;
+	margin: auto;
 	backdrop-filter: blur(5px);
 	border-radius: 8px;
 	overflow: hidden;

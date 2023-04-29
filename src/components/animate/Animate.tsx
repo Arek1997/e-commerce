@@ -13,6 +13,8 @@ const Animate = ({ animateVariants, children }: Props) => {
 			initial='initial'
 			animate='animate'
 			exit='exit'
+			style={{ width: '100%' }}
+			data-name='animate-wrapper'
 		>
 			{children}
 		</motion.div>

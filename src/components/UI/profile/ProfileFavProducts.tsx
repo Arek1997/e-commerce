@@ -5,6 +5,8 @@ import { toggleProfileFavProducts } from '../../../store/navigation-slice';
 import { favProductsActions } from '../../../store/favProducts-slice';
 
 import StyledFavProduct from './style/styled-profile-fav-products';
+import Overlay from '../overlay/Overlay';
+import Animate from '../../animate/Animate';
 
 let content;
 const ProfileFavProducts = () => {
@@ -47,14 +49,18 @@ const ProfileFavProducts = () => {
 	}
 
 	return (
-		<StyledFavProduct>
-			<i
-				className='fa-solid fa-xmark close'
-				onClick={toggleProfileFavProductsHandler}
-			></i>
-			<h3 className='text-center'>Favourite products</h3>
-			<div className='fav-prod-list'>{content}</div>
-		</StyledFavProduct>
+		<Overlay onClose={toggleProfileFavProductsHandler}>
+			<Animate animateVariants='fade_in_from_bottom'>
+				<StyledFavProduct>
+					<i
+						className='fa-solid fa-xmark close'
+						onClick={toggleProfileFavProductsHandler}
+					></i>
+					<h3 className='text-center'>Favourite products</h3>
+					<div className='fav-prod-list'>{content}</div>
+				</StyledFavProduct>
+			</Animate>
+		</Overlay>
 	);
 };
 

@@ -14,6 +14,8 @@ import {
 	AuthPassword,
 	ProfileDetails as ProfileData,
 } from '../../../interface';
+import Overlay from '../overlay/Overlay';
+import Animate from '../../animate/Animate';
 
 export interface PasswordInput {
 	password: AuthPassword;
@@ -21,7 +23,7 @@ export interface PasswordInput {
 
 const ProfileDetails = () => {
 	const dispatch = useAppDispatch();
-	const { token } = useAppSelector((state) => state.authentication);
+	const { token, isLoggedIn } = useAppSelector((state) => state.authentication);
 	const [profileData, setProfileData] = useState<ProfileData | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const { responseMessage, setResponseMessage } = useResponseMessage();
@@ -82,6 +84,7 @@ const ProfileDetails = () => {
 	};
 
 	useEffect(() => {
+		if (!isLoggedIn) return;
 		getUserData();
 	}, []);
 
@@ -140,36 +143,40 @@ const ProfileDetails = () => {
 	}
 
 	return (
-		<StyledDetails
-			isHomePage={homePage}
-			disabled={false}
-			data-testid='profile-details-wrapper'
-		>
-			<i
-				className='fa-solid fa-xmark closeModal'
-				onClick={toggleProfileDetailsHandler}
-				data-testid='close-profile-details'
-			></i>
-			<h3 className='text-center'>Profile details</h3>
-			<StyledResponseMessage
-				status={responseMessage.status}
-				className='response-message text-center'
-			>
-				{responseMessage.message}
-			</StyledResponseMessage>
+		<Overlay onClose={toggleProfileDetailsHandler}>
+			<Animate animateVariants='fade_in_from_bottom'>
+				<StyledDetails
+					isHomePage={homePage}
+					disabled={false}
+					data-testid='profile-details-wrapper'
+				>
+					<i
+						className='fa-solid fa-xmark closeModal'
+						onClick={toggleProfileDetailsHandler}
+						data-testid='close-profile-details'
+					></i>
+					<h3 className='text-center'>Profile details</h3>
+					<StyledResponseMessage
+						status={responseMessage.status}
+						className='response-message text-center'
+					>
+						{responseMessage.message}
+					</StyledResponseMessage>
 
-			{content}
+					{content}
 
-			{profileData && Object.keys(profileData).length && (
-				<ChangePassword
-					token={token}
-					passwordSubmitHandler={handleSubmit}
-					passwordRegister={register}
-					passwordErrors={errors}
-					setResponseMessage={setResponseMessage}
-				/>
-			)}
-		</StyledDetails>
+					{profileData && Object.keys(profileData).length && (
+						<ChangePassword
+							token={token}
+							passwordSubmitHandler={handleSubmit}
+							passwordRegister={register}
+							passwordErrors={errors}
+							setResponseMessage={setResponseMessage}
+						/>
+					)}
+				</StyledDetails>
+			</Animate>
+		</Overlay>
 	);
 };
 

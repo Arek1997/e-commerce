@@ -12,6 +12,8 @@ import { wait } from '../../../helpers/functions';
 import usePathName from '../../../hooks/usePathName';
 import Overlay from '../overlay/Overlay';
 import { EMAIL_REGEXP } from '../../../helpers/values';
+import { AnimatePresence } from 'framer-motion';
+import Animate from '../../animate/Animate';
 
 interface Inputs {
 	name: string;
@@ -208,21 +210,28 @@ const CartOrder = () => {
 	}
 
 	return (
-		<>
-			<Overlay onClose={toggleCartOrderHandler}>{}</Overlay>
-			<StyledOrder isHomePage={homePage}>
-				<i
-					className='fa-solid fa-xmark close'
-					onClick={toggleCartOrderHandler}
-				></i>
-				<h3 className='text-center'>
-					{isLoading ? 'Processing...' : 'Data to order'}
-				</h3>
+		<Overlay onClose={toggleCartOrderHandler}>
+			<Animate animateVariants='fade_in_from_bottom'>
+				<StyledOrder isHomePage={homePage}>
+					<i
+						className='fa-solid fa-xmark close'
+						onClick={toggleCartOrderHandler}
+					></i>
+					<h3 className='text-center'>
+						{isLoading ? 'Processing...' : 'Data to order'}
+					</h3>
 
-				{content}
-			</StyledOrder>
-		</>
+					{content}
+				</StyledOrder>
+			</Animate>
+		</Overlay>
 	);
 };
 
-export default CartOrder;
+const CartOrderWrapper = () => {
+	const { isCartOrderShown } = useAppSelector((state) => state.navigation);
+
+	return <AnimatePresence>{isCartOrderShown && <CartOrder />}</AnimatePresence>;
+};
+
+export default CartOrderWrapper;

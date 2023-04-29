@@ -9,13 +9,11 @@ import {
 import { isHomePageProp as Props } from '../../../../interface';
 
 export const StyledDetails = styled.div<Props & { disabled: boolean }>`
-	${ModalBase}
-
 	max-width: 45rem;
-	padding: 2em;
 	color: ${({ isHomePage }) => (isHomePage ? '#000' : '#fff')};
 	background-color: ${({ isHomePage }) =>
 		isHomePage ? 'rgb(255 255 255 / 70%)' : 'rgb(0 0 0 / 70%)'};
+	${ModalBase}
 
 	.closeModal {
 		${Close}

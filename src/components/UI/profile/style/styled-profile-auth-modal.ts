@@ -9,13 +9,11 @@ import {
 import { isHomePageProp as Props, Status } from '../../../../interface';
 
 export const StyledProfileAuthModal = styled.div<Props>`
-	${ModalBase}
-
 	max-width: 40rem;
-	padding: 2em;
 	color: ${({ isHomePage }) => (isHomePage ? '#000' : '#fff')};
 	background-color: ${({ isHomePage }) =>
 		isHomePage ? 'rgb(255 255 255 / 70%)' : 'rgb(0 0 0 / 70%)'};
+	${ModalBase}
 
 	.closeModal {
 		${Close}
