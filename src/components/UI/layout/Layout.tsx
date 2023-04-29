@@ -1,7 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
-
-// import { navigationActions } from '../../../store/navigation-slice';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 
 import Navigation from '../navigation/Navigation';
 import Cart from '../cart/Cart';
@@ -13,25 +11,12 @@ import ProfileFavProducts from '../profile/ProfileFavProducts';
 import Alert from '../alert/Alert';
 
 const Layout = (props: PropsWithChildren) => {
-	const dispatch = useAppDispatch();
 	const {
-		isCartShown,
 		isCartOrderShown,
 		isProfileAuthModalShown,
 		isProfileDetailsShown,
 		ifProfileFavProductsShown,
 	} = useAppSelector((state) => state.navigation);
-
-	// const toggleOverlayHandler = () => {
-	// 	dispatch(navigationActions.toggleOverlay());
-	// 	isCartShown && dispatch(navigationActions.toggleCart());
-	// 	isCartOrderShown && dispatch(navigationActions.toggleCartOrder());
-	// 	isProfileAuthModalShown &&
-	// 		dispatch(navigationActions.toggleProfileAuthModal());
-	// 	isProfileDetailsShown && dispatch(navigationActions.toggleProfileDetails());
-	// 	ifProfileFavProductsShown &&
-	// 		dispatch(navigationActions.toggleProfileFavProducts());
-	// };
 
 	return (
 		<>
@@ -39,7 +24,6 @@ const Layout = (props: PropsWithChildren) => {
 			<Cart />
 			<main>
 				{props.children}
-				{/* {isOverlayShown && <Overlay onClose={toggleOverlayHandler} />} */}
 				{isProfileAuthModalShown && <ProfileAuthModal />}
 				{isProfileDetailsShown && <ProfileDetails />}
 				{ifProfileFavProductsShown && <ProfileFavProducts />}
