@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { isHomePageProp as Props } from '../../../../interface';
 
 import {
 	ModalBase,
@@ -7,18 +8,14 @@ import {
 	Heading,
 } from '../../../../assets/style/components';
 
-interface Props {
-	notHomePage: boolean;
-}
-
 export const StyledOrder = styled.section<Props>`
 	${ModalBase}
 
 	max-width: 45rem;
 	padding: 2em;
-	color: ${(props) => (props.notHomePage ? '#fff' : '#000')};
-	background-color: ${(props) =>
-		props.notHomePage ? 'rgb(0 0 0 / 70%)' : 'rgb(255 255 255 / 70%)'};
+	color: ${({ isHomePage }) => (isHomePage ? '#000' : '#fff')};
+	background-color: ${({ isHomePage }) =>
+		isHomePage ? 'rgb(255 255 255 / 70%)' : 'rgb(0 0 0 / 70%)'};
 
 	.close {
 		${Close}
@@ -26,8 +23,8 @@ export const StyledOrder = styled.section<Props>`
 		top: 2rem;
 		right: 1rem;
 
-		color: ${(props) =>
-			props.notHomePage ? 'var(--dirty-white)' : 'var(--light-gray)'};
+		color: ${({ isHomePage }) =>
+			isHomePage ? 'var(--light-gray)' : 'var(--dirty-white)'};
 
 		@media (min-width: 300px) {
 			font-size: 3rem;
