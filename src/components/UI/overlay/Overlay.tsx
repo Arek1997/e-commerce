@@ -20,7 +20,11 @@ const Overlay = ({ children, onClose }: Props) => {
 			ref={overlayRef}
 			data-testid='overlay'
 			onClick={(e) => {
-				if (e.target === overlayRef.current) onClose();
+				if (
+					e.target === overlayRef.current ||
+					(e.target as HTMLDivElement).dataset.name === 'animate-wrapper'
+				)
+					onClose();
 			}}
 		>
 			{children}
