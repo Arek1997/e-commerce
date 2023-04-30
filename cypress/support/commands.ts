@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+import { API_URL } from '../../src/helpers/values';
+import '@testing-library/cypress/add-commands';
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -35,3 +37,17 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('blockRequest', () => {
+	cy.intercept('GET', `${API_URL}*`, { fixture: 'items.json' }).as(
+		'blockedReq'
+	);
+});
+
+declare global {
+	namespace Cypress {
+		interface Chainable {
+			blockRequest(): Chainable<void>;
+		}
+	}
+}

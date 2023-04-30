@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { vi } from 'vitest';
 import { getAuthUrl, wait } from '../functions';
 
 describe('wait()', () => {
@@ -14,7 +14,7 @@ describe('wait()', () => {
 	it('should return "undefined" by default', async () => {
 		const viFunction = vi.fn(async (number: number) => await wait(number));
 
-		await viFunction(2);
+		await viFunction(0);
 
 		expect(viFunction).toReturnWith(undefined);
 	});
