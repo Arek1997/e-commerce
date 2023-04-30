@@ -4,9 +4,6 @@
 	"private": true,
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.0",
-		"@testing-library/jest-dom": "^5.16.5",
-		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "^13.5.0",
 		"framer-motion": "^10.12.4",
 		"lodash.debounce": "^4.0.8",
 		"react": "^18.2.0",
@@ -17,8 +14,7 @@
 		"react-paginate": "^8.1.4",
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.4.2",
-		"styled-components": "^5.3.6",
-		"web-vitals": "^2.1.4"
+		"styled-components": "^5.3.6"
 	},
 	"scripts": {
 		"dev": "vite",
@@ -47,14 +43,20 @@
 		]
 	},
 	"devDependencies": {
+		"@testing-library/cypress": "^9.0.0",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^14.0.0",
+		"@testing-library/user-event": "^14.4.3",
 		"@types/lodash.debounce": "^4.0.7",
 		"@types/react": "^18.0.38",
 		"@types/react-dom": "^18.0.11",
 		"@types/react-lazy-load-image-component": "^1.5.3",
 		"@types/styled-components": "^5.1.26",
+		"@types/testing-library__cypress": "^5.0.9",
 		"@vitejs/plugin-react": "^4.0.0",
-		"cypress": "^12.10.0",
+		"cypress": "^12.11.0",
 		"gh-pages": "^4.0.0",
+		"jsdom": "^21.1.1",
 		"typescript": "^5.0.4",
 		"vite": "^4.3.1",
 		"vitest": "^0.30.1"
