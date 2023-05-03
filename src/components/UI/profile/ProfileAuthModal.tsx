@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { useForm } from 'react-hook-form';
 
-import {
-	toggleProfileAuthModal,
-	toggleOverlay,
-} from '../../../store/navigation-slice';
+import { toggleProfileAuthModal } from '../../../store/navigation-slice';
 
 import {
 	StyledProfileAuthModal,
@@ -57,7 +54,6 @@ const ProfileAuthModal = () => {
 		if (isLogIn && isLoggedIn) {
 			const timeout = setTimeout(() => {
 				dispatch(toggleProfileAuthModal());
-				dispatch(toggleOverlay());
 			}, 1500);
 
 			return () => clearTimeout(timeout);

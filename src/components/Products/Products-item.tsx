@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { cartActions } from '../../store/cart-slice';
 
-import { toggleOverlay } from '../../store/navigation-slice';
 import { favProductsActions } from '../../store/favProducts-slice';
 import { showAlert } from '../../store/alert-slice';
 
@@ -61,7 +60,6 @@ const ProductsItem = ({ id, title, price, image }: Props) => {
 
 			setIsFavourite(!isFavourite);
 		} else {
-			dispatch(toggleOverlay());
 			dispatch(
 				showAlert({
 					status: 'warning',
