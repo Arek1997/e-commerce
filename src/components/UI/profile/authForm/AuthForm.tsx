@@ -93,7 +93,7 @@ const AuthForm = ({
 						value: EMAIL_REGEXP,
 					},
 				})}
-				data-testid='email-imput'
+				data-testid='email-input'
 			/>
 			<span className='login-error'>{authErrors.email?.message}</span>
 
