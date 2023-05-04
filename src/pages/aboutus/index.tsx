@@ -1,5 +1,11 @@
 import Container from '../../components/UI/container/Container';
-import { SectionHero, SectionCenter } from './style/styled-aboutus';
+import {
+	SectionHero,
+	StyledArticle,
+	StyledImageWrapper,
+	StyledTextWrapper,
+} from './style/styled-aboutus';
+import imgPath from '../../assets/img/aboutus/abous-us-photo.jpg';
 
 const Aboutus = () => {
 	return (
@@ -9,10 +15,13 @@ const Aboutus = () => {
 					<h2>Aboutus</h2>
 				</Container>
 			</SectionHero>
-			<SectionCenter>
-				<Container>
-					<article className='section'>
-						<h3>Our History</h3>
+			<Container>
+				<StyledArticle className='section'>
+					<StyledImageWrapper>
+						<img src={imgPath} alt='Photo presents clothes shop' />
+					</StyledImageWrapper>
+					<StyledTextWrapper>
+						<h3>Our story</h3>
 						<p>
 							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
 							accusantium sapiente tempora sed dolore esse deserunt eaque
@@ -25,9 +34,9 @@ const Aboutus = () => {
 							similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
 							iste.
 						</p>
-					</article>
-				</Container>
-			</SectionCenter>
+					</StyledTextWrapper>
+				</StyledArticle>
+			</Container>
 		</>
 	);
 };
