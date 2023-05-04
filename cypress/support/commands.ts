@@ -44,10 +44,17 @@ Cypress.Commands.add('blockRequest', () => {
 	);
 });
 
+Cypress.Commands.addQuery('getByTestId', (id: string) => {
+	const getFn = cy.now('get', `[data-testid=${id}]`);
+
+	return () => getFn();
+});
+
 declare global {
 	namespace Cypress {
 		interface Chainable {
 			blockRequest(): Chainable<void>;
+			getByTestId(id: string): Chainable<Element>;
 		}
 	}
 }
