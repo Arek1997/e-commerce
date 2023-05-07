@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
-import CartProduct from './Cart-product';
+import CartProduct from './CartProduct';
 
 const CartList = () => {
 	const { productsList } = useAppSelector((state) => state.cart);

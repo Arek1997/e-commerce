@@ -1,6 +1,6 @@
 import useFetch from 'react-fetch-hook';
 
-import FeaturedItem from './Featured-item';
+import FeaturedItem from './FeaturedItem';
 import { StyledList } from './style/styled-list';
 import Loading from '../../loading/Loading';
 import { API_URL } from '../../../helpers/values';

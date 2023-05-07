@@ -4,7 +4,7 @@ import { toggleCart, toggleCartOrder } from '../../../store/navigation-slice';
 import { showAlert } from '../../../store/alert-slice';
 
 import CartMenu from './style/styled-cart';
-import CartList from './Cart-list';
+import CartList from './CartList';
 import Overlay from '../overlay/Overlay';
 import useMediaQueries from '../../../hooks/useMediaQueries';
 

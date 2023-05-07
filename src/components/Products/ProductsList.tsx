@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import ProductItem from './Products-item';
+import ProductItem from './ProductsItem';
 import { API_URL, ITEMS_PER_PAGE } from '../../helpers/values';
 import useFilter from '../../hooks/useFilter';
 import Loading from '../loading/Loading';

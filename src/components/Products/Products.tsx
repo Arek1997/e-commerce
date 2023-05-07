@@ -1,6 +1,6 @@
 import Container from '../UI/container/Container';
-import ProductList from './Products-list';
-import ProductsFilter from './Products-filter';
+import ProductList from './ProductsList';
+import ProductsFilter from './ProductsFilter';
 
 import ProductContainer from './style/styled-products';
 

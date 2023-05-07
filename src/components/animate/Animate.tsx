@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { animateOptions } from './animate-options';
+import { animateOptions } from './animateOptions';
 
 interface Props {
 	animateVariants: keyof typeof animateOptions;

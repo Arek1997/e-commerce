@@ -11,7 +11,7 @@ import StyledProduct from './style/styled-products-item';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import imagePlaceholder from '../../assets/img/product/product-placeholder.webp';
-import ProductsActionIcons from './Products-action-icons';
+import ProductsActionIcons from './ProductsActionIcons';
 import { SelectedProduct } from '../../interface';
 
 interface Props {
