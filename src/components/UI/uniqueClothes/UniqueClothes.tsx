@@ -69,7 +69,7 @@ const UniqueClothes = () => {
 
 				<StyledCartWrapper>
 					{ARTICLE_CONTENT.map(({ icon, heading, paragraph }, index) => {
-						let animationDelay = 0.6;
+						const animationDelay = 0.6;
 
 						return (
 							<Article
