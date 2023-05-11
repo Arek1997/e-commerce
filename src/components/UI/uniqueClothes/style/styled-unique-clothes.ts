@@ -55,7 +55,10 @@ export const StyledTextWrapper = styled.div`
 
 export const StyledCartWrapper = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
 	gap: 5em;
 	margin-top: 5em;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+	}
 `;
