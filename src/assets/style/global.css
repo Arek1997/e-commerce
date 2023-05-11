@@ -13,7 +13,8 @@
 	--light-gray: rgba(0, 0, 0, 0.8);
 	--dark-gray: hsl(209deg, 61%, 16%);
 	--dirty-white: hsl(210, 36%, 96%);
-	--light-blue: hsl(210, 22%, 49%);
+	--light-blue: hsl(209, 22%, 49%);
+	--medium-blue: hsl(209, 34%, 30%);
 	--dark-blue: hsl(209, 61%, 16%);
 	--section: 3rem 1.5rem;
 	--small-opacity: 0.8;
