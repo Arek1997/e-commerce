@@ -34,15 +34,14 @@ const StyledProduct = styled.article<Props>`
 
 		&__title {
 			font-size: 1.6rem;
-			color: var(--light-gray);
+			color: var(--light-blue);
 			margin-bottom: 0.5em;
-			color: hsl(210, 22%, 49%);
 		}
 
 		&__price {
 			font-size: 1.8rem;
 			font-weight: bold;
-			color: hsl(209, 34%, 30%);
+			color: var(--medium-blue);
 		}
 	}
 `;
