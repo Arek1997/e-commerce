@@ -59,7 +59,7 @@ const CartMenu = styled.aside`
 		font-size: 1.6rem;
 		padding: 0.5em 1em;
 		background-color: var(--orange);
-		border-radius: 6px;
+		border-radius: var(--radius);
 		transition: background-color 0.3s;
 		text-transform: uppercase;
 

@@ -9,7 +9,7 @@ export const StyledArticle = styled(motion.article)`
 	justify-content: center;
 	padding: 3em;
 	background-color: #c5a491;
-	border-radius: 6px;
+	border-radius: var(--radius);
 
 	span {
 		width: 6rem;

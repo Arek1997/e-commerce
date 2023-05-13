@@ -74,7 +74,7 @@ export const StyledLink = styled(Link)`
 	background-color: transparent;
 	color: #fff;
 	border: 1px solid #fff;
-	border-radius: 5px;
+	border-radius: var(--radius);
 	transition: color 0.3s linear, background-color 0.3s linear;
 
 	@media (min-width: 768px) {
