@@ -88,19 +88,6 @@ const ProfileDetails = () => {
 		getUserData();
 	}, []);
 
-	useEffect(() => {
-		if (responseMessage.status === 'fail') return;
-
-		const timeout = setTimeout(() => {
-			setResponseMessage({
-				status: null,
-				message: '',
-			});
-		}, 3000);
-
-		return () => clearTimeout(timeout);
-	}, [responseMessage]);
-
 	const toggleProfileDetailsHandler = () => dispatch(toggleProfileDetails());
 	useEffect(() => {
 		if (isSubmitSuccessful) {
