@@ -44,7 +44,7 @@ export const StyledImageWrapper = styled.div`
 
 	img {
 		width: 100%;
-		border-radius: 6px;
+		border-radius: var(--radius);
 
 		@media (min-width: 992px) {
 			height: 100%;

@@ -18,6 +18,7 @@
 	--dark-blue: hsl(209, 61%, 16%);
 	--section: 3rem 1.5rem;
 	--small-opacity: 0.8;
+	--radius: 6px;
 	--fail-color: #f32525;
 	--success-color: #1ea11e;
 	--cursive: Courgette, cursive;
@@ -109,7 +110,7 @@ table {
 	color: #fff;
 	background-color: var(--orange);
 	text-transform: uppercase;
-	border-radius: 6px;
+	border-radius: var(--radius);
 	font-size: 1.4rem;
 	font-weight: bold;
 	-webkit-transition: background-color 0.3s;

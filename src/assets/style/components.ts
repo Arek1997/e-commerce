@@ -50,7 +50,7 @@ export const ModalBase = `
 	margin: auto;
 	padding: 2em;
 	backdrop-filter: blur(5px);
-	border-radius: 8px;
+	border-radius: var(--radius);
 	z-index: 2;
 
 	@media (max-height: 530px) {
@@ -67,7 +67,7 @@ export const InputAndButton = `
 			padding: 0.7em;
 			font-size: 1.5rem;
 			border: 2px solid transparent;
-			border-radius: 8px;
+			border-radius: var(--radius);
 			outline: none;
 			&:focus {
 				border: 2px solid var(--orange);

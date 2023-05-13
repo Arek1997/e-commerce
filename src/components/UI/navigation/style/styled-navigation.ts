@@ -39,7 +39,7 @@ export const UlList = styled.div<Props>`
 	padding: 2em 4em;
 	color: #000;
 	background-color: var(--dirty-white);
-	border-radius: 8px;
+	border-radius: var(--radius);
 	transform: translateY(50%);
 	opacity: 0;
 	visibility: hidden;
@@ -212,7 +212,7 @@ export const IconsDiv = styled.div<Props>`
 		background-color: ${({ isHomePage }) =>
 			isHomePage ? 'rgb(255 255 255 / 70%) ' : 'rgb(0 0 0 / 70%)'};
 		backdrop-filter: blur(5px);
-		border-radius: 8px;
+		border-radius: var(--radius);
 		z-index: 1;
 		margin-top: 3em;
 
