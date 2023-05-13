@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ResponseMessageProps } from '../interface';
 
 const useResponseMessage = () => {
@@ -6,6 +6,19 @@ const useResponseMessage = () => {
 		status: null,
 		message: '',
 	});
+
+	useEffect(() => {
+		if (responseMessage.status === 'fail') return;
+
+		const timeout = setTimeout(() => {
+			setResponseMessage({
+				status: null,
+				message: '',
+			});
+		}, 3000);
+
+		return () => clearTimeout(timeout);
+	}, [responseMessage]);
 
 	return { responseMessage, setResponseMessage };
 };
