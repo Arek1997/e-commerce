@@ -4,16 +4,14 @@ import { useForm } from 'react-hook-form';
 
 import { toggleProfileAuthModal } from '../../../store/navigation-slice';
 
-import {
-	StyledProfileAuthModal,
-	StyledResponseMessage,
-} from './style/styled-profile-auth-modal';
+import { StyledProfileAuthModal } from './style/styled-profile-auth-modal';
 import AuthForm from './authForm/AuthForm';
 import { AuthInputs } from '../../../interface';
 import usePathName from '../../../hooks/usePathName';
 import useResponseMessage from '../../../hooks/useResponseMessage';
 import Overlay from '../overlay/Overlay';
 import Animate from '../../animate/Animate';
+import ResponseMessage from '../../responseMessage/ResponseMessage';
 
 const ProfileAuthModal = () => {
 	const [isLogIn, setIsLogIn] = useState(true);
@@ -73,13 +71,12 @@ const ProfileAuthModal = () => {
 						data-testid='close-profile-modal'
 					></i>
 					<h2 className='text-center'>Welcome in AlleDrogo!</h2>
-					<StyledResponseMessage
+					<ResponseMessage
 						status={responseMessage.status}
-						className='response-message text-center'
-						data-testid='profile-response-message'
-					>
-						{responseMessage.message}
-					</StyledResponseMessage>
+						message={responseMessage.message}
+						extraClass='text-center'
+					/>
+
 					<p className='text-center text-bold'>
 						{isLogIn ? 'Log in' : 'Sign up'}
 					</p>

@@ -6,7 +6,6 @@ import { toggleProfileDetails } from '../../../store/navigation-slice';
 
 import ChangePassword from './changePassword/ChangePassword';
 import { StyledDetails } from './style/styled-profile-details';
-import { StyledResponseMessage } from './style/styled-profile-auth-modal';
 import usePathName from '../../../hooks/usePathName';
 import Loading from '../../loading/Loading';
 import useResponseMessage from '../../../hooks/useResponseMessage';
@@ -16,6 +15,7 @@ import {
 } from '../../../interface';
 import Overlay from '../overlay/Overlay';
 import Animate from '../../animate/Animate';
+import ResponseMessage from '../../responseMessage/ResponseMessage';
 
 export interface PasswordInput {
 	password: AuthPassword;
@@ -156,12 +156,11 @@ const ProfileDetails = () => {
 						data-testid='close-profile-details'
 					></i>
 					<h3 className='text-center'>Profile details</h3>
-					<StyledResponseMessage
+					<ResponseMessage
 						status={responseMessage.status}
-						className='response-message text-center'
-					>
-						{responseMessage.message}
-					</StyledResponseMessage>
+						message={responseMessage.message}
+						extraClass='text-center'
+					/>
 
 					{content}
 
