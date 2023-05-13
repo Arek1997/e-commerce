@@ -1,7 +1,7 @@
 import loadingSpinner from '../../assets/loadingspinner.gif';
 
 interface Props {
-	styles?: Object;
+	styles?: React.CSSProperties;
 }
 
 const Loading = ({ styles }: Props) => {
