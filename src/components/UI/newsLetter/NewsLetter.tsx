@@ -6,9 +6,11 @@ const NewsLetter = () => {
 	return (
 		<section className='mt-5 mb-5 section'>
 			<Wrapper>
-				<StyledHeading>Join our newsletter and get 20% off</StyledHeading>
+				<StyledHeading className='newsletter-heading'>
+					Join our newsletter and get 20% off
+				</StyledHeading>
 				<StyledWrapper>
-					<p>
+					<p className='newsletter-paragraph'>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
 						sint unde quaerat ratione soluta veniam provident adipisci cumque
 						eveniet tempore?

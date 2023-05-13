@@ -3,20 +3,20 @@ import styled from 'styled-components';
 export const StyledWrapper = styled.div`
 	@media (min-width: 992px) {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		column-gap: 10rem;
 
-		p,
-		div {
+		.newsletter-paragraph,
+		.newsletter-form-wrapper {
 			width: 50%;
 		}
-		div {
+		.newsletter-form-wrapper {
 			max-width: 50rem;
 		}
 	}
 
-	p {
+	.newsletter-paragraph {
 		font-size: 1.4rem;
 		line-height: 1.8;
 		color: var(--light-blue);
@@ -33,5 +33,9 @@ export const StyledHeading = styled.h3`
 
 	@media (min-width: 768px) {
 		font-size: 3rem;
+	}
+
+	@media (min-width: 992px) {
+		margin-bottom: 1em;
 	}
 `;
