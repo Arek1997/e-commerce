@@ -95,7 +95,9 @@ const AuthForm = ({
 				})}
 				data-testid='email-input'
 			/>
-			<span className='login-error'>{authErrors.email?.message}</span>
+			<span className='error-message-basic-style login-error'>
+				{authErrors.email?.message}
+			</span>
 
 			<label htmlFor='password'></label>
 			<input
@@ -112,7 +114,9 @@ const AuthForm = ({
 				})}
 				data-testid='password-input'
 			/>
-			<span className='password-error'>{authErrors.password?.message}</span>
+			<span className='error-message-basic-style password-error'>
+				{authErrors.password?.message}
+			</span>
 			{isLoading ? (
 				<Loading styles={{ width: '100px' }} />
 			) : (

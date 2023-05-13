@@ -130,7 +130,9 @@ const CartOrder = () => {
 						required: 'Name is required',
 					})}
 				/>
-				<span className='error-name error-message'>{errors.name?.message}</span>
+				<span className='error-message-basic-style error-name'>
+					{errors.name?.message}
+				</span>
 
 				<label htmlFor='surname' />
 				<input
@@ -141,7 +143,7 @@ const CartOrder = () => {
 						required: 'Surname is required',
 					})}
 				/>
-				<span className='error-surname error-message'>
+				<span className='error-message-basic-style error-surname'>
 					{errors.surname?.message}
 				</span>
 
@@ -154,7 +156,9 @@ const CartOrder = () => {
 						required: 'City is required',
 					})}
 				/>
-				<span className='error-city error-message'>{errors.city?.message}</span>
+				<span className='error-message-basic-style error-city'>
+					{errors.city?.message}
+				</span>
 
 				<label htmlFor='street' />
 				<input
@@ -165,7 +169,7 @@ const CartOrder = () => {
 						required: 'Street is required',
 					})}
 				/>
-				<span className='error-street error-message'>
+				<span className='error-message-basic-style error-street'>
 					{errors.street?.message}
 				</span>
 
@@ -178,7 +182,7 @@ const CartOrder = () => {
 						required: 'Flat number is required',
 					})}
 				/>
-				<span className='error-flat-number error-message'>
+				<span className='error-message-basic-style error-flat-number'>
 					{errors.flatNumber?.message}
 				</span>
 
@@ -195,7 +199,7 @@ const CartOrder = () => {
 						},
 					})}
 				/>
-				<span className='error-email error-message'>
+				<span className='error-message-basic-style error-email'>
 					{errors.email?.message}
 				</span>
 
