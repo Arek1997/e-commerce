@@ -10,7 +10,5 @@ export const StyledAuthForm = styled.form`
 	.login-error,
 		.password-error {
 		margin-bottom: 1em;
-		font-size: 1.4rem;
-		color: var(--fail-color);
 	}
 `;

@@ -58,11 +58,6 @@ export const StyledForm = styled.form`
 		margin-bottom: 0;
 	}
 
-	.error-message {
-		font-size: 1.4rem;
-		color: var(--fail-color);
-	}
-
 	.order-bottom {
 		display: flex;
 		align-items: center;

@@ -16,7 +16,9 @@ const ResponseMessage = ({
 		<StyledResponseMessage
 			status={status}
 			style={extraStyle}
-			className={`response-message ${extraClass ? extraClass : ''}`}
+			className={`error-message-basic-style response-message ${
+				extraClass ? extraClass : ''
+			}`}
 			data-testid='response-message'
 		>
 			{message}
