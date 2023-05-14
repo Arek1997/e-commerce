@@ -8,6 +8,7 @@ import { EMAIL_REGEXP } from '../../../../helpers/values';
 import Loading from '../../../loading/Loading';
 import { wait, checkIfEmailAlreadyExists } from '../../../../helpers/functions';
 
+
 interface Input {
 	email: string;
 }
@@ -30,6 +31,7 @@ const Form = () => {
 	const newsLetterSubmitHandler: SubmitHandler<Input> = async ({ email }) => {
 		setIsLoading(true);
 		try {
+
 			const emailExist = await checkIfEmailAlreadyExists(email);
 
 			if (emailExist) {
@@ -68,6 +70,7 @@ const Form = () => {
 		} finally {
 			setIsLoading(false);
 		}
+
 	};
 
 	useEffect(() => {
