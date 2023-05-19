@@ -4,9 +4,9 @@ import useResponseMessage from '../../../../hooks/useResponseMessage';
 import ResponseMessage from '../../../responseMessage/ResponseMessage';
 
 import { StyledFormWrapper } from './style/styled-form';
-import { EMAIL_REGEXP } from '../../../../helpers/values';
 import Loading from '../../../loading/Loading';
 import { wait, checkIfEmailAlreadyExists } from '../../../../helpers/functions';
+import Input from '../../input/Input';
 
 interface Input {
 	email: string;
@@ -80,18 +80,13 @@ const Form = () => {
 		<StyledFormWrapper className='newsletter-form-wrapper'>
 			<form onSubmit={handleSubmit(newsLetterSubmitHandler)}>
 				<div className='input-wrapper'>
-					<label htmlFor='newsletter' />
-					<input
-						type='email'
+					<Input
+						register={register}
+						name='email'
 						id='newsletter'
+						type='email'
 						placeholder='Enter Email'
-						{...register('email', {
-							required: 'Email is required',
-							pattern: {
-								message: 'Email is not correct',
-								value: EMAIL_REGEXP,
-							},
-						})}
+						testid='newsletter-input'
 					/>
 					<p className='error-message-basic-style newsletter-error-messsage'>
 						{errors.email?.message}

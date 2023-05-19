@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { changeToken } from '../../../../store/auth-slice';
 import { StyledForm } from '../style/styled-profile-details';
-import { PASSWORD_REGEXP } from '../../../../helpers/values';
 import {
 	FieldErrorsImpl,
 	SubmitHandler,
@@ -11,6 +10,7 @@ import {
 import { PasswordInput } from '../ProfileDetails';
 import { ResponseMessageProps } from '../../../../interface';
 import { useAppDispatch } from '../../../../hooks/reduxHooks';
+import Input from '../../input/Input';
 
 interface Props {
 	token: string;
@@ -83,19 +83,13 @@ const ChangePassword = ({
 				className='change__password'
 				onSubmit={passwordSubmitHandler(changePasswordHandler)}
 			>
-				<label htmlFor='password'></label>
-				<input
-					type='password'
+				<Input
+					register={passwordRegister}
+					name='password'
 					id='password'
+					type='password'
 					placeholder='Your new password'
-					{...passwordRegister('password', {
-						required: 'Password is required',
-						pattern: {
-							message:
-								'Password have to contains at least 8 sign, at least one uppercase letter, at least one downcase letter, at least one number and at least one special sign.',
-							value: PASSWORD_REGEXP,
-						},
-					})}
+					testid='change-password-input'
 				/>
 				<span className='password-error'>
 					{passwordErrors.password?.message}
