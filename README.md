@@ -50,6 +50,8 @@ App includes:
 ## Todo 📝
 
 - Do small refactor of dubled code
+- Change colors palette
+- ~Add new sections~
 - ~Add some subtle animations~
 - ~Add Typescript~
 
