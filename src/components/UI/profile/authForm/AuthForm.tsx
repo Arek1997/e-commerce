@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../../../store/auth-slice';
 
 import { StyledAuthForm } from '../style/authForm/styled-authForm';
-import { EMAIL_REGEXP, PASSWORD_REGEXP } from '../../../../helpers/values';
 import Loading from '../../../loading/Loading';
 import { getAuthUrl } from '../../../../helpers/functions';
 import {
@@ -13,6 +12,7 @@ import {
 	UseFormRegister,
 } from 'react-hook-form';
 import { AuthInputs, ResponseMessageProps } from '../../../../interface';
+import Input from '../../input/Input';
 
 interface Props {
 	authSubmitHandler: UseFormHandleSubmit<AuthInputs>;
@@ -81,38 +81,25 @@ const AuthForm = ({
 
 	return (
 		<StyledAuthForm onSubmit={authSubmitHandler(onSubmitHandler)}>
-			<label htmlFor='email'></label>
-			<input
-				type='email'
+			<Input
+				register={authRegister}
+				name='email'
 				id='email'
-				placeholder='E-mail'
-				{...authRegister('email', {
-					required: 'Email is required',
-					pattern: {
-						message: 'Email is not correct',
-						value: EMAIL_REGEXP,
-					},
-				})}
-				data-testid='email-input'
+				type='email'
+				placeholder='Email'
+				testid='email-input'
 			/>
 			<span className='error-message-basic-style login-error'>
 				{authErrors.email?.message}
 			</span>
 
-			<label htmlFor='password'></label>
-			<input
-				type='password'
+			<Input
+				register={authRegister}
+				name='password'
 				id='password'
+				type='password'
 				placeholder='Password'
-				{...authRegister('password', {
-					required: 'Password is required',
-					pattern: {
-						message:
-							'Password have to contains at least 8 sign, at least one uppercase letter, at least one downcase letter, at least one number and at least one special sign.',
-						value: PASSWORD_REGEXP,
-					},
-				})}
-				data-testid='password-input'
+				testid='password-input'
 			/>
 			<span className='error-message-basic-style password-error'>
 				{authErrors.password?.message}
