@@ -11,9 +11,9 @@ import Loading from '../../loading/Loading';
 import { wait } from '../../../helpers/functions';
 import usePathName from '../../../hooks/usePathName';
 import Overlay from '../overlay/Overlay';
-import { EMAIL_REGEXP } from '../../../helpers/values';
 import { AnimatePresence } from 'framer-motion';
 import Animate from '../../animate/Animate';
+import Input from '../input/Input';
 
 interface Inputs {
 	name: string;
@@ -186,19 +186,14 @@ const CartOrder = () => {
 					{errors.flatNumber?.message}
 				</span>
 
-				<label htmlFor='email' />
-				<input
-					type='email'
+				<Input
+					register={register}
+					name='email'
 					id='email'
+					type='email'
 					placeholder='Email'
-					{...register('email', {
-						required: 'Email is required',
-						pattern: {
-							message: 'Email is not correct',
-							value: EMAIL_REGEXP,
-						},
-					})}
 				/>
+
 				<span className='error-message-basic-style error-email'>
 					{errors.email?.message}
 				</span>
